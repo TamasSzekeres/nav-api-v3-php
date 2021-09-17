@@ -39,7 +39,7 @@ abstract class BaseType extends BaseObject
 
     public function writeXML(XMLWriter $writer): self
     {
-        /*$attributes = $this->attributes();
+        $attributes = $this->attributes();
 
         $writer->startElement(static::xmlElementName());
 
@@ -53,7 +53,7 @@ abstract class BaseType extends BaseObject
             }
         }
 
-        $writer->endElement();*/
+        $writer->endElement();
 
         return $this;
     }

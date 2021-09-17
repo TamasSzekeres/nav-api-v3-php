@@ -2,7 +2,7 @@
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\Types\V3\BaseType;
+use LightSideSoftware\NavApi\V3\Types\BaseType;
 use SimpleXMLElement;
 
 /**

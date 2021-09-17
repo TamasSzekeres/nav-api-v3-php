@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LightSideSoftware\\NavApi\\V3\\": "tests/"
+            "LightSideSoftware\\NavApi\\": "tests/"
         }
     },
     "scripts": {
