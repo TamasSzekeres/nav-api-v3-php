@@ -1,8 +1,8 @@
 <?php
 
-namespace LightSideSoftware\NavApi;
+namespace LightSideSoftware\NavApi\V3;
 
-use LightSideSoftware\NavApi\Base\BaseObject;
+use LightSideSoftware\NavApi\V3\Base\BaseObject;
 
 /**
  * Class Client

@@ -1,8 +1,9 @@
 <?php
 
-namespace LightSideSoftware\NavApi\Base;
+namespace LightSideSoftware\NavApi\V3\Base;
 
 use ArrayAccess;
+use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
 use ReflectionClass;
 use ReflectionProperty;
 use UnexpectedValueException;
@@ -19,7 +20,7 @@ abstract class BaseObject implements ArrayAccess
      *
      * Initializes the object with the given configuration.
      *
-     * @param array $config Name-value pairs that will be used to initialize the object properties.
+     * @param array<string, mixed> $config Name-value pairs that will be used to initialize the object properties.
      */
     public function __construct(array $config = [])
     {
@@ -33,8 +34,10 @@ abstract class BaseObject implements ArrayAccess
      * Initializes the object.
      *
      * This method is invoked at the end of the constructor after the object is initialized with the given configuration.
+     *
+     * @throws InvalidConfigException
      */
-    public function init(): void
+    protected function init(): void
     {
     }
 
@@ -67,16 +70,22 @@ abstract class BaseObject implements ArrayAccess
         $this->$offset = null;
     }
 
+    /**
+     * @return array<string, mixed> [name => type]
+     */
     public function attributes(): array
     {
         $reflect = new ReflectionClass($this);
-        $properties = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC);
+        $properties = $reflect->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC);
 
         return array_map(function (ReflectionProperty $property) {
             return $property->getName();
         }, $properties);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         $attributes = $this->attributes();

@@ -3,6 +3,7 @@
 
 # generated documentation
 /doc
+.phpdoc
 
 # phpstorm project files
 .idea

@@ -19,12 +19,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "LightSideSoftware\\NavApi\\": "src/"
+            "LightSideSoftware\\NavApi\\V3\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LightSideSoftware\\NavApi\\": "tests/"
+            "LightSideSoftware\\NavApi\\V3\\": "tests/"
         }
     },
     "scripts": {

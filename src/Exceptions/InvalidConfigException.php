@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSideSoftware\Exceptions;
+namespace LightSideSoftware\NavApi\V3\Exceptions;
 
 use Exception;
 
