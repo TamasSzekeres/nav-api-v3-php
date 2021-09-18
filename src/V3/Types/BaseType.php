@@ -4,6 +4,8 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use LightSideSoftware\NavApi\V3\Base\BaseObject;
 use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
+use LightSideSoftware\NavApi\V3\Types\Annotations\XMLElement;
+use ReflectionClass;
 use XMLReader;
 use XMLWriter;
 
@@ -37,25 +39,50 @@ abstract class BaseType extends BaseObject
         return $this;
     }
 
-    public function writeXML(XMLWriter $writer): self
+    public function writeXML(XMLWriter $writer, ?string $elementName = null): self
     {
-        $attributes = $this->attributes();
-
-        $writer->startElement(static::xmlElementName());
-
-        foreach ($attributes as $attribute) {
-            if ($this->$attribute instanceof BaseType) {
-                $this->$attribute->writeXML($writer);
-            } else {
-                $writer->startElement($attribute);
-                $writer->text($this->$attribute);
-                $writer->endElement();
-            }
+        if (empty($elementName)) {
+            $elementName = static::xmlElementName();
         }
 
+        $writer->startElement(static::xmlElementName());
+        $this->writeXMLAttributes($writer);
         $writer->endElement();
 
         return $this;
+    }
+
+    protected function writeXMLAttributes(XMLWriter $writer): void
+    {
+        $attributes = $this->attributes();
+
+        foreach ($attributes as $attribute) {
+            $this->writeXmlAttribute($writer, $attribute, $this->$attribute);
+        }
+    }
+
+    protected function writeXmlAttribute(XMLWriter $writer, string $name, $value): void
+    {
+        $xmlElement = $this->getXMLAnnotation($name);
+        if ($xmlElement) {
+            $name = $xmlElement->name;
+        }
+
+        if ($value instanceof BaseType) {
+            $writer->startElement($name);
+            $value->writeXMLAttributes($writer);
+            $writer->endElement();
+        } elseif (is_array($value)) {
+            $writer->startElement($name);
+            foreach ($value as $item) {
+                $item->writeXML($writer);
+            }
+            $writer->endElement();
+        } else {
+            $writer->startElement($name);
+            $writer->text($value);
+            $writer->endElement();
+        }
     }
 
     public function toXMLString(bool $ident = false): string
@@ -65,5 +92,19 @@ abstract class BaseType extends BaseObject
         $writer->setIndent($ident);
         $this->writeXml($writer);
         return $writer->flush();
+    }
+
+    public static function xmlElementName(): string
+    {
+        $reflection = new ReflectionClass(static::class);
+        return $reflection->getShortName();
+    }
+
+    protected function getXMLAnnotation(string $name): ?XMLElement
+    {
+        $reflection = new ReflectionClass($this);
+        $property = $reflection->getProperty($name);
+        $docComment = $property->getDocComment();
+        return XMLElement::parseFromDocComment($docComment);
     }
 }

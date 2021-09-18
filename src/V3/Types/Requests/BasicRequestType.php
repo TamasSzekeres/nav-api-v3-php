@@ -15,11 +15,13 @@ abstract class BasicRequestType extends BaseType
 {
     /**
      * @var BasicHeaderType A kérés tranzakcionális adatai.
+     * @XMLElement(name="common:header")
      */
     public $header;
 
     /**
      * @var UserHeaderType A kérés authentikációs adatai.
+     * @XMLElement(name="common:user")
      */
     public $user;
 }

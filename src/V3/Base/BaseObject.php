@@ -75,8 +75,8 @@ abstract class BaseObject implements ArrayAccess
      */
     public function attributes(): array
     {
-        $reflect = new ReflectionClass($this);
-        $properties = $reflect->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC);
+        $reflection = new ReflectionClass($this);
+        $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC);
 
         return array_map(function (ReflectionProperty $property) {
             return $property->getName();
