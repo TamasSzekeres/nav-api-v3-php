@@ -7,7 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types\Requests;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-class ManageAnnulmentRequest extends BasicOnlineInvoiceRequestType
+final class ManageAnnulmentRequest extends BasicOnlineInvoiceRequestType
 {
     /**
      * @var string A tranzakcióhoz kiadott egyedi és dekódolt token.
