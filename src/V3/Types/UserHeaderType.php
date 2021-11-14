@@ -2,6 +2,9 @@
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\XmlElement;
+use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+
 /**
  * A kérés authentikációs adatai.
  *
@@ -12,30 +15,28 @@ class UserHeaderType extends BaseType
     /**
      * @var string A technikai felhasználó login neve.
      * @StringValidation(minLength=6, maxLength=15, pattern="[a-zA-Z0-9]{6,15}")
-     * @XMLElement(name="common:login")
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $login;
+    public string $login;
 
     /**
-     * @var string A kérés aláírásának hash értéke.
+     * @var CryptoType A kérés aláírásának hash értéke.
      * @StringValidation(minLength=1, maxLength=512, pattern=".*[^\s].*")
-     * @XMLElement(name="common:passwordHash")
-     * @XMLAttribute(name="cryptoType", value="SHA-512")
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $passwordHash;
+    public CryptoType $passwordHash;
 
     /**
      * @var string A rendszerben regisztrált adózó adószáma, aki nevében a technikai felhasználó tevékenykedik.
      * @StringValidation(minLength=8, maxLength=8, pattern="[0-9]{8}")
-     * @XMLElement(name="common:taxNumber")
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $taxNumber;
+    public string $taxNumber;
 
     /**
-     * @var string A kérés aláírásának hash értéke.
+     * @var CryptoType A kérés aláírásának hash értéke.
      * @StringValidation(minLength=1, maxLength=512, pattern=".*[^\s].*")
-     * @XMLElement(name="common:requestSignature")
-     * @XMLAttribute(name="cryptoType", value="SHA3-512")
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $requestSignature;
+    public CryptoType $requestSignature;
 }

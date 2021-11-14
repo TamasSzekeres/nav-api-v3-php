@@ -3,6 +3,9 @@
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTime;
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
+use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 
 /**
  * A kérés tranzakcionális adatai.
@@ -14,29 +17,28 @@ class BasicHeaderType extends BaseType
     /**
      * @var string A kérés/válasz azonosítója, minden üzenetváltásnál - adószámonként - egyedi.
      * @StringValidation(minLength=1, maxLength=30, pattern="[+a-zA-Z0-9_]{1,30}")
-     * @XMLElement(name="common:requestId")
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $requestId;
+    public string $requestId;
 
     /**
-     * @var DateTime A kérés/válasz keletkezésének UTC ideje.
-     * @XMLCodec(GenericTimestampCodec)
-     * @XMLElement(name="common:timestamp")
+     * @var string A kérés/válasz keletkezésének UTC ideje.
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $timestamp;
+    public string $timestamp;
 
     /**
      * @var string A kérés/válasz verziószáma, hogy a hívó melyik interfész verzió szerint küld adatot és várja a választ.
      * @StringValidation(minLength=1, maxLength=15)
-     * @XMLElement(name="common:requestVersion")
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $requestVersion;
+    public string $requestVersion;
 
     /**
-     * @var string A header verziószáma.
-     * @StringValidation(minLength=1, maxLength=15)
-     * @XMLElement(name="common:headerVersion")
-     * @XMLRequired(false)
+     * @var string|null A header verziószáma.
+     * @StringValidation(minLength=0, maxLength=15)
+     * @SkipWhenEmpty
+     * @XmlElement(cdata=false, namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $headerVersion;
+    public ?string $headerVersion;
 }

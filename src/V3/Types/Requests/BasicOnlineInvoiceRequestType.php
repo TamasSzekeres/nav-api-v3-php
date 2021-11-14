@@ -14,5 +14,5 @@ abstract class BasicOnlineInvoiceRequestType extends BasicRequestType
     /**
      * @var SoftwareType
      */
-    public $software;
+    public SoftwareType $software;
 }

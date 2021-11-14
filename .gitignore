@@ -31,6 +31,8 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+.phpunit.result.cache
+phpunit.xml.dist.bak
 
 # PHP CS fixer cache
 /.php_cs.cache

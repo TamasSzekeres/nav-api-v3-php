@@ -23,9 +23,4 @@ final class AnnulmentOperationType extends BaseType
      * @var string Technikai érvénytelenítés adatok BASE64-ben kódolt tartalma.
      */
     public $invoiceAnnulment;
-
-    public static function xmlElementName(): string
-    {
-        return 'annulmentOperation';
-    }
 }

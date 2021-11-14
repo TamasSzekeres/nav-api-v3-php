@@ -7,7 +7,7 @@ Api-kliens komponens Nav Api használatához.
 Composer használatával:
 
 ``` bash
-$ composer require light-side-software/nav-api-v3-php
+composer require light-side-software/nav-api-v3-php
 ```
 
 ## Használat
@@ -32,7 +32,7 @@ A legutóbbi változások megtalálhatók [CHANGELOG](CHANGELOG.md) fájlban.
 ## Tesztelés
 
 ``` bash
-$ composer test
+composer test
 ```
 
 ## Kódolási stílus javítás

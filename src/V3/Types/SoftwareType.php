@@ -2,8 +2,7 @@
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\BaseType;
-use SimpleXMLElement;
+use JMS\Serializer\Annotation\XmlElement;
 
 /**
  * A számlázóprogram adatai.
@@ -23,12 +22,43 @@ use SimpleXMLElement;
  */
 class SoftwareType extends BaseType
 {
-    public $softwareId;
-    public $softwareName;
-    public $softwareOperation;
-    public $softwareMainVersion;
-    public $softwareDevName;
-    public $softwareDevContact;
-    public $softwareDevCountryCode;
-    public $softwareDevTaxNumber;
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareId;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareName;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareOperation;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareMainVersion;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareDevName;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareDevContact;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareDevCountryCode;
+
+    /**
+     * @XMLElement(cdata=false)
+     */
+    public string $softwareDevTaxNumber;
 }

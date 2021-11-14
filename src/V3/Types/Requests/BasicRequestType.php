@@ -2,6 +2,7 @@
 
 namespace LightSideSoftware\NavApi\V3\Types\Requests;
 
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\BaseType;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
@@ -15,13 +16,13 @@ abstract class BasicRequestType extends BaseType
 {
     /**
      * @var BasicHeaderType A kérés tranzakcionális adatai.
-     * @XMLElement(name="common:header")
+     * @XmlElement(namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $header;
+    public BasicHeaderType $header;
 
     /**
      * @var UserHeaderType A kérés authentikációs adatai.
-     * @XMLElement(name="common:user")
+     * @XmlElement(namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
-    public $user;
+    public UserHeaderType $user;
 }
