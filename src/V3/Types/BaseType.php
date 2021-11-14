@@ -6,12 +6,12 @@ use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\Visitor\Factory\XmlSerializationVisitorFactory;
 use LightSideSoftware\NavApi\V3\Base\BaseObject;
-use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
-use LightSideSoftware\NavApi\V3\Types\Annotations\XMLElement;
-use ReflectionClass;
-use XMLReader;
-use XMLWriter;
 
+/**
+ * BaseType
+ *
+ * @author Tamás Szekeres <szektam2@gmail.com>
+ */
 abstract class BaseType extends BaseObject
 {
     public static function fromXml(string $xml): self

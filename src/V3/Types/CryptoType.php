@@ -13,14 +13,29 @@ use JMS\Serializer\Annotation\XmlValue;
  */
 final class CryptoType extends BaseType
 {
-    /**
-     * @XmlAttribute
-     */
+    public const SHA_512 = 'SHA-512';
+    public const SHA3_512 = 'SHA3-512';
+
+    #[XmlAttribute]
     public string $cryptoType;
 
-    /**
-     * @XmlValue
-     * @XmlElement(cdata=false)
-     */
+    #[XmlValue]
+    #[XmlElement(cdata: false)]
     public string $hash;
+
+    public static function sha(string $data): self
+    {
+        return new CryptoType([
+            'cryptoType' => self::SHA_512,
+            'hash' => strtoupper(hash('SHA512', trim($data))),
+        ]);
+    }
+
+    public static function sha3(string $data): self
+    {
+        return new CryptoType([
+            'cryptoType' => self::SHA3_512,
+            'hash' => strtoupper(hash('SHA3-512', trim($data))),
+        ]);
+    }
 }

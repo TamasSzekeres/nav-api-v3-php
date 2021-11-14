@@ -1,0 +1,17 @@
+<?php
+
+use LightSideSoftware\NavApi\V3\Types\CryptoType;
+
+test('sha', function () {
+    $hash = CryptoType::sha('abcd1234');
+
+    expect($hash->cryptoType)->toBe(CryptoType::SHA_512);
+    expect($hash->hash)->toBe('925F43C3CFB956BBE3C6AA8023BA7AD5CFA21D104186FFFC69E768E55940D9653B1CD36FBA614FBA2E1844F4436DA20F83750C6EC1DB356DA154691BDD71A9B1');
+});
+
+test('sha3', function () {
+    $hash = CryptoType::sha3('RID21511890668920211114093538c4-033b-76d309641fd33HM870D2YIOM');
+
+    expect($hash->cryptoType)->toBe(CryptoType::SHA3_512);
+    expect($hash->hash)->toBe('650A9F9741BA2507798A6CC0402C04BDDFC017A22FC0B2A2811A9F376EEDCE523E7A6A8E54A281CDEB4221699BEFCBD4680C11C2598C83564EEA3B05875184C5');
+});
