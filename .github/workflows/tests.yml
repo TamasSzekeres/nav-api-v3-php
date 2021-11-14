@@ -7,11 +7,12 @@ on:
 jobs:
   pest-tests:
     runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          operating-system: [ubuntu-latest]
-          php-versions: [ '8.0' ]
-          dependency-stability: [ prefer-stable ]
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: [ '8.0' ]
+        dependency-stability: [ prefer-stable ]
 
       name: P${{ matrix.php-versions }} - ${{ matrix.dependency-stability }} - ${{ matrix.operating-system}}
 
