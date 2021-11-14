@@ -54,4 +54,4 @@ jobs:
       env:
         XDEBUG_MODE: coverage
       run: |
-        vendor/bin/pest
+        vendor/bin/pest --coverage

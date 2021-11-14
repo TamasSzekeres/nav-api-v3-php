@@ -2,6 +2,8 @@
 
 Api-kliens komponens Nav Api használatához.
 
+[![Pest Tests](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/tests.yml/badge.svg?branch=master&event=push)](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/tests.yml)
+
 ## Telepítés
 
 Composer használatával:
