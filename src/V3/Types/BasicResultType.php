@@ -12,7 +12,7 @@ class BasicResultType extends BaseType
     /**
      * @var string Feldolgozási eredmény.
      */
-    public $funcCode;
+    public string $funcCode;
 
     /**
      * @var string A feldolgozási hibakód.

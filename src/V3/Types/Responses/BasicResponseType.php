@@ -1,6 +1,6 @@
 <?php
 
-namespace LightSideSoftware\NavApi\V3\Responses;
+namespace LightSideSoftware\NavApi\V3\Types\Responses;
 
 use LightSideSoftware\NavApi\V3\Types\BaseType;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
@@ -11,15 +11,15 @@ use LightSideSoftware\NavApi\V3\Types\BasicResultType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-class BasicResponseType extends BaseType
+abstract class BasicResponseType extends BaseType
 {
     /**
      * @var BasicHeaderType A válasz tranzakcionális adatai.
      */
-    public $header;
+    public BasicHeaderType $header;
 
     /**
      * @var BasicResultType Alap válaszeredmény adatok.
      */
-    public $result;
+    public BasicResultType $result;
 }

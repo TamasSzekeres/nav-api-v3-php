@@ -22,43 +22,27 @@ use JMS\Serializer\Annotation\XmlElement;
  */
 class SoftwareType extends BaseType
 {
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareId;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareName;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareOperation;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareMainVersion;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareDevName;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareDevContact;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareDevCountryCode;
 
-    /**
-     * @XMLElement(cdata=false)
-     */
+    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $softwareDevTaxNumber;
 }
