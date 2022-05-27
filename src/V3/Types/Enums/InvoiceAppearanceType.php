@@ -7,25 +7,25 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class InvoiceAppearanceType
+enum InvoiceAppearanceType
 {
     /**
      * Papír alapú számla.
      */
-    const PAPER = 'PAPER';
+    case PAPER;
 
     /**
      * Elektronikus formában előállított, nem EDI számla.
      */
-    const ELECTRONIC = 'ELECTRONIC';
+    case ELECTRONIC;
 
     /**
      * EDI számla.
      */
-    const EDI = 'EDI';
+    case EDI;
 
     /**
      * A szoftver nem képes azonosítani vagy a kiállításkor nem ismert.
      */
-    const UNKNOWN = 'UNKNOWN';
+    case UNKNOWN;
 }

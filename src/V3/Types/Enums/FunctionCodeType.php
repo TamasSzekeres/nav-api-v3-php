@@ -7,15 +7,15 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class FunctionCodeType
+enum FunctionCodeType
 {
     /**
      * Sikeres művelet.
      */
-    const OK = 'OK';
+    case OK;
 
     /**
      * Hiba.
      */
-    const ERROR = 'ERROR';
+    case ERROR;
 }

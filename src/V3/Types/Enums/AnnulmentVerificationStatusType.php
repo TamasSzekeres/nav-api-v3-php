@@ -7,25 +7,25 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class AnnulmentVerificationStatusType
+enum AnnulmentVerificationStatusType
 {
     /**
      * A technikai érvénytelenítés kliens hiba miatt nem hagyható jóvá.
      */
-    const NOT_VERIFIABLE = 'NOT_VERIFIABLE';
+    case NOT_VERIFIABLE;
 
     /**
      * A technikai érvénytelenítés jóváhagyásra vár.
      */
-    const VERIFICATION_PENDING = 'VERIFICATION_PENDING';
+    case VERIFICATION_PENDING;
 
     /**
      * A technikai érvénytelenítés jóváhagyásra került.
      */
-    const VERIFICATION_DONE = 'VERIFICATION_DONE';
+    case VERIFICATION_DONE;
 
     /**
      * A technikai érvénytelenítés elutasításra került.
      */
-    const VERIFICATION_REJECTED = 'VERIFICATION_REJECTED';
+    case VERIFICATION_REJECTED;
 }

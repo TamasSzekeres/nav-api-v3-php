@@ -7,30 +7,30 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class PaymentMethodType
+enum PaymentMethodType
 {
     /**
      * Banki átutalás.
      */
-    const TRANSFER = 'TRANSFER';
+    case TRANSFER;
 
     /**
      * Készpénz.
      */
-    const CASH = 'CASH';
+    case CASH;
 
     /**
      * Bankkártya, hitelkártya, egyéb készpénz helyettesítő eszköz.
      */
-    const CARD = 'CARD';
+    case CARD;
 
     /**
      * Utalvány, váltó, egyéb pénzhelyettesítő eszköz.
      */
-    const VOUCHER = 'VOUCHER';
+    case VOUCHER;
 
     /**
      * Egyéb.
      */
-    const OTHER = 'OTHER';
+    case OTHER;
 }

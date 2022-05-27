@@ -7,20 +7,20 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class ManageInvoiceOperationType
+enum ManageInvoiceOperationType
 {
     /**
      * Adatszolgáltatás eredeti számláról.
      */
-    const CREATE = 'CREATE';
+    case CREATE;
 
     /**
      * Adatszolgáltatás az eredeti számlát módosító okiratról.
      */
-    const MODIFY = 'MODIFY';
+    case MODIFY;
 
     /**
      * Adatszolgáltatás az eredeti számla érvénytelenítéséről.
      */
-    const STORNO = 'STORNO';
+    case STORNO;
 }

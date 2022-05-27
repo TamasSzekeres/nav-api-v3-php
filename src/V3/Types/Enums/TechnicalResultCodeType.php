@@ -7,15 +7,15 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class TechnicalResultCodeType
+enum TechnicalResultCodeType
 {
     /**
      * Kritikus hiba.
      */
-    const CRITICAL = 'CRITICAL';
+    case CRITICAL;
 
     /**
      * Hiba.
      */
-    const ERROR = 'ERROR';
+    case ERROR;
 }

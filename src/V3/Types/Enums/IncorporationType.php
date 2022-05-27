@@ -7,20 +7,20 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class IncorporationType
+enum IncorporationType
 {
     /**
      * Gazdasági társaság.
      */
-    const ORGANIZATION = 'ORGANIZATION';
+    case ORGANIZATION;
 
     /**
      * Egyéni vállalkozó.
      */
-    const SELF_EMPLOYED = 'SELF_EMPLOYED';
+    case SELF_EMPLOYED;
 
     /**
      * Adószámos magánszemély.
      */
-    const TAXABLE_PERSON = 'TAXABLE_PERSON';
+    case TAXABLE_PERSON;
 }

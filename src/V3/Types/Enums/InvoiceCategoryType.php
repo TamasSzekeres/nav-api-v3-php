@@ -7,20 +7,20 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class InvoiceCategoryType
+enum InvoiceCategoryType
 {
     /**
      * Normál (nem egyszerűsített és nem gyűjtő) számla.
      */
-    const NORMAL = 'NORMAL';
+    case NORMAL;
 
     /**
      * Egyszerűsített számla.
      */
-    const SIMPLIFIED = 'SIMPLIFIED';
+    case SIMPLIFIED;
 
     /**
      * Gyűjtőszámla.
      */
-    const AGGREGATE = 'AGGREGATE';
+    case AGGREGATE;
 }

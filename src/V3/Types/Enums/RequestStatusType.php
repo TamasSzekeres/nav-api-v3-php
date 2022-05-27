@@ -7,30 +7,30 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class RequestStatusType
+enum RequestStatusType
 {
     /**
      * Befogadva.
      */
-    const RECEIVED = 'RECEIVED';
+    case RECEIVED;
 
     /**
      * Feldolgozás alatt.
      */
-    const PROCESSING = 'PROCESSING';
+    case PROCESSING;
 
     /**
      * Elmentve.
      */
-    const SAVED = 'SAVED';
+    case SAVED;
 
     /**
      * Feldolgozás befejezve.
      */
-    const FINISHED = 'FINISHED';
+    case FINISHED;
 
     /**
      * Lekérdezve.
      */
-    const NOTIFIED = 'NOTIFIED';
+    case NOTIFIED;
 }

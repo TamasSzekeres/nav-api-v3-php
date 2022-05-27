@@ -7,10 +7,20 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class OriginalRequestVersionType
+enum OriginalRequestVersionType
 {
-    const VERSION_1_0 = '1.0';
-    const VERSION_1_1 = '1.1';
-    const VERSION_2_0 = '2.0';
-    const VERSION_3_0 = '3.0';
+    case VERSION_1_0;
+    case VERSION_1_1;
+    case VERSION_2_0;
+    case VERSION_3_0;
+
+    public function toVersionString(): string
+    {
+        return match($this) {
+            self::VERSION_1_0 => '1.0',
+            self::VERSION_1_1 => '1.1',
+            self::VERSION_2_0 => '2.0',
+            self::VERSION_3_0 => '3.0',
+        };
+    }
 }
