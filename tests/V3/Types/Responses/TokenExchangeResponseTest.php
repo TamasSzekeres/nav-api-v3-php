@@ -40,26 +40,23 @@ XML;
 
     $response = TokenExchangeResponse::fromXml($responseXml);
 
-    expect($response->header)->toBeInstanceOf(BasicHeaderType::class);
-    expect($response->header->requestId)->toBe('RID215118906689');
-    expect($response->header->timestamp)->toBe('2021-09-20T19:16:05.000Z');
-    expect($response->header->requestVersion)->toBe('3.0');
-    expect($response->header->headerVersion)->toBe('1.0');
-
-    expect($response->result)->toBeInstanceOf(BasicResultType::class);
-    expect($response->result->funcCode)->toBe('OK');
-
-    expect($response->software)->toBeInstanceOf(SoftwareType::class);
-    expect($response->software->softwareId)->toBe('123456789123456789');
-    expect($response->software->softwareName)->toBe('Test Online Számlázó');
-    expect($response->software->softwareOperation)->toBe('ONLINE_SERVICE');
-    expect($response->software->softwareMainVersion)->toBe('1.0');
-    expect($response->software->softwareDevName)->toBe('Test Software Kft.');
-    expect($response->software->softwareDevContact)->toBe('test@example.com');
-    expect($response->software->softwareDevCountryCode)->toBe('HU');
-    expect($response->software->softwareDevTaxNumber)->toBe('66445533');
-
-    expect($response->encodedExchangeToken)->toBe('VqJlBJwJGk2Uta7pfa0wTzyWjFGxItxoGTnYgbZCjOCXaQsWJqX5Iao4iw7uh0CU7cnWwtawHkbpLUbQi/wE6Q==');
-    expect($response->tokenValidityFrom)->toBe('2021-09-20T19:16:06.333Z');
-    expect($response->tokenValidityTo)->toBe('2021-09-20T19:21:06.333Z');
+    expect($response->header)->toBeInstanceOf(BasicHeaderType::class)
+        ->and($response->header->requestId)->toBe('RID215118906689')
+        ->and($response->header->timestamp)->toBe('2021-09-20T19:16:05.000Z')
+        ->and($response->header->requestVersion)->toBe('3.0')
+        ->and($response->header->headerVersion)->toBe('1.0')
+        ->and($response->result)->toBeInstanceOf(BasicResultType::class)
+        ->and($response->result->funcCode)->toBe('OK')
+        ->and($response->software)->toBeInstanceOf(SoftwareType::class)
+        ->and($response->software->softwareId)->toBe('123456789123456789')
+        ->and($response->software->softwareName)->toBe('Test Online Számlázó')
+        ->and($response->software->softwareOperation)->toBe('ONLINE_SERVICE')
+        ->and($response->software->softwareMainVersion)->toBe('1.0')
+        ->and($response->software->softwareDevName)->toBe('Test Software Kft.')
+        ->and($response->software->softwareDevContact)->toBe('test@example.com')
+        ->and($response->software->softwareDevCountryCode)->toBe('HU')
+        ->and($response->software->softwareDevTaxNumber)->toBe('66445533')
+        ->and($response->encodedExchangeToken)->toBe('VqJlBJwJGk2Uta7pfa0wTzyWjFGxItxoGTnYgbZCjOCXaQsWJqX5Iao4iw7uh0CU7cnWwtawHkbpLUbQi/wE6Q==')
+        ->and($response->tokenValidityFrom)->toBe('2021-09-20T19:16:06.333Z')
+        ->and($response->tokenValidityTo)->toBe('2021-09-20T19:21:06.333Z');
 });

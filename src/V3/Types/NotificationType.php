@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types;
 
 /**
@@ -12,10 +14,10 @@ final class NotificationType extends BaseType
     /**
      * @var string Értesítés kód.
      */
-    public $notificationCode;
+    public string $notificationCode;
 
     /**
      * @var string Értesítés szöveg.
      */
-    public $notificationText;
+    public string $notificationText;
 }

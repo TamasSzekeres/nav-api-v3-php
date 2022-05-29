@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Exceptions;
 
 use Exception;

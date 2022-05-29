@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types;
 
 /**
@@ -10,62 +12,62 @@ namespace LightSideSoftware\NavApi\V3\Types;
 final class DetailedAddressType extends BaseType
 {
     /**
-     * @var Az országkód ISO 3166 alpha-2 szabvány szerint.
+     * @var string Az országkód ISO 3166 alpha-2 szabvány szerint.
      */
-    public $countryCode;
+    public string $countryCode;
 
     /**
-     * @var Tartomány kódja (amennyiben értelmezhető az adott országban) az ISO 3166-2 alpha 2 szabvány szerint.
+     * @var ?string Tartomány kódja (amennyiben értelmezhető az adott országban) az ISO 3166-2 alpha 2 szabvány szerint.
      */
-    public $region;
+    public ?string $region;
 
     /**
-     * @var Irányítószám (amennyiben nem értelmezhető, 0000 értékkel kell kitölteni).
+     * @var string Irányítószám (amennyiben nem értelmezhető, 0000 értékkel kell kitölteni).
      */
-    public $postalCode;
+    public string $postalCode;
 
     /**
-     * @var Település.
+     * @var string Település.
      */
-    public $city;
+    public string $city;
 
     /**
-     * @var Közterület neve.
+     * @var string Közterület neve.
      */
-    public $streetName;
+    public string $streetName;
 
     /**
-     * @var Közterület jellege.
+     * @var string Közterület jellege.
      */
-    public $publicPlaceCategory;
+    public string $publicPlaceCategory;
 
     /**
-     * @var Házszám.
+     * @var ?string Házszám.
      */
-    public $number;
+    public ?string $number;
 
     /**
-     * @var Épület.
+     * @var ?string Épület.
      */
-    public $building;
+    public ?string $building;
 
     /**
-     * @var Lépcsőház.
+     * @var ?string Lépcsőház.
      */
-    public $staircase;
+    public ?string $staircase;
 
     /**
-     * @var Emelet.
+     * @var ?string Emelet.
      */
-    public $floor;
+    public ?string $floor;
 
     /**
-     * @var Ajtó.
+     * @var ?string Ajtó.
      */
-    public $door;
+    public ?string $door;
 
     /**
-     * @var Helyrajzi szám.
+     * @var ?string Helyrajzi szám.
      */
-    public $lotNumber;
+    public ?string $lotNumber;
 }

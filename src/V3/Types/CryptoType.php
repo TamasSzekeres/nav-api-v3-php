@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\XmlAttribute;

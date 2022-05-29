@@ -1,6 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types;
+
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 
 /**
  * Alap válaszeredmény adatok.
@@ -10,22 +15,23 @@ namespace LightSideSoftware\NavApi\V3\Types;
 class BasicResultType extends BaseType
 {
     /**
-     * @var string Feldolgozási eredmény.
+     * @var FunctionCodeType Feldolgozási eredmény.
      */
-    public string $funcCode;
+    public FunctionCodeType $funcCode;
 
     /**
-     * @var string A feldolgozási hibakód.
+     * @var ?string A feldolgozási hibakód.
      */
-    public $errorCode;
+    public ?string $errorCode = null;
 
     /**
-     * @var string Feldolgozási üzenet.
+     * @var ?string Feldolgozási üzenet.
      */
-    public $message;
+    public ?string $message = null;
 
     /**
      * @var array Egyéb értesítések.
      */
-    public $notification;
+    #[SkipWhenEmpty]
+    public array $notifications = [];
 }

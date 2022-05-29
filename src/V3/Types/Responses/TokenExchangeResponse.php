@@ -5,7 +5,6 @@ namespace LightSideSoftware\NavApi\V3\Types\Responses;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
-use LightSideSoftware\NavApi\V3\Types\BaseType;
 
 /**
  * A POST /tokenExchange REST operáció válasz típusa.

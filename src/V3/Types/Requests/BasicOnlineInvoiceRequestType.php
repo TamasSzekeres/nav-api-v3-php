@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types\Requests;
 
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
 /**
@@ -7,15 +9,15 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-enum FunctionCodeType
+enum FunctionCodeType: string
 {
     /**
      * Sikeres művelet.
      */
-    case OK;
+    case OK = 'OK';
 
     /**
      * Hiba.
      */
-    case ERROR;
+    case ERROR = 'ERROR';
 }
