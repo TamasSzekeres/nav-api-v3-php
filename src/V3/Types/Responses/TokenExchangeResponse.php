@@ -35,9 +35,4 @@ final class TokenExchangeResponse extends BasicOnlineInvoiceResponseType
      */
     #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
     public string $tokenValidityTo;
-
-    public static function fromXml(string $xml): TokenExchangeResponse
-    {
-        return parent::fromXml($xml);
-    }
 }

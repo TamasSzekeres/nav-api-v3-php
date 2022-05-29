@@ -2,6 +2,7 @@
 
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
+use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 use LightSideSoftware\NavApi\V3\Types\Responses\TokenExchangeResponse;
 
@@ -46,7 +47,7 @@ XML;
         ->and($response->header->requestVersion)->toBe('3.0')
         ->and($response->header->headerVersion)->toBe('1.0')
         ->and($response->result)->toBeInstanceOf(BasicResultType::class)
-        ->and($response->result->funcCode)->toBe('OK')
+        ->and($response->result->funcCode)->toBe(FunctionCodeType::OK)
         ->and($response->software)->toBeInstanceOf(SoftwareType::class)
         ->and($response->software->softwareId)->toBe('123456789123456789')
         ->and($response->software->softwareName)->toBe('Test Online Számlázó')
