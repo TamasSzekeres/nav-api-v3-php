@@ -12,3 +12,9 @@
 */
 
 // uses(Tests\TestCase::class)->in('Feature');
+
+
+expect()->extend('toEqualDateTimeImmutable', function (DateTimeImmutable $dateTimeImmutable) {
+    return $this->toBeInstanceOf(DateTimeImmutable::class)
+        ->and($this->value->getTimestamp())->toEqual($dateTimeImmutable->getTimestamp());
+});

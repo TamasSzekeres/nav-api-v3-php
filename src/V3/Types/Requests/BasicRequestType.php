@@ -18,13 +18,13 @@ abstract class BasicRequestType extends BaseType
 {
     /**
      * @var BasicHeaderType A kérés tranzakcionális adatai.
-     * @XmlElement(namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
+    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
     public BasicHeaderType $header;
 
     /**
      * @var UserHeaderType A kérés authentikációs adatai.
-     * @XmlElement(namespace="http://schemas.nav.gov.hu/NTCA/1.0/common")
      */
+    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
     public UserHeaderType $user;
 }

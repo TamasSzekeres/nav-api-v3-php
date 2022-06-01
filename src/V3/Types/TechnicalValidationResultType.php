@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types;
+
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Enums\TechnicalResultCodeType;
 
 /**
  * Technikai validációs választípus.
@@ -10,17 +16,21 @@ namespace LightSideSoftware\NavApi\V3\Types;
 final class TechnicalValidationResultType extends BaseType
 {
     /**
-     * @var string Validációs eredmény.
+     * @var TechnicalResultCodeType Validációs eredmény.
      */
-    public $validationResultCode;
+    public TechnicalResultCodeType $validationResultCode;
 
     /**
-     * @var string Validációs hibakód.
+     * @var ?string Validációs hibakód.
      */
-    public $validationErrorCode;
+    #[SkipWhenEmpty]
+    #[StringValidation(minLength: 0, maxLength: 100)]
+    public ?string $validationErrorCode = null;
 
     /**
-     * @var string Feldolgozási üzenet.
+     * @var ?string Feldolgozási üzenet.
      */
-    public $message;
+    #[SkipWhenEmpty]
+    #[StringValidation(minLength: 0, maxLength: 1024)]
+    public ?string $message;
 }

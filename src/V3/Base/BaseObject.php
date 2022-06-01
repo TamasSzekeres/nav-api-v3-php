@@ -8,6 +8,9 @@ use ReflectionClass;
 use ReflectionProperty;
 use UnexpectedValueException;
 
+use function array_map;
+use function array_combine;
+
 /**
  * Abstract base class for all object.
  *

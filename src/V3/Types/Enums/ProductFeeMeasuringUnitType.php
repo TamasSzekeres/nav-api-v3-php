@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
 /**
- * Technikai eredmény kód típus.
+ * Díjtétel egység típus.
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-enum TechnicalResultCodeType: string
+enum ProductFeeMeasuringUnitType: string
 {
     /**
-     * Kritikus hiba.
+     * Darab.
      */
-    case CRITICAL = 'CRITICAL';
+    case DARAB = 'DARAB';
 
     /**
-     * Hiba.
+     * Kilogramm.
      */
-    case ERROR = 'ERROR';
+    case KG = 'KG';
 }

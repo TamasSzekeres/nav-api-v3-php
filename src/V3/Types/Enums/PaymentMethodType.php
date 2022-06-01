@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
 /**
@@ -7,30 +9,30 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-enum PaymentMethodType
+enum PaymentMethodType: string
 {
     /**
      * Banki átutalás.
      */
-    case TRANSFER;
+    case TRANSFER = 'TRANSFER';
 
     /**
      * Készpénz.
      */
-    case CASH;
+    case CASH = 'CASH';
 
     /**
      * Bankkártya, hitelkártya, egyéb készpénz helyettesítő eszköz.
      */
-    case CARD;
+    case CARD = 'CARD';
 
     /**
      * Utalvány, váltó, egyéb pénzhelyettesítő eszköz.
      */
-    case VOUCHER;
+    case VOUCHER = 'VOUCHER';
 
     /**
      * Egyéb.
      */
-    case OTHER;
+    case OTHER = 'OTHER';
 }

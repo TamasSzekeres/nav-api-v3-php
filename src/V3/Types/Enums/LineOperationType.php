@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
 /**
- * Technikai eredmény kód típus.
+ * A számlatétel módosítás típusa.
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-enum TechnicalResultCodeType: string
+enum LineOperationType: string
 {
     /**
-     * Kritikus hiba.
+     * Létrehozás.
      */
-    case CRITICAL = 'CRITICAL';
+    case CREATE = 'CREATE';
 
     /**
-     * Hiba.
+     * Módosítás.
      */
-    case ERROR = 'ERROR';
+    case MODIFY = 'MODIFY';
 }

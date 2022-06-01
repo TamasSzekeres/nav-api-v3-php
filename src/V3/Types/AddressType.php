@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types;
 
 /**
@@ -12,10 +14,10 @@ final class AddressType extends BaseType
     /**
      * @var SimpleAddressType Egyszerű cím.
      */
-    public $simpleAddress;
+    public SimpleAddressType $simpleAddress;
 
     /**
      * @var DetailedAddressType Részletes cím.
      */
-    public $detailedAddress;
+    public DetailedAddressType $detailedAddress;
 }

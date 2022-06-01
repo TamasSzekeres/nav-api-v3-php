@@ -11,14 +11,13 @@ use JMS\Serializer\Annotation\AnnotationUtilsTrait;
  * @Target({"PROPERTY", "ANNOTATION"})
  */
 #[\Attribute(\Attribute::TARGET_PROPERTY)]
-final class StringValidation
+final class IntegerValidation
 {
     use AnnotationUtilsTrait;
 
     public function __construct(
-        public int $minLength,
-        public int $maxLength,
-        public ?string $pattern = null
+        public int $minInclusive,
+        public ?int $maxInclusive = null
     ) {
         $this->loadAnnotationParameters(get_defined_vars());
     }

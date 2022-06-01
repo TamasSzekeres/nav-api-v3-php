@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
 /**
@@ -7,20 +9,20 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-enum InvoiceCategoryType
+enum InvoiceCategoryType: string
 {
     /**
      * Normál (nem egyszerűsített és nem gyűjtő) számla.
      */
-    case NORMAL;
+    case NORMAL = 'NORMAL';
 
     /**
      * Egyszerűsített számla.
      */
-    case SIMPLIFIED;
+    case SIMPLIFIED = 'SIMPLIFIED';
 
     /**
      * Gyűjtőszámla.
      */
-    case AGGREGATE;
+    case AGGREGATE = 'AGGREGATE';
 }

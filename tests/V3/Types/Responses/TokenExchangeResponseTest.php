@@ -43,7 +43,7 @@ XML;
 
     expect($response->header)->toBeInstanceOf(BasicHeaderType::class)
         ->and($response->header->requestId)->toBe('RID215118906689')
-        ->and($response->header->timestamp)->toBe('2021-09-20T19:16:05.000Z')
+        ->and($response->header->timestamp)->toEqualDateTimeImmutable(new DateTimeImmutable('2021-09-20 19:16:05.000'))
         ->and($response->header->requestVersion)->toBe('3.0')
         ->and($response->header->headerVersion)->toBe('1.0')
         ->and($response->result)->toBeInstanceOf(BasicResultType::class)

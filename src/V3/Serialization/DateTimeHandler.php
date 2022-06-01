@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpComposerExtensionStubsInspection */
 
 declare(strict_types=1);
 
@@ -55,6 +55,9 @@ final class DateTimeHandler implements SubscribingHandlerInterface
         return $visitor->visitSimpleString($formattedDateTime, []);
     }
 
+    /**
+     * @noinspection PhpMissingReturnTypeInspection
+     */
     public function deserializeDateTimeImmutableFromXml(
         XmlDeserializationVisitor $visitor,
         $value,

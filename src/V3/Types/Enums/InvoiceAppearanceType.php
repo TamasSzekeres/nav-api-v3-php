@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
 /**
@@ -7,25 +9,25 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-enum InvoiceAppearanceType
+enum InvoiceAppearanceType: string
 {
     /**
      * Papír alapú számla.
      */
-    case PAPER;
+    case PAPER = 'PAPER';
 
     /**
      * Elektronikus formában előállított, nem EDI számla.
      */
-    case ELECTRONIC;
+    case ELECTRONIC = 'ELECTRONIC';
 
     /**
      * EDI számla.
      */
-    case EDI;
+    case EDI = 'EDI';
 
     /**
      * A szoftver nem képes azonosítani vagy a kiállításkor nem ismert.
      */
-    case UNKNOWN;
+    case UNKNOWN = 'UNKNOWN';
 }

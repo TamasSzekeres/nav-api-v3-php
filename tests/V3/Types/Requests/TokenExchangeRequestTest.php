@@ -9,7 +9,7 @@ use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
 test('toXml', function () {
     $header = new BasicHeaderType([
         'requestId' => 'RID215118906689',
-        'timestamp' => '2021-09-20T19:16:05.000Z',
+        'timestamp' => new DateTimeImmutable('2021-09-20 19:16:05.000'),
         'requestVersion' => '3.0',
         'headerVersion' => '1.0',
     ]);
