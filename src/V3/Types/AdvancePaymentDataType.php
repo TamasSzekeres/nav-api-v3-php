@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
+use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 
 /**
@@ -30,5 +31,6 @@ final class AdvancePaymentDataType extends BaseType
     /**
      * @var float Az előlegfizetés során alkalmazott árfolyam.
      */
+    #[FloatValidation(minExclusive: 0, totalDigits: 14, fractionDigits: 6)]
     public float $advanceExchangeRate;
 }
