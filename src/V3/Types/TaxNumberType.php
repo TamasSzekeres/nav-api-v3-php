@@ -12,7 +12,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class TaxNumberType extends BaseType
+class TaxNumberType extends BaseType
 {
     /**
      * @var string Az adóalany adó törzsszáma. Csoportos adóalany esetén csoportazonosító szám.

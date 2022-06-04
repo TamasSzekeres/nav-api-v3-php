@@ -11,15 +11,17 @@ use JMS\Serializer\Annotation\AnnotationUtilsTrait;
  * @Target({"PROPERTY", "ANNOTATION"})
  */
 #[\Attribute(\Attribute::TARGET_PROPERTY)]
-final class IntegerValidation
+final class FloatValidation
 {
     use AnnotationUtilsTrait;
 
     public function __construct(
-        public ?int $minExclusive = null,
-        public ?int $maxExclusive = null,
-        public ?int $minInclusive = null,
-        public ?int $maxInclusive = null
+        public ?float $minExclusive = null,
+        public ?float $maxExclusive = null,
+        public ?float $minInclusive = null,
+        public ?float $maxInclusive = null,
+        public ?int $totalDigits = null,
+        public ?int $fractionDigits = null
     ) {
         $this->loadAnnotationParameters(get_defined_vars());
     }
