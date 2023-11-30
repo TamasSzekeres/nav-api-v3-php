@@ -6,6 +6,8 @@ namespace LightSideSoftware\NavApi\V3\Types\Annotations;
 
 use JMS\Serializer\Annotation\AnnotationUtilsTrait;
 
+use function get_defined_vars;
+
 /**
  * @Annotation
  * @Target({"PROPERTY", "ANNOTATION"})

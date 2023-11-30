@@ -12,12 +12,20 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class CustomerTaxNumberType extends TaxNumberType
+final readonly class CustomerTaxNumberType extends TaxNumberType
 {
-    /**
-     * @var ?TaxNumberType Csoport tag adószáma,
-     * ha a termékbeszerzés vagy szolgáltatás igénybevétele csoportazonosító szám alatt történt.
-     */
-    #[SkipWhenEmpty]
-    public ?TaxNumberType $groupMemberTaxNumber = null;
+    public function __construct(
+        string $taxpayerId,
+        ?string $vatCode = null,
+        ?string $countyCode = null,
+
+        /**
+         * @var ?TaxNumberType Csoport tag adószáma,
+         * ha a termékbeszerzés vagy szolgáltatás igénybevétele csoportazonosító szám alatt történt.
+         */
+        #[SkipWhenEmpty]
+        public ?TaxNumberType $groupMemberTaxNumber = null,
+    ) {
+        parent::__construct($taxpayerId, $vatCode, $countyCode);
+    }
 }

@@ -11,40 +11,59 @@ use JMS\Serializer\Annotation\XmlElement;
  *
  * A kérésekben a <i>software</i> elementet a <code>SoftwareType</code> implementálja.
  *
- * @property string $softwareId A számlázó program azonosítója. (kötelező)
- * @property string $softwareName A számlázó program neve. (kötelező)
- * @property string $softwareOperation A számlázó program működési típusa. (kötelező)
- * @property string $softwareMainVersion A számlázó program fő verziója. (kötelező)
- * @property string $softwareDevName A számlázó program fejlesztőjének neve. (kötelező)
- * @property string $softwareDevContact A számlázó program fejlesztőjének működő email címe. (kötelező)
- * @property string $softwareDevCountryCode A számlázó program fejlesztőjének országkódja. (opcionális)
- * @property string $softwareDevTaxNumber A számlázó program fejleszőjének adószáma. (opcionális)
- *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-class SoftwareType extends BaseType
+final readonly class SoftwareType extends BaseType
 {
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareId;
+    public function __construct(
+        /**
+         * @var string A számlázó program azonosítója. (kötelező)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareId,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareName;
+        /**
+         * @var string A számlázó program neve. (kötelező)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareName,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareOperation;
+        /**
+         * @var string A számlázó program működési típusa. (kötelező)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareOperation,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareMainVersion;
+        /**
+         * @var string A számlázó program fő verziója. (kötelező)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareMainVersion,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareDevName;
+        /**
+         * @var string A számlázó program fejlesztőjének neve. (kötelező)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareDevName,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareDevContact;
+        /**
+         * @var string A számlázó program fejlesztőjének működő email címe. (kötelező)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareDevContact,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareDevCountryCode;
+        /**
+         * @var string A számlázó program fejlesztőjének országkódja. (opcionális)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareDevCountryCode,
 
-    #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-    public string $softwareDevTaxNumber;
+        /**
+         * @var string A számlázó program fejleszőjének adószáma. (opcionális)
+         */
+        #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public string $softwareDevTaxNumber,
+    ) {
+        parent::__construct();
+    }
 }

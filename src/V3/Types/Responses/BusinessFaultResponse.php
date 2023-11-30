@@ -11,30 +11,34 @@ use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 /**
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class BusinessFaultResponse extends BaseType
+final readonly class BusinessFaultResponse extends BaseType
 {
-    /**
-     * @var ContextType
-     */
-    public ContextType $context;
+    public function __construct(
+        /**
+         * @var ContextType
+         */
+        public ContextType $context,
 
-    /**
-     * @var FunctionCodeType
-     */
-    public FunctionCodeType $funcCode;
+        /**
+         * @var FunctionCodeType
+         */
+        public FunctionCodeType $funcCode,
 
-    /**
-     * @var string
-     */
-    public string $message;
+        /**
+         * @var string
+         */
+        public string $message,
 
-    /**
-     * @var string
-     */
-    public string $faultType;
+        /**
+         * @var string
+         */
+        public string $faultType,
 
-    /**
-     * @var string
-     */
-    public string $service;
+        /**
+         * @var string
+         */
+        public string $service,
+    ) {
+        parent::__construct();
+    }
 }

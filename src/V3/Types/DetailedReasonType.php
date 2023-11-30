@@ -11,17 +11,21 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class DetailedReasonType extends BaseType
+final readonly class DetailedReasonType extends BaseType
 {
-    /**
-     * @var string Az eset leírása kóddal.
-     */
-    #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
-    public string $case;
+    public function __construct(
+        /**
+         * @var string Az eset leírása kóddal.
+         */
+        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        public string $case,
 
-    /**
-     * @var string Az eset leírása szöveggel.
-     */
-    #[StringValidation(minLength: 1, maxLength: 200, pattern: ".*[^\s].*")]
-    public string $reason;
+        /**
+         * @var string Az eset leírása szöveggel.
+         */
+        #[StringValidation(minLength: 1, maxLength: 200, pattern: ".*[^\s].*")]
+        public string $reason,
+    ) {
+        parent::__construct();
+    }
 }

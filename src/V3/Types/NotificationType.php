@@ -11,17 +11,21 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class NotificationType extends BaseType
+final readonly class NotificationType extends BaseType
 {
-    /**
-     * @var string Értesítés kód.
-     */
-    #[StringValidation(minLength: 1, maxLength: 100)]
-    public string $notificationCode;
+    public function __construct(
+        /**
+         * @var string Értesítés kód.
+         */
+        #[StringValidation(minLength: 1, maxLength: 100)]
+        public string $notificationCode,
 
-    /**
-     * @var string Értesítés szöveg.
-     */
-    #[StringValidation(minLength: 1, maxLength: 1024)]
-    public string $notificationText;
+        /**
+         * @var string Értesítés szöveg.
+         */
+        #[StringValidation(minLength: 1, maxLength: 1024)]
+        public string $notificationText,
+    ) {
+        parent::__construct();
+    }
 }

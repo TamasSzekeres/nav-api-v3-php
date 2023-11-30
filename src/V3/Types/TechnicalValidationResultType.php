@@ -13,24 +13,28 @@ use LightSideSoftware\NavApi\V3\Types\Enums\TechnicalResultCodeType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class TechnicalValidationResultType extends BaseType
+final readonly class TechnicalValidationResultType extends BaseType
 {
-    /**
-     * @var TechnicalResultCodeType Validációs eredmény.
-     */
-    public TechnicalResultCodeType $validationResultCode;
+    public function __construct(
+        /**
+         * @var TechnicalResultCodeType Validációs eredmény.
+         */
+        public TechnicalResultCodeType $validationResultCode,
 
-    /**
-     * @var ?string Validációs hibakód.
-     */
-    #[SkipWhenEmpty]
-    #[StringValidation(minLength: 0, maxLength: 100)]
-    public ?string $validationErrorCode = null;
+        /**
+         * @var ?string Validációs hibakód.
+         */
+        #[SkipWhenEmpty]
+        #[StringValidation(minLength: 0, maxLength: 100)]
+        public ?string $validationErrorCode = null,
 
-    /**
-     * @var ?string Feldolgozási üzenet.
-     */
-    #[SkipWhenEmpty]
-    #[StringValidation(minLength: 0, maxLength: 1024)]
-    public ?string $message;
+        /**
+         * @var ?string Feldolgozási üzenet.
+         */
+        #[SkipWhenEmpty]
+        #[StringValidation(minLength: 0, maxLength: 1024)]
+        public ?string $message = null,
+    ) {
+        parent::__construct();
+    }
 }

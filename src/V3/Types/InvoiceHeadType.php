@@ -9,25 +9,29 @@ namespace LightSideSoftware\NavApi\V3\Types;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class InvoiceHeadType extends BaseType
+final readonly class InvoiceHeadType extends BaseType
 {
-    /**
-     * @var SupplierInfoType Számla kibocsátó (eladó) adatai.
-     */
-    public SupplierInfoType $supplierInfo;
+    public function __construct(
+        /**
+         * @var SupplierInfoType Számla kibocsátó (eladó) adatai.
+         */
+        public SupplierInfoType $supplierInfo,
 
-    /**
-     * @var ?CustomerInfoType Vevő adatai.
-     */
-    public ?CustomerInfoType $customerInfo = null;
+        /**
+         * @var InvoiceDetailType Számla részletező adatok.
+         */
+        public InvoiceDetailType $invoiceDetail,
 
-    /**
-     * @var ?FiscalRepresentativeType Pénzügyi képviselő adatai.
-     */
-    public ?FiscalRepresentativeType $fiscalRepresentativeInfo = null;
+        /**
+         * @var ?CustomerInfoType Vevő adatai.
+         */
+        public ?CustomerInfoType $customerInfo = null,
 
-    /**
-     * @var InvoiceDetailType Számla részletező adatok.
-     */
-    public InvoiceDetailType $invoiceDetail;
+        /**
+         * @var ?FiscalRepresentativeType Pénzügyi képviselő adatai.
+         */
+        public ?FiscalRepresentativeType $fiscalRepresentativeInfo = null,
+    ) {
+        parent::__construct();
+    }
 }

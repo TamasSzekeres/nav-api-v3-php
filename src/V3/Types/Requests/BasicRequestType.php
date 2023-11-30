@@ -14,17 +14,21 @@ use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-abstract class BasicRequestType extends BaseType
+abstract readonly class BasicRequestType extends BaseType
 {
-    /**
-     * @var BasicHeaderType A kérés tranzakcionális adatai.
-     */
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
-    public BasicHeaderType $header;
+    public function __construct(
+        /**
+         * @var BasicHeaderType A kérés tranzakcionális adatai.
+         */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
+        public BasicHeaderType $header,
 
-    /**
-     * @var UserHeaderType A kérés authentikációs adatai.
-     */
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
-    public UserHeaderType $user;
+        /**
+         * @var UserHeaderType A kérés authentikációs adatai.
+         */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
+        public UserHeaderType $user,
+    ) {
+        parent::__construct();
+    }
 }

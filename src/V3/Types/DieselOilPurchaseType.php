@@ -15,29 +15,33 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class DieselOilPurchaseType extends BaseType
+final readonly class DieselOilPurchaseType extends BaseType
 {
-    /**
-     * @var SimpleAddressType Gázolaj beszerzés helye.
-     */
-    public SimpleAddressType $purchaseLocation;
+    public function __construct(
+        /**
+         * @var SimpleAddressType Gázolaj beszerzés helye.
+         */
+        public SimpleAddressType $purchaseLocation,
 
-    /**
-     * @var DateTimeImmutable Gázolaj beszerzés dátuma.
-     */
-    #[Type("DateTimeImmutable<'Y-m-d'>")]
-    public DateTimeImmutable $purchaseDate;
+        /**
+         * @var DateTimeImmutable Gázolaj beszerzés dátuma.
+         */
+        #[Type("DateTimeImmutable<'Y-m-d'>")]
+        public DateTimeImmutable $purchaseDate,
 
-    /**
-     * @var string Kereskedelmi jármű forgalmi rendszáma (csak betűk és számok).
-     */
-    #[StringValidation(minLength: 2, maxLength: 30, pattern: "[A-Z0-9ÖŐÜŰ]{2,30}")]
-    public string $vehicleRegistrationNumber;
+        /**
+         * @var string Kereskedelmi jármű forgalmi rendszáma (csak betűk és számok).
+         */
+        #[StringValidation(minLength: 2, maxLength: 30, pattern: "[A-Z0-9ÖŐÜŰ]{2,30}")]
+        public string $vehicleRegistrationNumber,
 
-    /**
-     * @var ?float Gépi bérmunka-szolgáltatás során felhasznált gázolaj mennyisége literben – Jöt. 117. § (2).
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    #[SkipWhenEmpty]
-    public ?float $dieselOilQuantity = null;
+        /**
+         * @var ?float Gépi bérmunka-szolgáltatás során felhasznált gázolaj mennyisége literben – Jöt. 117. § (2).
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[SkipWhenEmpty]
+        public ?float $dieselOilQuantity = null,
+    ) {
+        parent::__construct();
+    }
 }

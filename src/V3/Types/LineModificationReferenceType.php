@@ -12,17 +12,21 @@ use LightSideSoftware\NavApi\V3\Types\Enums\LineOperationType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class LineModificationReferenceType extends BaseType
+final readonly class LineModificationReferenceType extends BaseType
 {
-    /**
-     * @var int Az eredeti számla módosítással érintett tételének sorszáma (lineNumber).
-     * Új tétel létrehozása esetén az új tétel sorszáma, a meglévő tételsorok számozásának folytatásaként.
-     */
-    #[IntegerValidation(minInclusive: 1)]
-    public int $lineNumberReference;
+    public function __construct(
+        /**
+         * @var int Az eredeti számla módosítással érintett tételének sorszáma (lineNumber).
+         * Új tétel létrehozása esetén az új tétel sorszáma, a meglévő tételsorok számozásának folytatásaként.
+         */
+        #[IntegerValidation(minInclusive: 1)]
+        public int $lineNumberReference,
 
-    /**
-     * @var LineOperationType A számlatétel módosításának jellege.
-     */
-    public LineOperationType $lineOperation;
+        /**
+         * @var LineOperationType A számlatétel módosításának jellege.
+         */
+        public LineOperationType $lineOperation,
+    ) {
+        parent::__construct();
+    }
 }

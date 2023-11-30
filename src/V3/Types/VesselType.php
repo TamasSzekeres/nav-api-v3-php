@@ -11,22 +11,26 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class VesselType extends BaseType
+final readonly class VesselType extends BaseType
 {
-    /**
-     * @var float Hajó hossza méterben.
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    public float $length;
+    public function __construct(
+        /**
+         * @var float Hajó hossza méterben.
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        public float $length,
 
-    /**
-     * @var bool Értéke true, ha a jármű az ÁFA tv. 259.§ 25. b) szerinti kivétel alá tartozik.
-     */
-    public bool $activityReferred;
+        /**
+         * @var bool Értéke true, ha a jármű az ÁFA tv. 259.§ 25. b) szerinti kivétel alá tartozik.
+         */
+        public bool $activityReferred,
 
-    /**
-     * @var float Hajózott órák száma.
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    public float $sailedHours;
+        /**
+         * @var float Hajózott órák száma.
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        public float $sailedHours,
+    ) {
+        parent::__construct();
+    }
 }

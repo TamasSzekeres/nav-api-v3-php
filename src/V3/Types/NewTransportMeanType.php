@@ -14,48 +14,52 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class NewTransportMeanType extends BaseType
+final readonly class NewTransportMeanType extends BaseType
 {
-    /**
-     * @var ?string Gyártmány/típus.
-     */
-    #[SkipWhenEmpty]
-    #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
-    public ?string $brand = null;
+    public function __construct(
+        /**
+         * @var VehicleType Szárazföldi közlekedési eszköz további adatai.
+         */
+        public VehicleType $vehicle,
 
-    /**
-     * @var ?string Alvázszám/gyári szám/Gyártási szám.
-     */
-    #[SkipWhenEmpty]
-    #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
-    public ?string $serialNum = null;
+        /**
+         * @var VesselType Vízi jármű adatai.
+         */
+        public VesselType $vessel,
 
-    /**
-     * @var ?string Motorszám.
-     */
-    #[SkipWhenEmpty]
-    #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
-    public ?string $engineNum = null;
+        /**
+         * @var AircraftType Légi közlekedési eszköz.
+         */
+        public AircraftType $aircraft,
 
-    /**
-     * @var ?DateTimeImmutable Első forgalomba helyezés időpontja.
-     */
-    #[SkipWhenEmpty]
-    #[Type("DateTimeImmutable<'Y-m-d'>")]
-    public ?DateTimeImmutable $firstEntryIntoService = null;
+        /**
+         * @var ?string Gyártmány/típus.
+         */
+        #[SkipWhenEmpty]
+        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        public ?string $brand = null,
 
-    /**
-     * @var VehicleType Szárazföldi közlekedési eszköz további adatai.
-     */
-    public VehicleType $vehicle;
+        /**
+         * @var ?string Alvázszám/gyári szám/Gyártási szám.
+         */
+        #[SkipWhenEmpty]
+        #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
+        public ?string $serialNum = null,
 
-    /**
-     * @var VesselType Vízi jármű adatai.
-     */
-    public VesselType $vessel;
+        /**
+         * @var ?string Motorszám.
+         */
+        #[SkipWhenEmpty]
+        #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
+        public ?string $engineNum = null,
 
-    /**
-     * @var AircraftType Légi közlekedési eszköz.
-     */
-    public AircraftType $aircraft;
+        /**
+         * @var ?DateTimeImmutable Első forgalomba helyezés időpontja.
+         */
+        #[SkipWhenEmpty]
+        #[Type("DateTimeImmutable<'Y-m-d'>")]
+        public ?DateTimeImmutable $firstEntryIntoService = null,
+    ) {
+        parent::__construct();
+    }
 }

@@ -11,26 +11,30 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class SummaryByVatRateType extends BaseType
+final readonly class SummaryByVatRateType extends BaseType
 {
-    /**
-     * @var VatRateType Adómérték vagy adómentesség jelölése.
-     */
-    public VatRateType $vatRate;
+    public function __construct(
+        /**
+         * @var VatRateType Adómérték vagy adómentesség jelölése.
+         */
+        public VatRateType $vatRate,
 
-    /**
-     * @var VatRateNetDataType Adott adómértékhez tartozó nettó adatok.
-     */
-    public VatRateNetDataType $vatRateNetData;
+        /**
+         * @var VatRateNetDataType Adott adómértékhez tartozó nettó adatok.
+         */
+        public VatRateNetDataType $vatRateNetData,
 
-    /**
-     * @var VatRateVatDataType Adott adómértékhez tartozó ÁFA adatok.
-     */
-    public VatRateVatDataType $vatRateVatData;
+        /**
+         * @var VatRateVatDataType Adott adómértékhez tartozó ÁFA adatok.
+         */
+        public VatRateVatDataType $vatRateVatData,
 
-    /**
-     * @var ?VatRateGrossDataType Adott adómértékhez tartozó bruttó adatok.
-     */
-    #[SkipWhenEmpty]
-    public ?VatRateGrossDataType $vatRateGrossData = null;
+        /**
+         * @var ?VatRateGrossDataType Adott adómértékhez tartozó bruttó adatok.
+         */
+        #[SkipWhenEmpty]
+        public ?VatRateGrossDataType $vatRateGrossData = null,
+    ) {
+        parent::__construct();
+    }
 }

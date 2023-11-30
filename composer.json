@@ -9,9 +9,10 @@
         "php"
     ],
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "guzzlehttp/guzzle": "^7.3",
-        "jms/serializer": "^3.14"
+        "jms/serializer": "^3.14",
+        "ext-openssl": "*"
     },
     "require-dev": {
         "pestphp/pest": "^2.0"

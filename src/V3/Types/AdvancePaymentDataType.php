@@ -14,23 +14,27 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class AdvancePaymentDataType extends BaseType
+final readonly class AdvancePaymentDataType extends BaseType
 {
-    /**
-     * @var string Az előlegszámlának a sorszáma, amelyben az előlegfizetés történt.
-     */
-    #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
-    public string $advanceOriginalInvoice;
+    public function __construct(
+        /**
+         * @var string Az előlegszámlának a sorszáma, amelyben az előlegfizetés történt.
+         */
+        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        public string $advanceOriginalInvoice,
 
-    /**
-     * @var DateTimeImmutable Az előleg fizetésének dátuma.
-     */
-    #[Type("DateTimeImmutable<'Y-m-d'>")]
-    public DateTimeImmutable $advancePaymentDate;
+        /**
+         * @var DateTimeImmutable Az előleg fizetésének dátuma.
+         */
+        #[Type("DateTimeImmutable<'Y-m-d'>")]
+        public DateTimeImmutable $advancePaymentDate,
 
-    /**
-     * @var float Az előlegfizetés során alkalmazott árfolyam.
-     */
-    #[FloatValidation(minExclusive: 0, totalDigits: 14, fractionDigits: 6)]
-    public float $advanceExchangeRate;
+        /**
+         * @var float Az előlegfizetés során alkalmazott árfolyam.
+         */
+        #[FloatValidation(minExclusive: 0, totalDigits: 14, fractionDigits: 6)]
+        public float $advanceExchangeRate,
+    ) {
+        parent::__construct();
+    }
 }

@@ -14,24 +14,30 @@ use LightSideSoftware\NavApi\V3\Types\Enums\MetricTypeType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class MetricDefinitionType extends BaseType
+final readonly class MetricDefinitionType extends BaseType
 {
-    /**
-     * @var string Metrika neve.
-     */
-    #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public string $metricName;
+    public function __construct(
+        /**
+         * @var string Metrika neve.
+         */
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public string $metricName,
 
-    /**
-     * @var MetricTypeType Metrika típusa.
-     */
-    #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public MetricTypeType $metricType;
+        /**
+         * @var MetricTypeType Metrika típusa.
+         */
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public MetricTypeType $metricType,
 
-    /**
-     * @var array<MetricDescriptionType> Metrikák leírásai.
-     */
-    #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricDescriptionType>')]
-    #[XmlList(entry: 'metricDescription', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public array $metricDescriptions;
+        /**
+         * @var array<int, MetricDescriptionType> Metrikák leírásai.
+         *
+         * @todo minOccurs=3 maxOccurs=3
+         */
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricDescriptionType>')]
+        #[XmlList(entry: 'metricDescription', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public array $metricDescriptions,
+    ) {
+        parent::__construct();
+    }
 }

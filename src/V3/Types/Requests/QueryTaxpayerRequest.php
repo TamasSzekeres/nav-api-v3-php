@@ -7,6 +7,9 @@ namespace LightSideSoftware\NavApi\V3\Types\Requests;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
+use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
+use LightSideSoftware\NavApi\V3\Types\SoftwareType;
+use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
 
 /**
  * A POST /queryTaxpayer REST operáció kérés típusa.
@@ -16,11 +19,19 @@ use JMS\Serializer\Annotation\XmlRoot;
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common', prefix: 'common')]
 #[XmlRoot('QueryTaxpayerRequest')]
-final class QueryTaxpayerRequest extends BasicOnlineInvoiceRequestType
+final readonly class QueryTaxpayerRequest extends BasicOnlineInvoiceRequestType
 {
-    /**
-     * @var string A lekérdezett adózó adószáma
-     */
-    #[XmlElement(cdata: false)]
-    public string $taxNumber;
+    public function __construct(
+        BasicHeaderType $header,
+        UserHeaderType $user,
+        SoftwareType $software,
+
+        /**
+         * @var string A lekérdezett adózó adószáma
+         */
+        #[XmlElement(cdata: false)]
+        public string $taxNumber,
+    ) {
+        parent::__construct($header, $user, $software);
+    }
 }

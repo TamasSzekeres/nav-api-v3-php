@@ -11,34 +11,38 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class SummaryNormalType extends BaseType
+final readonly class SummaryNormalType extends BaseType
 {
-    /**
-     * @var SummaryByVatRateType Összesítés ÁFA-mérték szerint.
-     */
-    public SummaryByVatRateType $summaryByVatRate;
+    public function __construct(
+        /**
+         * @var SummaryByVatRateType Összesítés ÁFA-mérték szerint.
+         */
+        public SummaryByVatRateType $summaryByVatRate,
 
-    /**
-     * @var float A számla nettó összege a számla pénznemében.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $invoiceNetAmount;
+        /**
+         * @var float A számla nettó összege a számla pénznemében.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $invoiceNetAmount,
 
-    /**
-     * @var float A számla nettó összege forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $invoiceNetAmountHUF;
+        /**
+         * @var float A számla nettó összege forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $invoiceNetAmountHUF,
 
-    /**
-     * @var float A számla ÁFA összege a számla pénznemében.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $invoiceVatAmount;
+        /**
+         * @var float A számla ÁFA összege a számla pénznemében.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $invoiceVatAmount,
 
-    /**
-     * @var float A számla ÁFA összege forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $invoiceVatAmountHUF;
+        /**
+         * @var float A számla ÁFA összege forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $invoiceVatAmountHUF,
+    ) {
+        parent::__construct();
+    }
 }

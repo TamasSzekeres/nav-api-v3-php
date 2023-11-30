@@ -10,16 +10,20 @@ use JMS\Serializer\Annotation\Type;
 /**
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class ContextType extends BaseType
+final readonly class ContextType extends BaseType
 {
-    /**
-     * @var string A kérés egyedi azonosítója.
-     */
-    public string $requestId;
+    public function __construct(
+        /**
+         * @var string A kérés egyedi azonosítója.
+         */
+        public string $requestId,
 
-    /**
-     * @var DateTimeImmutable A kérés kliensoldali időpontja UTC-ben.
-     */
-    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
-    public DateTimeImmutable $timestamp;
+        /**
+         * @var DateTimeImmutable A kérés kliensoldali időpontja UTC-ben.
+         */
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        public DateTimeImmutable $timestamp,
+    ) {
+        parent::__construct();
+    }
 }

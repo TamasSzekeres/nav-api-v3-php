@@ -11,17 +11,21 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class LineGrossAmountDataType extends BaseType
+final readonly class LineGrossAmountDataType extends BaseType
 {
-    /**
-     * @var float Tétel bruttó értéke a számla pénznemében. ÁFA tartalmú különbözeti adózás esetén az ellenérték.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $lineGrossAmountNormal;
+    public function __construct(
+        /**
+         * @var float Tétel bruttó értéke a számla pénznemében. ÁFA tartalmú különbözeti adózás esetén az ellenérték.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $lineGrossAmountNormal,
 
-    /**
-     * @var float Tétel bruttó értéke forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $lineGrossAmountNormalHUF;
+        /**
+         * @var float Tétel bruttó értéke forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $lineGrossAmountNormalHUF,
+    ) {
+        parent::__construct();
+    }
 }

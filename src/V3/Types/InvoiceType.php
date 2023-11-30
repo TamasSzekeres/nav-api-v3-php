@@ -11,32 +11,36 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class InvoiceType extends BaseType
+final readonly class InvoiceType extends BaseType
 {
-    /**
-     * @var ?InvoiceReferenceType A módosítás vagy érvénytelenítés adatai.
-     */
-    #[SkipWhenEmpty]
-    public ?InvoiceReferenceType $invoiceReference = null;
+    public function __construct(
+        /**
+         * @var InvoiceHeadType A számla egészét jellemző adatok.
+         */
+        public InvoiceHeadType $invoiceHead,
 
-    /**
-     * @var InvoiceHeadType A számla egészét jellemző adatok.
-     */
-    public InvoiceHeadType $invoiceHead;
+        /**
+         * @var SummaryType Az ÁFA törvény szerinti összesítő adatok.
+         */
+        public SummaryType $invoiceSummary,
 
-    /**
-     * @var ?LinesType A számlán szereplő tételek adatai.
-     */
-    #[SkipWhenEmpty]
-    public ?LinesType $invoiceLines = null;
+        /**
+         * @var ?InvoiceReferenceType A módosítás vagy érvénytelenítés adatai.
+         */
+        #[SkipWhenEmpty]
+        public ?InvoiceReferenceType $invoiceReference = null,
 
-    /**
-     * @var ?ProductFeeSummaryType Termékdíjjal kapcsolatos összesítő adatok.
-     */
-    public ?ProductFeeSummaryType $productFeeSummary = null;
+        /**
+         * @var ?LinesType A számlán szereplő tételek adatai.
+         */
+        #[SkipWhenEmpty]
+        public ?LinesType $invoiceLines = null,
 
-    /**
-     * @var SummaryType Az ÁFA törvény szerinti összesítő adatok.
-     */
-    public SummaryType $invoiceSummary;
+        /**
+         * @var ?ProductFeeSummaryType Termékdíjjal kapcsolatos összesítő adatok.
+         */
+        public ?ProductFeeSummaryType $productFeeSummary = null,
+    ) {
+        parent::__construct();
+    }
 }

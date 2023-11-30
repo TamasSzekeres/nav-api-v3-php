@@ -11,23 +11,27 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class SummaryType extends BaseType
+final readonly class SummaryType extends BaseType
 {
-    /**
-     * @var ?SummaryNormalType Számla összesítés (nem egyszerűsített számla esetén).
-     */
-    #[SkipWhenEmpty]
-    public ?SummaryNormalType $summaryNormal = null;
+    public function __construct(
+        /**
+         * @var ?SummaryNormalType Számla összesítés (nem egyszerűsített számla esetén).
+         */
+        #[SkipWhenEmpty]
+        public ?SummaryNormalType $summaryNormal = null,
 
-    /**
-     * @var ?SummarySimplifiedType Egyszerűsített számla összesítés.
-     */
-    #[SkipWhenEmpty]
-    public ?SummarySimplifiedType $summarySimplified = null;
+        /**
+         * @var ?SummarySimplifiedType Egyszerűsített számla összesítés.
+         */
+        #[SkipWhenEmpty]
+        public ?SummarySimplifiedType $summarySimplified = null,
 
-    /**
-     * @var ?SummaryGrossDataType A számla összesítő bruttó adatai.
-     */
-    #[SkipWhenEmpty]
-    public ?SummaryGrossDataType $summaryGrossData = null;
+        /**
+         * @var ?SummaryGrossDataType A számla összesítő bruttó adatai.
+         */
+        #[SkipWhenEmpty]
+        public ?SummaryGrossDataType $summaryGrossData = null,
+    ) {
+        parent::__construct();
+    }
 }

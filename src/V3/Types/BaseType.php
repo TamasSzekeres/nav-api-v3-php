@@ -17,8 +17,17 @@ use LightSideSoftware\NavApi\V3\Serialization\EnumHandler;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-abstract class BaseType extends BaseObject
+abstract readonly class BaseType extends BaseObject
 {
+    public function __construct()
+    {
+        $this->validate();
+    }
+
+    public function validate(): void
+    {
+    }
+
     public static function fromXml(string $xml): static
     {
         return SerializerBuilder::create()

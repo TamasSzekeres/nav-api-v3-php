@@ -13,17 +13,21 @@ use LightSideSoftware\NavApi\V3\Types\Enums\TakeoverType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class ProductFeeTakeoverDataType extends BaseType
+final readonly class ProductFeeTakeoverDataType extends BaseType
 {
-    /**
-     * @var TakeoverType Az átvállalás iránya és jogszabályi alapja.
-     */
-    public TakeoverType $takeoverReason;
+    public function __construct(
+        /**
+         * @var TakeoverType Az átvállalás iránya és jogszabályi alapja.
+         */
+        public TakeoverType $takeoverReason,
 
-    /**
-     * @var ?float Az átvállalt termékdíj összege forintban, ha a vevő vállalja át az eladó termékdíj-kötelezettségét.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    #[SkipWhenEmpty]
-    public ?float $takeoverAmount = null;
+        /**
+         * @var ?float Az átvállalt termékdíj összege forintban, ha a vevő vállalja át az eladó termékdíj-kötelezettségét.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[SkipWhenEmpty]
+        public ?float $takeoverAmount = null,
+    ) {
+        parent::__construct();
+    }
 }

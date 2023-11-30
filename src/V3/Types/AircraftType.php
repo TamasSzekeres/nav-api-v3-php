@@ -11,22 +11,26 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class AircraftType extends BaseType
+final readonly class AircraftType extends BaseType
 {
-    /**
-     * @var float Felszállási tömeg kilogrammban.
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    public float $takeOffWeight;
+    public function __construct(
+        /**
+         * @var float Felszállási tömeg kilogrammban.
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        public float $takeOffWeight,
 
-    /**
-     * @var bool Értéke true ha a jármű az ÁFA tv. 259.§ 25. c) szerinti kivétel alá tartozik.
-     */
-    public bool $airCargo;
+        /**
+         * @var bool Értéke true ha a jármű az ÁFA tv. 259.§ 25. c) szerinti kivétel alá tartozik.
+         */
+        public bool $airCargo,
 
-    /**
-     * @var float Repült órák száma.
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    public float $operationHours;
+        /**
+         * @var float Repült órák száma.
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        public float $operationHours,
+    ) {
+        parent::__construct();
+    }
 }

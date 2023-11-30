@@ -11,23 +11,27 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class AdditionalDataType extends BaseType
+final readonly class AdditionalDataType extends BaseType
 {
-    /**
-     * @var string Az adatmező egyedi azonosítója.
-     */
-    #[StringValidation(minLength: 1, maxLength: 255, pattern: "[A-Z][0-9]{5}[_][_A-Z0-9]{1,249}")]
-    public string $dataName;
+    public function __construct(
+        /**
+         * @var string Az adatmező egyedi azonosítója.
+         */
+        #[StringValidation(minLength: 1, maxLength: 255, pattern: "[A-Z][0-9]{5}[_][_A-Z0-9]{1,249}")]
+        public string $dataName,
 
-    /**
-     * @var string Az adatmező tartalmának szöveges leírása
-     */
-    #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
-    public string $dataDescription;
+        /**
+         * @var string Az adatmező tartalmának szöveges leírása
+         */
+        #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
+        public string $dataDescription,
 
-    /**
-     * @var string Az adat értéke.
-     */
-    #[StringValidation(minLength: 1, maxLength: 512, pattern: ".*[^\s].*")]
-    public string $dataValue;
+        /**
+         * @var string Az adat értéke.
+         */
+        #[StringValidation(minLength: 1, maxLength: 512, pattern: ".*[^\s].*")]
+        public string $dataValue,
+    ) {
+        parent::__construct();
+    }
 }

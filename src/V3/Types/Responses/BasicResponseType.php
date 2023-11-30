@@ -11,15 +11,19 @@ use LightSideSoftware\NavApi\V3\Types\BasicResultType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-abstract class BasicResponseType extends BaseType
+abstract readonly class BasicResponseType extends BaseType
 {
-    /**
-     * @var BasicHeaderType A válasz tranzakcionális adatai.
-     */
-    public BasicHeaderType $header;
+    public function __construct(
+        /**
+         * @var BasicHeaderType A válasz tranzakcionális adatai.
+         */
+        public BasicHeaderType $header,
 
-    /**
-     * @var BasicResultType Alap válaszeredmény adatok.
-     */
-    public BasicResultType $result;
+        /**
+         * @var BasicResultType Alap válaszeredmény adatok.
+         */
+        public BasicResultType $result,
+    ) {
+        parent::__construct();
+    }
 }

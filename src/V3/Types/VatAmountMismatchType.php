@@ -12,17 +12,21 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class VatAmountMismatchType extends BaseType
+final readonly class VatAmountMismatchType extends BaseType
 {
-    /**
-     * @var float Adómérték, adótartalom.
-     */
-    #[FloatValidation(minInclusive: 0, maxInclusive: 1, totalDigits: 5, fractionDigits: 4)]
-    public float $vatRate;
+    public function __construct(
+        /**
+         * @var float Adómérték, adótartalom.
+         */
+        #[FloatValidation(minInclusive: 0, maxInclusive: 1, totalDigits: 5, fractionDigits: 4)]
+        public float $vatRate,
 
-    /**
-     * @var string Az eset leírása kóddal.
-     */
-    #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
-    public string $case;
+        /**
+         * @var string Az eset leírása kóddal.
+         */
+        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        public string $case,
+    ) {
+        parent::__construct();
+    }
 }

@@ -11,17 +11,21 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class SummaryGrossDataType extends BaseType
+final readonly class SummaryGrossDataType extends BaseType
 {
-    /**
-     * @var float A számla bruttó összege a számla pénznemében.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $invoiceGrossAmount;
+    public function __construct(
+        /**
+         * @var float A számla bruttó összege a számla pénznemében.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $invoiceGrossAmount,
 
-    /**
-     * @var float A számla bruttó összege forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $invoiceGrossAmountHUF;
+        /**
+         * @var float A számla bruttó összege forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $invoiceGrossAmountHUF,
+    ) {
+        parent::__construct();
+    }
 }

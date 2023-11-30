@@ -12,16 +12,20 @@ use LightSideSoftware\NavApi\V3\Types\Enums\ProductStreamType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class CustomerDeclarationType extends BaseType
+final readonly class CustomerDeclarationType extends BaseType
 {
-    /**
-     * @var ProductStreamType Termékáram.
-     */
-    public ProductStreamType $productStream;
+    public function __construct(
+        /**
+         * @var ProductStreamType Termékáram.
+         */
+        public ProductStreamType $productStream,
 
-    /**
-     * @var ?float Termékdíj köteles termék tömege kilogrammban.
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    public ?float $productFeeWeight = null;
+        /**
+         * @var ?float Termékdíj köteles termék tömege kilogrammban.
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        public ?float $productFeeWeight = null,
+    ) {
+        parent::__construct();
+    }
 }

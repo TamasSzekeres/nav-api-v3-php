@@ -11,6 +11,6 @@ use LightSideSoftware\NavApi\V3\Types\BasicResultType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class GeneralExceptionResponse extends BasicResultType
+final readonly class GeneralExceptionResponse extends BasicResultType
 {
 }

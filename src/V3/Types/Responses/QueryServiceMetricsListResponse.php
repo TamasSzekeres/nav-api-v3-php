@@ -20,13 +20,17 @@ use LightSideSoftware\NavApi\V3\Types\MetricDefinitionType;
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common', prefix: 'ns2')]
 #[XmlRoot('QueryServiceMetricsListResponse')]
-final class QueryServiceMetricsListResponse extends BaseType
+final readonly class QueryServiceMetricsListResponse extends BaseType
 {
-    /**
-     * @var array<MetricDefinitionType> Metrika definíciói.
-     */
-    #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricDefinitionType>')]
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    #[XmlList(entry: 'metricDefinition', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public array $metricDefinitions = [];
+    public function __construct(
+        /**
+         * @var array<int, MetricDefinitionType> Metrika definíciói.
+         */
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricDefinitionType>')]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        #[XmlList(entry: 'metricDefinition', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public array $metricDefinitions = [],
+    ) {
+        parent::__construct();
+    }
 }

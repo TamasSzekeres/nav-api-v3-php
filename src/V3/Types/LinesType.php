@@ -9,15 +9,19 @@ namespace LightSideSoftware\NavApi\V3\Types;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class LinesType extends BaseType
+final readonly class LinesType extends BaseType
 {
-    /**
-     * @var bool Jelöli, ha az adatszolgáltatás méretcsökkentés miatt összevont soradatokat tartalmaz.
-     */
-    public bool $mergedItemIndicator;
+    public function __construct(
+        /**
+         * @var bool Jelöli, ha az adatszolgáltatás méretcsökkentés miatt összevont soradatokat tartalmaz.
+         */
+        public bool $mergedItemIndicator,
 
-    /**
-     * @var LineType Termék/szolgáltatás tétel.
-     */
-    public LineType $line;
+        /**
+         * @var LineType Termék/szolgáltatás tétel.
+         */
+        public LineType $line,
+    ) {
+        parent::__construct();
+    }
 }

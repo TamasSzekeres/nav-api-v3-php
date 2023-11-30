@@ -11,17 +11,21 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class LineVatDataType extends BaseType
+final readonly class LineVatDataType extends BaseType
 {
-    /**
-     * @var float Tétel ÁFA összege a számla pénznemében.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $lineVatAmount;
+    public function __construct(
+        /**
+         * @var float Tétel ÁFA összege a számla pénznemében.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $lineVatAmount,
 
-    /**
-     * @var float Tétel ÁFA összege forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $lineVatAmountHUF;
+        /**
+         * @var float Tétel ÁFA összege forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $lineVatAmountHUF,
+    ) {
+        parent::__construct();
+    }
 }

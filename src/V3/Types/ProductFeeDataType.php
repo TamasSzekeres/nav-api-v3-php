@@ -12,33 +12,37 @@ use LightSideSoftware\NavApi\V3\Types\Enums\ProductFeeMeasuringUnitType;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class ProductFeeDataType extends BaseType
+final readonly class ProductFeeDataType extends BaseType
 {
-    /**
-     * @var ProductCodeType Termékdíj kód (Kt vagy Csk).
-     */
-    public ProductCodeType $productFeeCode;
+    public function __construct(
+        /**
+         * @var ProductCodeType Termékdíj kód (Kt vagy Csk).
+         */
+        public ProductCodeType $productFeeCode,
 
-    /**
-     * @var float A termékdíjjal érintett termék mennyisége.
-     */
-    #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
-    public float $productFeeQuantity;
+        /**
+         * @var float A termékdíjjal érintett termék mennyisége.
+         */
+        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        public float $productFeeQuantity,
 
-    /**
-     * @var ProductFeeMeasuringUnitType A díjtétel egysége (kg vagy darab).
-     */
-    public ProductFeeMeasuringUnitType $productFeeMeasuringUnit;
+        /**
+         * @var ProductFeeMeasuringUnitType A díjtétel egysége (kg vagy darab).
+         */
+        public ProductFeeMeasuringUnitType $productFeeMeasuringUnit,
 
-    /**
-     * @var float A termékdíj díjtétele (HUF/egység).
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $productFeeRate;
+        /**
+         * @var float A termékdíj díjtétele (HUF/egység).
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $productFeeRate,
 
-    /**
-     * @var float Termékdíj összege forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $productFeeAmount;
+        /**
+         * @var float Termékdíj összege forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $productFeeAmount,
+    ) {
+        parent::__construct();
+    }
 }

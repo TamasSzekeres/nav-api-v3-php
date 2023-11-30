@@ -9,15 +9,19 @@ namespace LightSideSoftware\NavApi\V3\Types;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class InvoiceMainType extends BaseType
+final readonly class InvoiceMainType extends BaseType
 {
-    /**
-     * @var InvoiceType Egy számla vagy módosító okirat adatai.
-     */
-    public InvoiceType $invoice;
+    public function __construct(
+        /**
+         * @var InvoiceType Egy számla vagy módosító okirat adatai.
+         */
+        public InvoiceType $invoice,
 
-    /**
-     * @var ?BatchInvoiceType Kötegelt módosító okirat adatai.
-     */
-    public ?BatchInvoiceType $batchInvoice = null;
+        /**
+         * @var ?BatchInvoiceType Kötegelt módosító okirat adatai.
+         */
+        public ?BatchInvoiceType $batchInvoice = null,
+    ) {
+        parent::__construct();
+    }
 }

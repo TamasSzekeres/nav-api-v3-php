@@ -8,6 +8,10 @@ use GuzzleHttp\Client;
 use LightSideSoftware\NavApi\V3\InvoiceServiceClient;
 use LightSideSoftware\NavApi\V3\InvoiceServiceClientInterface;
 use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
+use LightSideSoftware\NavApi\V3\Providers\DateTimeProvider;
+use LightSideSoftware\NavApi\V3\Providers\DateTimeProviderInterface;
+use LightSideSoftware\NavApi\V3\Providers\RequestIdProviderInterface;
+use LightSideSoftware\NavApi\V3\Providers\TimeAwareRequestIdProvider;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 
 /**
@@ -20,7 +24,7 @@ final class InvoiceServiceClientFactory
 
     private string $baseUrl;
 
-    private ?float $timeout;
+    private ?float $timeout = null;
 
     private string $login;
 
@@ -32,122 +36,147 @@ final class InvoiceServiceClientFactory
 
     private SoftwareType $software;
 
+    private RequestIdProviderInterface $requestIdProvider;
+
+    private DateTimeProviderInterface $dateTimeProvider;
+
     public function __construct()
     {
         $this->software = new SoftwareType();
     }
 
-    public function setProductionBaseUrl(): self
+    public function productionBaseUrl(): self
     {
-        return $this->setBaseUrl(self::ONLINESZAMLA_API_URL);
+        return $this->baseUrl(self::ONLINESZAMLA_API_URL);
     }
 
-    public function setTestBaseUrl(): self
+    public function testBaseUrl(): self
     {
-        return $this->setBaseUrl(self::ONLINESZAMLA_API_TEST_URL);
+        return $this->baseUrl(self::ONLINESZAMLA_API_TEST_URL);
     }
 
-    public function setBaseUrl(string $baseUrl): self
+    public function baseUrl(string $baseUrl): self
     {
         $this->baseUrl = rtrim($baseUrl, '/');
 
         return $this;
     }
 
-    public function setTimeout(?float $timeout): self
+    public function timeout(?float $timeout): self
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    public function setLogin(string $login): self
+    public function login(string $login): self
     {
         $this->login = $login;
 
         return $this;
     }
 
-    public function setXmlSignKey(string $xmlSignKey): self
+    public function xmlSignKey(string $xmlSignKey): self
     {
         $this->xmlSignKey = $xmlSignKey;
 
         return $this;
     }
 
-    public function setPassword(string $password): self
+    public function password(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function setTaxNumber(string $taxNumber): self
+    public function taxNumber(string $taxNumber): self
     {
         $this->taxNumber = $taxNumber;
 
         return $this;
     }
 
-    public function setSoftware(SoftwareType $software): self
+    public function software(SoftwareType $software): self
     {
         $this->software = $software;
 
         return $this;
     }
 
-    public function setSoftwareId(string $softwareId): self
+    public function requestIdProvider(RequestIdProviderInterface $requestIdProvider): self
+    {
+        $this->requestIdProvider = $requestIdProvider;
+
+        return $this;
+    }
+
+    public function dateTimeProvider(DateTimeProviderInterface $dateTimeProvider): self
+    {
+        $this->dateTimeProvider = $dateTimeProvider;
+
+        return $this;
+    }
+
+    public function softwareId(string $softwareId): self
     {
         $this->software->softwareId = $softwareId;
 
         return $this;
     }
 
-    public function setSoftwareName(string $softwareName): self
+    public function softwareName(string $softwareName): self
     {
         $this->software->softwareName = $softwareName;
 
         return $this;
     }
 
-    public function setSoftwareOperation(string $softwareOperation): self
+    public function softwareOperation(string $softwareOperation): self
     {
         $this->software->softwareOperation = $softwareOperation;
 
         return $this;
     }
 
-    public function setSoftwareMainVersion(string $softwareMainVersion): self
+    public function softwareMainVersion(string $softwareMainVersion): self
     {
         $this->software->softwareMainVersion = $softwareMainVersion;
 
         return $this;
     }
 
-    public function setSoftwareDevName(string $softwareDevName): self
+    public function softwareDevName(string $softwareDevName): self
     {
         $this->software->softwareDevName = $softwareDevName;
 
         return $this;
     }
 
-    public function setSoftwareDevContact(string $softwareDevContact): self
+    public function softwareDevContact(string $softwareDevContact): self
     {
         $this->software->softwareDevContact = $softwareDevContact;
 
         return $this;
     }
 
-    public function setSoftwareDevCountryCode(string $softwareDevCountryCode): self
+    public function softwareDevCountryCode(string $softwareDevCountryCode): self
     {
         $this->software->softwareDevCountryCode = $softwareDevCountryCode;
 
         return $this;
     }
 
-    public static function create(): InvoiceServiceClientFactory
+    public function softwareDevTaxNumber(string $softwareDevTaxNumber): self
     {
-        return new InvoiceServiceClientFactory();
+        $this->software->softwareDevTaxNumber = $softwareDevTaxNumber;
+
+        return $this;
+    }
+
+    public static function create(): self
+    {
+        return new self();
     }
 
     /**
@@ -166,7 +195,9 @@ final class InvoiceServiceClientFactory
             $this->xmlSignKey,
             $this->password,
             $this->taxNumber,
-            $this->software
+            $this->software,
+            $this->requestIdProvider ?? new TimeAwareRequestIdProvider(),
+            $this->dateTimeProvider ?? new DateTimeProvider()
         );
     }
 

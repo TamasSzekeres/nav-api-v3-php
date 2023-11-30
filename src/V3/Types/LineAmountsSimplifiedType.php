@@ -11,22 +11,26 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class LineAmountsSimplifiedType extends BaseType
+final readonly class LineAmountsSimplifiedType extends BaseType
 {
-    /**
-     * @var VatRateType Adómérték vagy adómentesség jelölése.
-     */
-    public VatRateType $lineVatRate;
+    public function __construct(
+        /**
+         * @var VatRateType Adómérték vagy adómentesség jelölése.
+         */
+        public VatRateType $lineVatRate,
 
-    /**
-     * @var float Tétel bruttó értéke a számla pénznemében.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $lineGrossAmountSimplified;
+        /**
+         * @var float Tétel bruttó értéke a számla pénznemében.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $lineGrossAmountSimplified,
 
-    /**
-     * @var float Tétel bruttó értéke forintban.
-     */
-    #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
-    public float $lineGrossAmountSimplifiedHUF;
+        /**
+         * @var float Tétel bruttó értéke forintban.
+         */
+        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        public float $lineGrossAmountSimplifiedHUF,
+    ) {
+        parent::__construct();
+    }
 }

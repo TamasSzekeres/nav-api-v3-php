@@ -23,26 +23,30 @@ use LightSideSoftware\NavApi\V3\Types\MetricType;
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/metrics', prefix: 'ns2')]
 #[XmlRoot('QueryServiceMetricsResponse')]
-final class QueryServiceMetricsResponse extends BaseType
+final readonly class QueryServiceMetricsResponse extends BaseType
 {
-    /**
-     * @var BasicResultType Alap válaszeredmény adatok.
-     */
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public BasicResultType $result;
+    public function __construct(
+        /**
+         * @var BasicResultType Alap válaszeredmény adatok.
+         */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public BasicResultType $result,
 
-    /**
-     * @var ?DateTimeImmutable Időbélyeg típus az Online Számla rendszerben.
-     */
-    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public ?DateTimeImmutable $metricsLastUpdateTime = null;
+        /**
+         * @var ?DateTimeImmutable Időbélyeg típus az Online Számla rendszerben.
+         */
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public ?DateTimeImmutable $metricsLastUpdateTime = null,
 
-    /**
-     * @var array<MetricType> Metrikák adatai.
-     */
-    #[SkipWhenEmpty]
-    #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricType>')]
-    #[XmlList(entry: 'metric', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public array $metrics = [];
+        /**
+         * @var array<int, MetricType> Metrikák adatai.
+         */
+        #[SkipWhenEmpty]
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricType>')]
+        #[XmlList(entry: 'metric', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public array $metrics = [],
+    ) {
+        parent::__construct();
+    }
 }

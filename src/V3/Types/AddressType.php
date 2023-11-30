@@ -9,15 +9,19 @@ namespace LightSideSoftware\NavApi\V3\Types;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class AddressType extends BaseType
+final readonly class AddressType extends BaseType
 {
-    /**
-     * @var SimpleAddressType Egyszerű cím.
-     */
-    public SimpleAddressType $simpleAddress;
+    public function __construct(
+        /**
+         * @var SimpleAddressType Egyszerű cím.
+         */
+        public SimpleAddressType $simpleAddress,
 
-    /**
-     * @var DetailedAddressType Részletes cím.
-     */
-    public DetailedAddressType $detailedAddress;
+        /**
+         * @var DetailedAddressType Részletes cím.
+         */
+        public DetailedAddressType $detailedAddress,
+    ) {
+        parent::__construct();
+    }
 }

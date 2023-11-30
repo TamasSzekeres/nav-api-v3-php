@@ -9,25 +9,29 @@ namespace LightSideSoftware\NavApi\V3\Types;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class LineAmountsNormalType extends BaseType
+final readonly class LineAmountsNormalType extends BaseType
 {
-    /**
-     * @var LineNetAmountDataType Tétel nettó adatok.
-     */
-    public LineNetAmountDataType $lineNetAmountData;
+    public function __construct(
+        /**
+         * @var LineNetAmountDataType Tétel nettó adatok.
+         */
+        public LineNetAmountDataType $lineNetAmountData,
 
-    /**
-     * @var VatRateType Adómérték vagy adómentesség jelölése.
-     */
-    public VatRateType $lineVatRate;
+        /**
+         * @var VatRateType Adómérték vagy adómentesség jelölése.
+         */
+        public VatRateType $lineVatRate,
 
-    /**
-     * @var ?LineVatDataType Tétel ÁFA adatok.
-     */
-    public ?LineVatDataType $lineVatData = null;
+        /**
+         * @var ?LineVatDataType Tétel ÁFA adatok.
+         */
+        public ?LineVatDataType $lineVatData = null,
 
-    /**
-     * @var ?LineGrossAmountDataType Tétel bruttó adatok.
-     */
-    public ?LineGrossAmountDataType $lineGrossAmountData = null;
+        /**
+         * @var ?LineGrossAmountDataType Tétel bruttó adatok.
+         */
+        public ?LineGrossAmountDataType $lineGrossAmountData = null,
+    ) {
+        parent::__construct();
+    }
 }

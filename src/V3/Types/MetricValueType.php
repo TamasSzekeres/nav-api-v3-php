@@ -13,18 +13,22 @@ use JMS\Serializer\Annotation\XmlElement;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class MetricValueType extends BaseType
+final readonly class MetricValueType extends BaseType
 {
-    /**
-     * @var float Metrika értéke.
-     */
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public float $value;
+    public function __construct(
+        /**
+         * @var float Metrika értéke.
+         */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public float $value,
 
-    /**
-     * @var DateTimeImmutable Metrika értékének időpontja UTC időben.
-     */
-    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public DateTimeImmutable $timestamp;
+        /**
+         * @var DateTimeImmutable Metrika értékének időpontja UTC időben.
+         */
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public DateTimeImmutable $timestamp,
+    ) {
+        parent::__construct();
+    }
 }

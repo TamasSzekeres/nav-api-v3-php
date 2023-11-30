@@ -2,7 +2,7 @@
 
 namespace LightSideSoftware\NavApi\V3\Types\Requests;
 
-final class QueryTransactionStatusRequest
+final readonly class QueryTransactionStatusRequest
 {
 
 }

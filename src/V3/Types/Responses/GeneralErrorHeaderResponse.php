@@ -9,6 +9,6 @@ namespace LightSideSoftware\NavApi\V3\Types\Responses;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class GeneralErrorHeaderResponse extends BasicResponseType
+readonly class GeneralErrorHeaderResponse extends BasicResponseType
 {
 }

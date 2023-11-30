@@ -11,16 +11,20 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class BatchInvoiceType extends BaseType
+readonly final class BatchInvoiceType extends BaseType
 {
-    /**
-     * @var int A módosító okirat sorszáma a kötegen belül.
-     */
-    #[IntegerValidation(minInclusive: 1)]
-    public int $batchIndex;
+    public function __construct(
+        /**
+         * @var int A módosító okirat sorszáma a kötegen belül.
+         */
+        #[IntegerValidation(minInclusive: 1)]
+        public int $batchIndex,
 
-    /**
-     * @var InvoiceType Egy számla vagy módosító okirat adatai.
-     */
-    public InvoiceType $invoice;
+        /**
+         * @var InvoiceType Egy számla vagy módosító okirat adatai.
+         */
+        public InvoiceType $invoice,
+    ) {
+        parent::__construct();
+    }
 }

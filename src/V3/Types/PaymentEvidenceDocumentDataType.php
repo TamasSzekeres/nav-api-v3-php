@@ -13,33 +13,37 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class PaymentEvidenceDocumentDataType extends BaseType
+final readonly class PaymentEvidenceDocumentDataType extends BaseType
 {
-    /**
-     * @var string Számla sorszáma vagy egyéb okirat azonosító száma.
-     */
-    #[StringValidation(minLength: 1, maxLength: 50)]
-    public string $evidenceDocumentNo;
+    public function __construct(
+        /**
+         * @var string Számla sorszáma vagy egyéb okirat azonosító száma.
+         */
+        #[StringValidation(minLength: 1, maxLength: 50)]
+        public string $evidenceDocumentNo,
 
-    /**
-     * @var DateTimeImmutable Számla kelte.
-     */
-    #[Type("DateTimeImmutable<'Y-m-d'>")]
-    public DateTimeImmutable $evidenceDocumentDate;
+        /**
+         * @var DateTimeImmutable Számla kelte.
+         */
+        #[Type("DateTimeImmutable<'Y-m-d'>")]
+        public DateTimeImmutable $evidenceDocumentDate,
 
-    /**
-     * @var string Kötelezett neve.
-     */
-    #[StringValidation(minLength: 1, maxLength: 255)]
-    public string $obligatedName;
+        /**
+         * @var string Kötelezett neve.
+         */
+        #[StringValidation(minLength: 1, maxLength: 255)]
+        public string $obligatedName,
 
-    /**
-     * @var AddressType Kötelezett címe.
-     */
-    public AddressType $obligatedAddress;
+        /**
+         * @var AddressType Kötelezett címe.
+         */
+        public AddressType $obligatedAddress,
 
-    /**
-     * @var TaxNumberType A kötelezett adószáma.
-     */
-    public TaxNumberType $obligatedTaxNumber;
+        /**
+         * @var TaxNumberType A kötelezett adószáma.
+         */
+        public TaxNumberType $obligatedTaxNumber,
+    ) {
+        parent::__construct();
+    }
 }

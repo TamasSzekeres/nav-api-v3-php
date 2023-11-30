@@ -9,16 +9,20 @@ namespace LightSideSoftware\NavApi\V3\Types;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class ProductFeeClauseType extends BaseType
+final readonly class ProductFeeClauseType extends BaseType
 {
-    /**
-     * @var ProductFeeTakeoverDataType A környezetvédelmi termékdíj kötelezettség átvállalásával kapcsolatos adatok.
-     */
-    public ProductFeeTakeoverDataType $productFeeTakeoverData;
+    public function __construct(
+        /**
+         * @var ProductFeeTakeoverDataType A környezetvédelmi termékdíj kötelezettség átvállalásával kapcsolatos adatok.
+         */
+        public ProductFeeTakeoverDataType $productFeeTakeoverData,
 
-    /**
-     * @var CustomerDeclarationType Ha az eladó a vevő nyilatkozata alapján mentesül a termékdíj megfizetése alól,
-     * akkor az érintett termékáram.
-     */
-    public CustomerDeclarationType $customerDeclaration;
+        /**
+         * @var CustomerDeclarationType Ha az eladó a vevő nyilatkozata alapján mentesül a termékdíj megfizetése alól,
+         * akkor az érintett termékáram.
+         */
+        public CustomerDeclarationType $customerDeclaration,
+    ) {
+        parent::__construct();
+    }
 }

@@ -13,18 +13,24 @@ use JMS\Serializer\Annotation\XmlList;
  *
  * @author Tamás Szekeres <szektam2@gmail.com>
  */
-final class MetricType extends BaseType
+final readonly class MetricType extends BaseType
 {
-    /**
-     * @var MetricDefinitionType Metrika definíció.
-     */
-    #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public MetricDefinitionType $metricDefinition;
+    public function __construct(
+        /**
+         * @var MetricDefinitionType Metrika definíció.
+         */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public MetricDefinitionType $metricDefinition,
 
-    /**
-     * @var array<MetricValueType> Metrika értékek.
-     */
-    #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricValueType>')]
-    #[XmlList(entry: 'metricValues', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-    public array $metricValues;
+        /**
+         * @var array<int, MetricValueType> Metrika értékek.
+         *
+         * @todo minOccurs=0 maxOccurs=60
+         */
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricValueType>')]
+        #[XmlList(entry: 'metricValues', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        public array $metricValues = [],
+    ) {
+        parent::__construct();
+    }
 }

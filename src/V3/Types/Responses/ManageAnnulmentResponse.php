@@ -2,7 +2,7 @@
 
 namespace LightSideSoftware\NavApi\V3\Types\Responses;
 
-final class ManageAnnulmentResponse
+final readonly class ManageAnnulmentResponse
 {
 
 }
