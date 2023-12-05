@@ -54,14 +54,14 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
     public const TOKEN_EXCHANGE_ENDPOINT = '/invoiceService/v3/tokenExchange';
 
     public function __construct(
-        private readonly Client $client,
-        private readonly string $login,
-        private readonly string $xmlSignKey,
-        private readonly string $password,
-        private readonly string $taxNumber,
-        private readonly SoftwareType $software,
-        private readonly RequestIdProviderInterface $requestIdProvider = new TimeAwareRequestIdProvider(),
-        private readonly DateTimeProviderInterface $dateTimeProvider = new DateTimeProvider()
+        public readonly Client $client,
+        public readonly string $login,
+        public readonly string $xmlSignKey,
+        public readonly string $password,
+        public readonly string $taxNumber,
+        public readonly SoftwareType $software,
+        public readonly RequestIdProviderInterface $requestIdProvider = new TimeAwareRequestIdProvider(),
+        public readonly DateTimeProviderInterface $dateTimeProvider = new DateTimeProvider()
     ) {
     }
 
@@ -108,12 +108,12 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
         $header = $this->makeBasicHeader();
         $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
 
-        $request = new QueryTaxpayerRequest([
-            'header' => $header,
-            'user' => $this->makeUserHeader($requestSignature),
-            'software' => $this->getSoftware(),
-            'taxNumber' => $taxNumber,
-        ]);
+        $request = new QueryTaxpayerRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $taxNumber,
+        );
 
         try {
             $response = $this->post(self::QUERY_TAXPAYER_ENDPOINT, $request, QueryTaxpayerResponse::class);
@@ -139,11 +139,11 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
         $header = $this->makeBasicHeader();
         $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
 
-        $request = new TokenExchangeRequest([
-            'header' => $header,
-            'user' => $this->makeUserHeader($requestSignature),
-            'software' => $this->getSoftware(),
-        ]);
+        $request = new TokenExchangeRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+        );
 
         try {
             $response = $this->post(self::TOKEN_EXCHANGE_ENDPOINT, $request, TokenExchangeResponse::class);
@@ -167,10 +167,9 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
      */
     private function post(string $uri, BasicRequestType $request, string $responseClass): BasicResponseType
     {
-        $client = $this->getHttpClient();
         $requestXml = $request->toXml();
 
-        $httpResponse = $client->post($uri, [
+        $httpResponse = $this->client->post($uri, [
             'body' => $requestXml,
         ]);
 
@@ -182,58 +181,28 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
 
     private function makeBasicHeader(): BasicHeaderType
     {
-        return new BasicHeaderType([
-            'requestId' => $this->requestIdProvider->nextRequestId(),
-            'timestamp' => $this->dateTimeProvider->now(),
-            'requestVersion' => static::REQUEST_VERSION,
-            'headerVersion' => static::HEADER_VERSION,
-        ]);
+        return new BasicHeaderType(
+            requestId: $this->requestIdProvider->nextRequestId(),
+            timestamp: $this->dateTimeProvider->now(),
+            requestVersion: static::REQUEST_VERSION,
+            headerVersion: static::HEADER_VERSION,
+        );
     }
 
     private function makeUserHeader(CryptoType $requestSignature): UserHeaderType
     {
-        return new UserHeaderType([
-            'login' => $this->getLogin(),
-            'passwordHash' => CryptoType::sha($this->getPassword()),
-            'taxNumber' => $this->getTaxNumber(),
-            'requestSignature' => $requestSignature,
-        ]);
+        return new UserHeaderType(
+            $this->login,
+            CryptoType::sha($this->password),
+            $this->taxNumber,
+            $requestSignature,
+        );
     }
 
     private function makeRequestSignatureForQuery(string $requestId, DateTimeImmutable $timestamp): CryptoType
     {
-        $data = $requestId . $timestamp->format('YmdHis') . $this->getXmlSignKey();
+        $data = $requestId . $timestamp->format('YmdHis') . $this->xmlSignKey;
 
         return CryptoType::sha3($data);
-    }
-
-    public function getHttpClient(): Client
-    {
-        return $this->client;
-    }
-
-    public function getLogin(): string
-    {
-        return $this->login;
-    }
-
-    public function getXmlSignKey(): string
-    {
-        return $this->xmlSignKey;
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function getTaxNumber(): string
-    {
-        return $this->taxNumber;
-    }
-
-    public function getSoftware(): SoftwareType
-    {
-        return $this->software;
     }
 }

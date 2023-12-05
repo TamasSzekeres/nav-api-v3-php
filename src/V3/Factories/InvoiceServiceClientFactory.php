@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Factories;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
 use LightSideSoftware\NavApi\V3\InvoiceServiceClient;
 use LightSideSoftware\NavApi\V3\InvoiceServiceClientInterface;
 use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
@@ -34,7 +36,21 @@ final class InvoiceServiceClientFactory
 
     private string $taxNumber;
 
-    private SoftwareType $software;
+    private string $softwareId;
+
+    private string $softwareName;
+
+    private string $softwareOperation;
+
+    private string $softwareMainVersion;
+
+    private string $softwareDevName;
+
+    private string $softwareDevContact;
+
+    private string $softwareDevCountryCode;
+
+    private string $softwareDevTaxNumber;
 
     private RequestIdProviderInterface $requestIdProvider;
 
@@ -42,7 +58,6 @@ final class InvoiceServiceClientFactory
 
     public function __construct()
     {
-        $this->software = new SoftwareType();
     }
 
     public function productionBaseUrl(): self
@@ -97,13 +112,6 @@ final class InvoiceServiceClientFactory
         return $this;
     }
 
-    public function software(SoftwareType $software): self
-    {
-        $this->software = $software;
-
-        return $this;
-    }
-
     public function requestIdProvider(RequestIdProviderInterface $requestIdProvider): self
     {
         $this->requestIdProvider = $requestIdProvider;
@@ -120,56 +128,56 @@ final class InvoiceServiceClientFactory
 
     public function softwareId(string $softwareId): self
     {
-        $this->software->softwareId = $softwareId;
+        $this->softwareId = $softwareId;
 
         return $this;
     }
 
     public function softwareName(string $softwareName): self
     {
-        $this->software->softwareName = $softwareName;
+        $this->softwareName = $softwareName;
 
         return $this;
     }
 
     public function softwareOperation(string $softwareOperation): self
     {
-        $this->software->softwareOperation = $softwareOperation;
+        $this->softwareOperation = $softwareOperation;
 
         return $this;
     }
 
     public function softwareMainVersion(string $softwareMainVersion): self
     {
-        $this->software->softwareMainVersion = $softwareMainVersion;
+        $this->softwareMainVersion = $softwareMainVersion;
 
         return $this;
     }
 
     public function softwareDevName(string $softwareDevName): self
     {
-        $this->software->softwareDevName = $softwareDevName;
+        $this->softwareDevName = $softwareDevName;
 
         return $this;
     }
 
     public function softwareDevContact(string $softwareDevContact): self
     {
-        $this->software->softwareDevContact = $softwareDevContact;
+        $this->softwareDevContact = $softwareDevContact;
 
         return $this;
     }
 
     public function softwareDevCountryCode(string $softwareDevCountryCode): self
     {
-        $this->software->softwareDevCountryCode = $softwareDevCountryCode;
+        $this->softwareDevCountryCode = $softwareDevCountryCode;
 
         return $this;
     }
 
     public function softwareDevTaxNumber(string $softwareDevTaxNumber): self
     {
-        $this->software->softwareDevTaxNumber = $softwareDevTaxNumber;
+        $this->softwareDevTaxNumber = $softwareDevTaxNumber;
 
         return $this;
     }
@@ -187,18 +195,25 @@ final class InvoiceServiceClientFactory
         $this->validate();
 
         $clientOptions = $this->makeHttpClientOptions();
-        $client = new Client($clientOptions);
+        return $this->createInvoiceClient($clientOptions);
+    }
 
-        return new InvoiceServiceClient(
-            $client,
-            $this->login,
-            $this->xmlSignKey,
-            $this->password,
-            $this->taxNumber,
-            $this->software,
-            $this->requestIdProvider ?? new TimeAwareRequestIdProvider(),
-            $this->dateTimeProvider ?? new DateTimeProvider()
-        );
+    /**
+     * @param array<int, mixed>|null $queue The parameters to be passed to the append function, as an indexed array.
+     * @return InvoiceServiceClientInterface
+     * @throws InvalidConfigException
+     */
+    public function createClientMock(array $queue): InvoiceServiceClientInterface
+    {
+        $this->validate();
+
+        $clientOptions = $this->makeHttpClientOptions();
+
+        $mock = new MockHandler($queue);
+        $handlerStack = HandlerStack::create($mock);
+        $clientOptions['handler'] = $handlerStack;
+
+        return $this->createInvoiceClient($clientOptions);
     }
 
     /**
@@ -225,5 +240,34 @@ final class InvoiceServiceClientFactory
         }
 
         return $options;
+    }
+
+    /**
+     * @param array $clientOptions
+     * @return InvoiceServiceClient
+     */
+    protected function createInvoiceClient(array $clientOptions): InvoiceServiceClient
+    {
+        $client = new Client($clientOptions);
+
+        return new InvoiceServiceClient(
+            $client,
+            $this->login,
+            $this->xmlSignKey,
+            $this->password,
+            $this->taxNumber,
+            new SoftwareType(
+                $this->softwareId,
+                $this->softwareName,
+                $this->softwareOperation,
+                $this->softwareMainVersion,
+                $this->softwareDevName,
+                $this->softwareDevContact,
+                $this->softwareDevCountryCode,
+                $this->softwareDevTaxNumber
+            ),
+            $this->requestIdProvider ?? new TimeAwareRequestIdProvider(),
+            $this->dateTimeProvider ?? new DateTimeProvider()
+        );
     }
 }
