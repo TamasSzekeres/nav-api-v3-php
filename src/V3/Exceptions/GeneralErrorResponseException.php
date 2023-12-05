@@ -12,7 +12,7 @@ use Throwable;
 /**
  * Represents an exception caused by API-Client getting GeneralErrorResponse.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 class GeneralErrorResponseException extends Exception
 {

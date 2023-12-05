@@ -11,7 +11,7 @@ use Throwable;
 /**
  * Represents an exception caused by API-Client getting BusinessFaultResponse.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 class BusinessFaultException extends Exception
 {
