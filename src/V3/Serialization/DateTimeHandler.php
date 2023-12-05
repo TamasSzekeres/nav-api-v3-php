@@ -13,7 +13,7 @@ use JMS\Serializer\XmlDeserializationVisitor;
 use JMS\Serializer\XmlSerializationVisitor;
 
 /**
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final class DateTimeHandler implements SubscribingHandlerInterface
 {
