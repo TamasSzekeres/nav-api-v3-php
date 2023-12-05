@@ -4,6 +4,12 @@ namespace LightSideSoftware\NavApi\V3\Providers;
 
 use InvalidArgumentException;
 
+use function rand;
+use function strlen;
+
+/**
+ * @author Szekeres Tamás <szektam2@gmail.com>
+ */
 class RandomProvider implements RandomProviderInterface
 {
     public function number(int $min, int $max): int

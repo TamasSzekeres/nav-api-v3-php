@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Providers;
 
+use function str_pad;
+use function strval;
+
+/**
+ * @author Szekeres Tamás <szektam2@gmail.com>
+ */
 final class IncrementalRequestIdProvider implements RequestIdProviderInterface
 {
     public function __construct(
