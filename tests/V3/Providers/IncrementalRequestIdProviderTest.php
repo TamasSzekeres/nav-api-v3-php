@@ -2,7 +2,7 @@
 
 use LightSideSoftware\NavApi\V3\Providers\IncrementalRequestIdProvider;
 
-test('nextRequestId', function () {
+test('getting next request-id', function () {
 
     $provider = new IncrementalRequestIdProvider();
 
