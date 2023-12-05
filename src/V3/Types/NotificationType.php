@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText100NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
 
 /**
  * Értesítés.
@@ -17,13 +18,13 @@ final readonly class NotificationType extends BaseType
         /**
          * @var string Értesítés kód.
          */
-        #[StringValidation(minLength: 1, maxLength: 100)]
+        #[SimpleText100NotBlankTypeValidation]
         public string $notificationCode,
 
         /**
          * @var string Értesítés szöveg.
          */
-        #[StringValidation(minLength: 1, maxLength: 1024)]
+        #[SimpleText1024NotBlankTypeValidation]
         public string $notificationText,
     ) {
         parent::__construct();

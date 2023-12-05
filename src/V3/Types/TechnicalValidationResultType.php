@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText100NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\TechnicalResultCodeType;
 
 /**
@@ -24,15 +25,15 @@ final readonly class TechnicalValidationResultType extends BaseType
         /**
          * @var ?string Validációs hibakód.
          */
+        #[SimpleText100NotBlankTypeValidation]
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 0, maxLength: 100)]
         public ?string $validationErrorCode = null,
 
         /**
          * @var ?string Feldolgozási üzenet.
          */
+        #[SimpleText1024NotBlankTypeValidation]
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 0, maxLength: 1024)]
         public ?string $message = null,
     ) {
         parent::__construct();

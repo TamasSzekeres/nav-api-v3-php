@@ -7,7 +7,8 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use JMS\Serializer\Annotation\XmlAttribute;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlValue;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 
 /**
  * Kriptográfiai metódust leíró típus.
@@ -20,11 +21,11 @@ final readonly class CryptoType extends BaseType
     public const SHA3_512 = 'SHA3-512';
 
     public function __construct(
-        #[StringValidation(minLength: 1, maxLength: 50)]
+        #[SimpleText50NotBlankTypeValidation]
         #[XmlAttribute]
         public string $cryptoType,
 
-        #[StringValidation(minLength: 1, maxLength: 512)]
+        #[SimpleText512NotBlankTypeValidation]
         #[XmlValue]
         #[XmlElement(cdata: false)]
         public string $hash,

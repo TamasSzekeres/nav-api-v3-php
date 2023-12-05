@@ -8,7 +8,8 @@ use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\AtomicStringType15Validation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\EntityIdTypeValidation;
 
 /**
  * A kérés tranzakcionális adatai.
@@ -21,7 +22,7 @@ readonly class BasicHeaderType extends BaseType
         /**
          * @var string A kérés/válasz azonosítója, minden üzenetváltásnál - adószámonként - egyedi.
          */
-        #[StringValidation(minLength: 1, maxLength: 30, pattern: "[+a-zA-Z0-9_]{1,30}")]
+        #[EntityIdTypeValidation]
         #[XmlElement(cdata: false, namespace: "http://schemas.nav.gov.hu/NTCA/1.0/common")]
         public string $requestId,
 
@@ -35,7 +36,7 @@ readonly class BasicHeaderType extends BaseType
         /**
          * @var string A kérés/válasz verziószáma, hogy a hívó melyik interfész verzió szerint küld adatot és várja a választ.
          */
-        #[StringValidation(minLength: 1, maxLength: 15)]
+        #[AtomicStringType15Validation]
         #[XmlElement(cdata: false, namespace: "http://schemas.nav.gov.hu/NTCA/1.0/common")]
         public string $requestVersion,
 
@@ -43,7 +44,7 @@ readonly class BasicHeaderType extends BaseType
          * @var string|null A header verziószáma.
          */
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 0, maxLength: 15)]
+        #[AtomicStringType15Validation]
         #[XmlElement(cdata: false, namespace: "http://schemas.nav.gov.hu/NTCA/1.0/common")]
         public ?string $headerVersion = null,
     ) {

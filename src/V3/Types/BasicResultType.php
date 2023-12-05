@@ -7,7 +7,9 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlList;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 
 /**
@@ -27,19 +29,20 @@ readonly class BasicResultType extends BaseType
          * @var ?string A feldolgozási hibakód.
          */
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public ?string $errorCode = null,
 
         /**
          * @var ?string Feldolgozási üzenet.
          */
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 1, maxLength: 1024, pattern: ".*[^\s].*")]
+        #[SimpleText1024NotBlankTypeValidation]
         public ?string $message = null,
 
         /**
          * @var array<int, NotificationType> Egyéb értesítések.
          */
+        #[ArrayValidation(itemType: NotificationType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\NotificationType>')]
         #[XmlList(entry: 'notification', inline: true)]

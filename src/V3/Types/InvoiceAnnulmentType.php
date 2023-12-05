@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentCodeType;
 
@@ -26,6 +27,7 @@ final readonly class InvoiceAnnulmentType extends BaseType
         /**
          * @var DateTimeImmutable A technikai érvénytelenítés időbélyege a forrásrendszerben UTC idő szerint.
          */
+        #[InvoiceTimestampTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
         public DateTimeImmutable $annulmentTimestamp,
 
