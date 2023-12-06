@@ -1,7 +1,9 @@
 <?php
 
 use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation;
 use LightSideSoftware\NavApi\V3\Types\TaxNumberType;
+use LightSideSoftware\NavApi\V3\Types\Validation\PropertyValidatorInterface;
 
 it('returns no error for null array', function () {
     $arrayValidation = new ArrayValidation();
@@ -40,6 +42,19 @@ test('array item count and type', function (
         new ArrayValidation(itemType: TaxNumberType::class),
         true,
     ],
+]);
+
+test('array item validation', function (
+    array $array,
+    PropertyValidatorInterface $itemValidation,
+    bool $hasError
+) {
+    $validation = new ArrayValidation(itemValidation: $itemValidation);
+
+    expect($validation->validateProperty('array', $array)->hasErrors())->toBe($hasError);
+})->with([
+    [[1, 2], new IntegerValidation(minInclusive: 1, maxInclusive: 2), false],
+    [[3, 4], new IntegerValidation(minInclusive: 1, maxInclusive: 2), true],
 ]);
 
 it('throws exception because of invalid arguments', function (?int $minItems, ?int $maxItems) {
