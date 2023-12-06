@@ -11,8 +11,8 @@ use LightSideSoftware\NavApi\V3\Types\Validation\ErrorBag;
 use LightSideSoftware\NavApi\V3\Types\Validation\PropertyValidatorInterface;
 
 use function get_defined_vars;
-use function preg_match;
-use function strlen;
+use function mb_ereg_match;
+use function mb_strlen;
 
 /**
  * @Annotation
@@ -54,19 +54,18 @@ class StringValidation implements PropertyValidatorInterface
             return $errors;
         }
 
-        $length = strlen($value);
+        $length = mb_strlen($value);
 
         if ($length < $this->minLength) {
             $errors->addError($name, "{$name} tulajdondágnak legalább {$this->minLength} karakter hosszúnak kell lennie.");
         }
-
 
         if ($length > $this->maxLength) {
             $errors->addError($name, "{$name} tulajdondágnak legfeljebb {$this->maxLength} karakter hosszúnak kell lennie.");
         }
 
         if ($this->pattern) {
-            if (preg_match("/^{$this->pattern}$/", $value, $matches) !== 1) {
+            if (!mb_ereg_match("^{$this->pattern}$", $value)) {
                 $errors->addError($name, "{$name} tulajdondágnak értéke nem illeszkedik a megadott kifjezésre.");
             }
         }

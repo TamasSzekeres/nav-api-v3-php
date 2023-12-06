@@ -13,6 +13,7 @@ use LightSideSoftware\NavApi\V3\Types\Validation\PropertyValidatorInterface;
 use function explode;
 use function get_defined_vars;
 use function gettype;
+use function is_integer;
 use function is_null;
 use function strlen;
 use function strval;
@@ -38,19 +39,19 @@ class FloatValidation implements PropertyValidatorInterface
     ) {
         $this->loadAnnotationParameters(get_defined_vars());
 
-        if ($this->minExclusive && $this->maxExclusive && ($this->minExclusive > $this->maxExclusive)) {
+        if (!is_null($this->minExclusive) && $this->maxExclusive && ($this->minExclusive > $this->maxExclusive)) {
             throw new InvalidArgumentException('"minExclusive" paraméter nem lehet nagyobb mint "maxExclusive" paraméter');
         }
 
-        if ($this->minInclusive && $this->maxInclusive && ($this->minInclusive > $this->maxInclusive)) {
+        if (!is_null($this->minInclusive) && $this->maxInclusive && ($this->minInclusive > $this->maxInclusive)) {
             throw new InvalidArgumentException('"minInclusive" paraméter nem lehet nagyobb mint "maxInclusive" paraméter');
         }
 
-        if ($this->totalDigits && ($this->totalDigits <= 0)) {
+        if (is_integer($this->totalDigits) && ($this->totalDigits <= 0)) {
             throw new InvalidArgumentException('totalDigits paraméternek 0-nál nagyobbnak kell lennie.');
         }
 
-        if ($this->fractionDigits && ($this->fractionDigits <= 0)) {
+        if (is_integer($this->fractionDigits) && ($this->fractionDigits <= 0)) {
             throw new InvalidArgumentException('fractionDigits paraméternek 0-nál nagyobbnak kell lennie.');
         }
     }

@@ -22,7 +22,7 @@ final class BankAccountNumberTypeValidation extends StringValidation
         parent::__construct(
             minLength: 15,
             maxLength: 34,
-            pattern: '[0-9]{8}[-][0-9]{8}[-][0-9]{8}|[0-9]{8}[-][0-9]{8}|[A-Z]{2}[0-9]{2}[0-9A-Za-z]{11,30}',
+            pattern: '([0-9]{8}[-][0-9]{8}[-][0-9]{8}|[0-9]{8}[-][0-9]{8}|[A-Z]{2}[0-9]{2}[0-9A-Za-z]{11,30})',
         );
     }
 }
