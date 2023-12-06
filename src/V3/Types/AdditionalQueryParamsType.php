@@ -2,53 +2,74 @@
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QueryNameTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType;
+use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType;
+use LightSideSoftware\NavApi\V3\Types\Enums\PaymentMethodType;
+use LightSideSoftware\NavApi\V3\Types\Enums\SourceType;
+
 /**
  * A számla lekérdezés kiegészítő paraméterei.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class AdditionalQueryParamsType extends BaseType
 {
     public function __construct(
         /**
-         * @var string A számla kiállítójának vagy vevőjének adószáma (a keresési feltétel az invoiceDirection tag értékétől függ).
+         * @var ?string A számla kiállítójának vagy vevőjének adószáma (a keresési feltétel az invoiceDirection tag értékétől függ).
          */
-        public string $taxNumber,
+        #[SkipWhenEmpty]
+        #[TaxPayerIdTypeValidation]
+        public ?string $taxNumber = null,
 
         /**
-         * @var string A számla kiállítójának vagy vevőjének csoport tag adószáma (a keresési feltétel az invoiceDirection tag értékétől függ).
+         * @var ?string A számla kiállítójának vagy vevőjének csoport tag adószáma (a keresési feltétel az invoiceDirection tag értékétől függ).
          */
-        public string $groupMemberTaxNumber,
+        #[SkipWhenEmpty]
+        #[TaxPayerIdTypeValidation]
+        public ?string $groupMemberTaxNumber = null,
 
         /**
-         * @var string A számla kiállítójának vagy vevőjének keresőparamétere szó eleji egyezőségre (a keresési feltétel az invoiceDirection tag értékétől függ).
+         * @var ?string A számla kiállítójának vagy vevőjének keresőparamétere szó eleji egyezőségre (a keresési feltétel az invoiceDirection tag értékétől függ).
          */
-        public string $name,
+        #[QueryNameTypeValidation]
+        #[SkipWhenEmpty]
+        public ?string $name = null,
 
         /**
-         * @var string A számla típusa.
+         * @var ?InvoiceCategoryType A számla típusa.
          */
-        public string $invoiceCategory,
+        #[SkipWhenEmpty]
+        public ?InvoiceCategoryType $invoiceCategory = null,
 
         /**
-         * @var string Fizetés módja.
+         * @var ?string Fizetés módja.
          */
-        public string $paymentMethod,
+        #[SkipWhenEmpty]
+        public ?PaymentMethodType $paymentMethod = null,
 
         /**
-         * @var string A számla megjelenési formája.
+         * @var ?InvoiceAppearanceType A számla megjelenési formája.
          */
-        public string $invoiceAppearance,
+        #[SkipWhenEmpty]
+        public ?InvoiceAppearanceType $invoiceAppearance = null,
 
         /**
-         * @var string Az adatszolgáltatás forrása.
+         * @var ?SourceType Az adatszolgáltatás forrása.
          */
-        public string $source,
+        #[SkipWhenEmpty]
+        public ?SourceType $source = null,
 
         /**
-         * @var string A számla pénzneme.
+         * @var ?string A számla pénzneme.
          */
-        public string $currency,
+        #[CurrencyTypeValidation]
+        #[SkipWhenEmpty]
+        public ?string $currency = null,
     ) {
         parent::__construct();
     }

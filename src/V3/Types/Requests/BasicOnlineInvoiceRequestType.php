@@ -20,7 +20,7 @@ abstract readonly class BasicOnlineInvoiceRequestType extends BasicRequestType
         UserHeaderType $user,
 
         /**
-         * @var SoftwareType
+         * @var SoftwareType A számlázóprogram adatai.
          */
         public SoftwareType $software,
     ) {

@@ -2,10 +2,13 @@
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceIndexTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Enums\ManageAnnulmentOperationType;
+
 /**
  * A kéréshez tartozó technikai érvénytelenítő művelet.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class AnnulmentOperationType extends BaseType
 {
@@ -13,12 +16,13 @@ final readonly class AnnulmentOperationType extends BaseType
         /**
          * @var int A technikai érvénytelenítés sorszáma a kérésen belül.
          */
+        #[InvoiceIndexTypeValidation]
         public int $index,
 
         /**
-         * @var string A kért technikai érvénytelenítés művelet típusa.
+         * @var ManageAnnulmentOperationType A kért technikai érvénytelenítés művelet típusa.
          */
-        public string $annulmentOperation,
+        public ManageAnnulmentOperationType $annulmentOperation,
 
         /**
          * @var string Technikai érvénytelenítés adatok BASE64-ben kódolt tartalma.
