@@ -33,6 +33,7 @@ class ArrayValidation implements PropertyValidatorInterface
         public ?int $minItems = null,
         public ?int $maxItems = null,
         public ?string $itemType = null,
+        public ?PropertyValidatorInterface $itemValidation = null,
     ) {
         $this->loadAnnotationParameters(get_defined_vars());
 
@@ -83,12 +84,20 @@ class ArrayValidation implements PropertyValidatorInterface
         }
 
         if ($this->itemType && (strlen($this->itemType) > 0)) {
-            foreach ($value as $item) {
+            foreach ($value as $index => $item) {
                 if (gettype($item) !== $this->itemType
                     && !is_a($item, $this->itemType)) {
-                    $errors->addError($name, "{$name} tömb elemének {$this->itemType} típusúnak kell lennie.");
+                    $errors->addError($name, "{$name} tömb {$index}. elemének {$this->itemType} típusúnak kell lennie.");
                 }
             }
+        }
+
+        if ($this->itemValidation instanceof PropertyValidatorInterface) {
+            $itemErrors = new ErrorBag();
+            foreach ($value as $index => $item) {
+                $itemErrors = $this->itemValidation->validateProperty("{$name}.{$index}", $item);
+            }
+            $errors = $errors->merge($itemErrors);
         }
 
         return $errors;
