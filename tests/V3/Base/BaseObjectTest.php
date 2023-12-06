@@ -3,7 +3,7 @@
 use LightSideSoftware\NavApi\V3\Types\TaxNumberType;
 
 beforeEach(function () {
-    $this->object = new TaxNumberType('12345678', '1', '5');
+    $this->object = new TaxNumberType('12345678', '1', '53');
 });
 
 test('get attribute names', function () {
@@ -20,7 +20,7 @@ test('convert object to array', function () {
     $expectedArray = [
         'taxpayerId' => '12345678',
         'vatCode' => '1',
-        'countyCode' => '5',
+        'countyCode' => '53',
     ];
 
     expect($this->object->toArray())->toBe($expectedArray);
