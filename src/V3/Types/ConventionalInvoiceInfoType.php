@@ -7,6 +7,9 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\EkaerIdTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText100NotBlankTypeValidation;
 
 /**
  * A számlafeldolgozást segítő, egyezményesen nevesített egyéb adatok.
@@ -19,6 +22,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Megrendelésszám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'orderNumber', inline: false)]
@@ -27,6 +31,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Szállítólevél szám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'deliveryNote', inline: false)]
@@ -35,6 +40,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Szállítási dátum(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'shippingDate', inline: false)]
@@ -43,6 +49,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Szerződésszám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'contractNumber', inline: false)]
@@ -51,6 +58,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Az eladó vállalati kódja(i).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'supplierCompanyCode', inline: false)]
@@ -59,6 +67,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> A vevő vállalati kódja(i).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'customerCompanyCode', inline: false)]
@@ -67,6 +76,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Beszállító kód(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'dealerCode', inline: false)]
@@ -75,6 +85,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Költséghely(ek).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'costCenter', inline: false)]
@@ -83,6 +94,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Projektszám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'projectNumber', inline: false)]
@@ -91,6 +103,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Főkönyvi számlaszám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'generalLedgerAccountNumber', inline: false)]
@@ -99,14 +112,25 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Kiállítói globális helyazonosító szám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'glnNumber', inline: false)]
         public array $glnNumbersSupplier = [],
 
         /**
+         * @var array<int, string> Vevői globális helyazonosító szám(ok).
+         */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
+        #[SkipWhenEmpty]
+        #[Type('array<string>')]
+        #[XmlList(entry: 'glnNumber', inline: false)]
+        public array $glnNumbersCustomer = [],
+
+        /**
          * @var array<int, string> Anyagszám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'materialNumber', inline: false)]
@@ -115,6 +139,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         /**
          * @var array<int, string> Cikkszám(ok).
          */
+        #[ArrayValidation(itemValidation: new SimpleText100NotBlankTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'itemNumber', inline: false)]
@@ -125,6 +150,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
          */
         #[SkipWhenEmpty]
         #[Type('array<string>')]
+        #[ArrayValidation(itemValidation: new EkaerIdTypeValidation())]
         #[XmlList(entry: 'ekaerId', inline: false)]
         public array $ekaerIds = [],
     ) {

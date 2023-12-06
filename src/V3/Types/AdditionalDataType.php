@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\DataNameTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 
 /**
  * További adat leírására szolgáló típus.
@@ -17,19 +19,19 @@ final readonly class AdditionalDataType extends BaseType
         /**
          * @var string Az adatmező egyedi azonosítója.
          */
-        #[StringValidation(minLength: 1, maxLength: 255, pattern: "[A-Z][0-9]{5}[_][_A-Z0-9]{1,249}")]
+        #[DataNameTypeValidation]
         public string $dataName,
 
         /**
          * @var string Az adatmező tartalmának szöveges leírása
          */
-        #[StringValidation(minLength: 1, maxLength: 255, pattern: ".*[^\s].*")]
+        #[SimpleText255NotBlankTypeValidation]
         public string $dataDescription,
 
         /**
          * @var string Az adat értéke.
          */
-        #[StringValidation(minLength: 1, maxLength: 512, pattern: ".*[^\s].*")]
+        #[SimpleText512NotBlankTypeValidation]
         public string $dataValue,
     ) {
         parent::__construct();

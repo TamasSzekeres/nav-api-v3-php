@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 
 /**
  * A számla összesítő bruttó adatai.
@@ -17,13 +17,13 @@ final readonly class SummaryGrossDataType extends BaseType
         /**
          * @var float A számla bruttó összege a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $invoiceGrossAmount,
 
         /**
          * @var float A számla bruttó összege forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $invoiceGrossAmountHUF,
     ) {
         parent::__construct();

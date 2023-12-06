@@ -7,7 +7,10 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType;
@@ -29,19 +32,20 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var DateTimeImmutable Teljesítés dátuma (ha nem szerepel a számlán, akkor azonos a számla keltével) - ÁFA tv. 169. § g).
          */
+        #[InvoiceDateTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public DateTimeImmutable $invoiceDeliveryDate,
 
         /**
          * @var string A számla pénzneme az ISO 4217 szabvány szerint.
          */
-        #[StringValidation(minLength: 3, maxLength: 3, pattern: "[A-Z]{3}")]
+        #[CurrencyTypeValidation]
         public string $currencyCode,
 
         /**
          * @var float HUF-tól különböző pénznem esetén az alkalmazott árfolyam: egy egység értéke HUF-ban.
          */
-        #[FloatValidation(minInclusive: 0, totalDigits: 14, fractionDigits: 6)]
+        #[ExchangeRateTypeValidation]
         public float $exchangeRate,
 
         /**
@@ -52,6 +56,7 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var ?DateTimeImmutable Amennyiben a számla egy időszakra vonatkozik, akkor az időszak első napja.
          */
+        #[InvoiceDateTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public ?DateTimeImmutable $invoiceDeliveryPeriodStart = null,
@@ -59,6 +64,7 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var ?DateTimeImmutable Amennyiben a számla egy időszakra vonatkozik, akkor az időszak utolsó napja.
          */
+        #[InvoiceDateTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public ?DateTimeImmutable $invoiceDeliveryPeriodEnd = null,
@@ -66,6 +72,7 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var ?DateTimeImmutable Számviteli teljesítés dátuma. Időszak esetén az időszak utolsó napja.
          */
+        #[InvoiceDateTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public ?DateTimeImmutable $invoiceAccountingDeliveryDate = null,
@@ -105,6 +112,7 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var ?DateTimeImmutable Fizetési határidő.
          */
+        #[InvoiceDateTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public ?DateTimeImmutable $paymentDate = null,

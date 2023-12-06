@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\RateTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * Adóalap és felszámított adó eltérésének adatai.
@@ -18,13 +18,13 @@ final readonly class VatAmountMismatchType extends BaseType
         /**
          * @var float Adómérték, adótartalom.
          */
-        #[FloatValidation(minInclusive: 0, maxInclusive: 1, totalDigits: 5, fractionDigits: 4)]
+        #[RateTypeValidation]
         public float $vatRate,
 
         /**
          * @var string Az eset leírása kóddal.
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public string $case,
     ) {
         parent::__construct();

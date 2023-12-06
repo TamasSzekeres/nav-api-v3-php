@@ -7,8 +7,9 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\PlateNumberTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 
 /**
  * Gázolaj adózottan történő beszerzésének adatai – 45/2016 (XI. 29.) NGM rendelet 75. § (1) a).
@@ -26,19 +27,20 @@ final readonly class DieselOilPurchaseType extends BaseType
         /**
          * @var DateTimeImmutable Gázolaj beszerzés dátuma.
          */
+        #[InvoiceDateTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public DateTimeImmutable $purchaseDate,
 
         /**
          * @var string Kereskedelmi jármű forgalmi rendszáma (csak betűk és számok).
          */
-        #[StringValidation(minLength: 2, maxLength: 30, pattern: "[A-Z0-9ÖŐÜŰ]{2,30}")]
+        #[PlateNumberTypeValidation]
         public string $vehicleRegistrationNumber,
 
         /**
          * @var ?float Gépi bérmunka-szolgáltatás során felhasznált gázolaj mennyisége literben – Jöt. 117. § (2).
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         #[SkipWhenEmpty]
         public ?float $dieselOilQuantity = null,
     ) {

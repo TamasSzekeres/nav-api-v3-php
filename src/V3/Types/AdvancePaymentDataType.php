@@ -6,8 +6,9 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * Előlegfizetéshez kapcsolódó adatok.
@@ -20,19 +21,20 @@ final readonly class AdvancePaymentDataType extends BaseType
         /**
          * @var string Az előlegszámlának a sorszáma, amelyben az előlegfizetés történt.
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public string $advanceOriginalInvoice,
 
         /**
          * @var DateTimeImmutable Az előleg fizetésének dátuma.
          */
         #[Type("DateTimeImmutable<'Y-m-d'>")]
+        #[InvoiceDateTypeValidation]
         public DateTimeImmutable $advancePaymentDate,
 
         /**
          * @var float Az előlegfizetés során alkalmazott árfolyam.
          */
-        #[FloatValidation(minExclusive: 0, totalDigits: 14, fractionDigits: 6)]
+        #[ExchangeRateTypeValidation]
         public float $advanceExchangeRate,
     ) {
         parent::__construct();

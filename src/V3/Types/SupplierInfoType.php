@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 
 /**
  * A szállító (eladó) adatai.
@@ -23,7 +26,7 @@ final readonly class SupplierInfoType extends BaseType
         /**
          * @var string Az eladó (szállító) neve.
          */
-        #[StringValidation(minLength: 1, maxLength: 512)]
+        #[SimpleText512NotBlankTypeValidation]
         public string $supplierName,
 
         /**
@@ -40,15 +43,15 @@ final readonly class SupplierInfoType extends BaseType
         /**
          * @var ?string Közösségi adószám.
          */
+        #[CommunityVatNumberTypeValidation]
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 4, maxLength: 15, pattern: "[A-Z]{2}[0-9A-Z]{2,13}")]
         public ?string $communityVatNumber = null,
 
         /**
          * @var ?string Az eladó (szállító) bankszámlaszáma.
          */
+        #[BankAccountNumberTypeValidation]
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 15, maxLength: 34, pattern: "[0-9]{8}[-][0-9]{8}[-][0-9]{8}|[0-9]{8}[-][0-9]{8}|[A-Z]{2}[0-9]{2}[0-9A-Za-z]{11,30}")]
         public ?string $supplierBankAccountNumber = null,
 
         /**
@@ -59,8 +62,8 @@ final readonly class SupplierInfoType extends BaseType
         /**
          * @var ?string Az eladó adóraktári engedélyének vagy jövedéki engedélyének száma (2016. évi LXVIII. tv.).
          */
+        #[SimpleText50NotBlankTypeValidation]
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
         public ?string $exciseLicenceNum = null,
     ) {
         parent::__construct();

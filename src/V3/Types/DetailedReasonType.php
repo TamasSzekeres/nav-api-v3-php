@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText200NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * Mentesség, kivétel részletes indokolása.
@@ -17,13 +18,13 @@ final readonly class DetailedReasonType extends BaseType
         /**
          * @var string Az eset leírása kóddal.
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public string $case,
 
         /**
          * @var string Az eset leírása szöveggel.
          */
-        #[StringValidation(minLength: 1, maxLength: 200, pattern: ".*[^\s].*")]
+        #[SimpleText200NotBlankTypeValidation]
         public string $reason,
     ) {
         parent::__construct();

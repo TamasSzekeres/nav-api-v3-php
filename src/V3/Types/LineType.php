@@ -7,9 +7,12 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlList;
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\LineNatureIndicatorType;
 use LightSideSoftware\NavApi\V3\Types\Enums\UnitOfMeasureType;
 
@@ -24,8 +27,13 @@ final readonly class LineType extends BaseType
         /**
          * @var int A tétel sorszáma.
          */
-        #[IntegerValidation(minInclusive: 1)]
+        #[LineNumberTypeValidation]
         public int $lineNumber,
+
+        /**
+         * @var bool Értéke true, ha a tétel mennyiségi egysége természetes mértékegységben kifejezhető.
+         */
+        public bool $lineExpressionIndicator,
 
         /**
          * @var ?LineModificationReferenceType Módosításról történő adatszolgáltatás esetén a tételsor módosítás jellegének jelölése.
@@ -36,6 +44,7 @@ final readonly class LineType extends BaseType
         /**
          * @var array<int, int> Hivatkozások kapcsolódó tételekre, ha ez az ÁFA törvény alapján szükséges.
          */
+        #[ArrayValidation(itemValidation: new LineNumberTypeValidation())]
         #[SkipWhenEmpty]
         #[Type('array<int>')]
         public array $referencesToOtherLines = [],
@@ -49,16 +58,11 @@ final readonly class LineType extends BaseType
         /**
          * @var array<int, ProductCodeType> Termékkódok.
          */
+        #[ArrayValidation(itemType: ProductCodeType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\ProductCodeType>')]
         #[XmlList(entry: 'productCode', inline: true)]
         public array $productCodes = [],
-
-        /**
-         * @var ?bool Értéke true, ha a tétel mennyiségi egysége természetes mértékegységben kifejezhető.
-         */
-        #[SkipWhenEmpty]
-        public ?bool $lineExpressionIndicator = null,
 
         /**
          * @var ?LineNatureIndicatorType Adott tételsor termékértékesítés vagy szolgáltatás nyújtás jellegének jelzése.
@@ -69,14 +73,14 @@ final readonly class LineType extends BaseType
         /**
          * @var ?string A termék vagy szolgáltatás megnevezése
          */
+        #[SimpleText512NotBlankTypeValidation]
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 1, maxLength: 512, pattern: ".*[^\s].*")]
         public ?string $lineDescription = null,
 
         /**
          * @var ?float Mennyiség.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         #[SkipWhenEmpty]
         public ?float $quantity = null,
 
@@ -89,20 +93,20 @@ final readonly class LineType extends BaseType
         /**
          * @var ?string A számlán szereplő mennyiségi egység literális kifejezése.
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public ?string $unitOfMeasureOwn = null,
 
         /**
          * @var ?float Egységár a számla pénznemében. Egyszerűsített számla esetén bruttó, egyéb esetben nettó egységár.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         #[SkipWhenEmpty]
         public ?float $unitPrice = null,
 
         /**
          * @var ?float Egységár forintban.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         #[SkipWhenEmpty]
         public ?float $unitPriceHUF = null,
 
@@ -157,7 +161,7 @@ final readonly class LineType extends BaseType
         /**
          * @var ?float Földgáz, villamos energia, szén jövedéki adója forintban - Jöt. 118. § (2).
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         #[SkipWhenEmpty]
         public ?float $GPCExcise = null,
 

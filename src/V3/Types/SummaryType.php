@@ -13,18 +13,20 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  */
 final readonly class SummaryType extends BaseType
 {
-    public function __construct(
-        /**
-         * @var ?SummaryNormalType Számla összesítés (nem egyszerűsített számla esetén).
-         */
-        #[SkipWhenEmpty]
-        public ?SummaryNormalType $summaryNormal = null,
+    /**
+     * @var ?SummaryNormalType Számla összesítés (nem egyszerűsített számla esetén).
+     */
+    #[SkipWhenEmpty]
+    public ?SummaryNormalType $summaryNormal;
 
-        /**
-         * @var ?SummarySimplifiedType Egyszerűsített számla összesítés.
-         */
-        #[SkipWhenEmpty]
-        public ?SummarySimplifiedType $summarySimplified = null,
+    /**
+     * @var ?SummarySimplifiedType Egyszerűsített számla összesítés.
+     */
+    #[SkipWhenEmpty]
+    public ?SummarySimplifiedType $summarySimplified;
+
+    public function __construct(
+        SummaryNormalType|SummarySimplifiedType $summary,
 
         /**
          * @var ?SummaryGrossDataType A számla összesítő bruttó adatai.
@@ -32,6 +34,9 @@ final readonly class SummaryType extends BaseType
         #[SkipWhenEmpty]
         public ?SummaryGrossDataType $summaryGrossData = null,
     ) {
+        $this->summaryNormal = ($summary instanceof SummaryNormalType) ? $summary : null;
+        $this->summarySimplified = ($summary instanceof SummarySimplifiedType) ? $summary : null;
+
         parent::__construct();
     }
 }

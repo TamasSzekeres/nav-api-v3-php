@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ProductFeeMeasuringUnitType;
 
 /**
@@ -23,7 +24,7 @@ final readonly class ProductFeeDataType extends BaseType
         /**
          * @var float A termékdíjjal érintett termék mennyisége.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         public float $productFeeQuantity,
 
         /**
@@ -34,13 +35,13 @@ final readonly class ProductFeeDataType extends BaseType
         /**
          * @var float A termékdíj díjtétele (HUF/egység).
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $productFeeRate,
 
         /**
          * @var float Termékdíj összege forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $productFeeAmount,
     ) {
         parent::__construct();

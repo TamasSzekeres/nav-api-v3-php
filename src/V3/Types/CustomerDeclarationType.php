@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ProductStreamType;
 
 /**
@@ -23,7 +24,8 @@ final readonly class CustomerDeclarationType extends BaseType
         /**
          * @var ?float Termékdíj köteles termék tömege kilogrammban.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[SkipWhenEmpty]
+        #[QuantityTypeValidation]
         public ?float $productFeeWeight = null,
     ) {
         parent::__construct();

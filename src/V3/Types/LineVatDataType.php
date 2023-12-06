@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 
 /**
  * Tétel ÁFA adatok.
@@ -17,13 +17,13 @@ final readonly class LineVatDataType extends BaseType
         /**
          * @var float Tétel ÁFA összege a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $lineVatAmount,
 
         /**
          * @var float Tétel ÁFA összege forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $lineVatAmountHUF,
     ) {
         parent::__construct();

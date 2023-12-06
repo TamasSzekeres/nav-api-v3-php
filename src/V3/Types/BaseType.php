@@ -12,6 +12,11 @@ use LightSideSoftware\NavApi\V3\Base\BaseObject;
 use LightSideSoftware\NavApi\V3\Exceptions\ValidationException;
 use LightSideSoftware\NavApi\V3\Serialization\DateTimeHandler;
 use LightSideSoftware\NavApi\V3\Serialization\EnumHandler;
+use LightSideSoftware\NavApi\V3\Types\Validation\ErrorBag;
+use LightSideSoftware\NavApi\V3\Types\Validation\PropertyValidatorInterface;
+use ReflectionAttribute;
+use ReflectionClass;
+use ReflectionProperty;
 
 /**
  * XML-transzformációs típusok közös ősosztálya.
@@ -35,14 +40,33 @@ abstract readonly class BaseType extends BaseObject
     {
         $validationResult = $this->validateByAttributes();
 
-        if ($validationResult !== true) {
+        if ($validationResult->hasErrors()) {
             throw new ValidationException('Hiba az attribútumok érvényesítése során.', $validationResult);
         }
     }
 
-    protected function validateByAttributes(): array|true
+    protected function validateByAttributes(): ErrorBag
     {
-        return true;
+        $reflection = new ReflectionClass($this);
+        $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC);
+
+        $errors = new ErrorBag();
+
+        foreach ($properties as $property) {
+            $attributes = $property->getAttributes();
+            /* @var $attributes ReflectionAttribute */
+            foreach ($attributes as $attribute) {
+                $instance = $attribute->newInstance();
+                $name = $property->getName();
+                $value = $property->getValue($this);
+
+                if ($instance instanceof PropertyValidatorInterface) {
+                    $errors = $errors->merge($instance->validateProperty($name, $value));
+                }
+            }
+        }
+
+        return $errors;
     }
 
     public static function fromXml(string $xml): static

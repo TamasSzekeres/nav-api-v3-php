@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 
 /**
  * Szárazföldi közlekedési eszköz további adatai.
@@ -17,19 +17,19 @@ final readonly class VehicleType extends BaseType
         /**
          * @var float Hengerűrtartalom köbcentiméterben.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         public float $engineCapacity,
 
         /**
          * @var float Teljesítmény kW-ban.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         public float $enginePower,
 
         /**
          * @var float Futott kilométerek száma.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         public float $kms,
     ) {
         parent::__construct();

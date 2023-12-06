@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 
 /**
  * Tétel nettó adatok.
@@ -18,14 +18,14 @@ final readonly class LineNetAmountDataType extends BaseType
          * @var float Tétel nettó összege a számla pénznemében.
          * ÁFA tartalmú különbözeti adózás esetén az ellenérték áfa összegével csökkentett értéke a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $lineNetAmount,
 
         /**
          * @var float Tétel nettó összege forintban.
          * ÁFA tartalmú különbözeti adózás esetén az ellenérték áfa összegével csökkentett értéke forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $lineNetAmountHUF,
     ) {
         parent::__construct();

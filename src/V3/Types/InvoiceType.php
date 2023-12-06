@@ -39,6 +39,7 @@ final readonly class InvoiceType extends BaseType
         /**
          * @var ?ProductFeeSummaryType Termékdíjjal kapcsolatos összesítő adatok.
          */
+        #[SkipWhenEmpty]
         public ?ProductFeeSummaryType $productFeeSummary = null,
     ) {
         parent::__construct();

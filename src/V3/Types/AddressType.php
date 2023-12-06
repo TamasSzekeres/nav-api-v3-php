@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+
 /**
  * Cím típus, amely vagy egyszerű, vagy részletes címet tartalmaz.
  *
@@ -11,17 +13,28 @@ namespace LightSideSoftware\NavApi\V3\Types;
  */
 final readonly class AddressType extends BaseType
 {
-    public function __construct(
-        /**
-         * @var SimpleAddressType Egyszerű cím.
-         */
-        public SimpleAddressType $simpleAddress,
+    /**
+     * @var ?SimpleAddressType Egyszerű cím.
+     */
+    #[SkipWhenEmpty]
+    public ?SimpleAddressType $simpleAddress;
 
-        /**
-         * @var DetailedAddressType Részletes cím.
-         */
-        public DetailedAddressType $detailedAddress,
-    ) {
+    /**
+     * @var ?DetailedAddressType Részletes cím.
+     */
+    #[SkipWhenEmpty]
+    public ?DetailedAddressType $detailedAddress;
+
+    public function __construct(SimpleAddressType|DetailedAddressType $address)
+    {
+        if ($address instanceof SimpleAddressType) {
+            $this->simpleAddress = $address;
+            $this->detailedAddress = null;
+        } else {
+            $this->simpleAddress = null;
+            $this->detailedAddress = $address;
+        }
+
         parent::__construct();
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+
 /**
  * Előleghez kapcsolódó adatok.
  *
@@ -18,9 +20,10 @@ final readonly class AdvanceDataType extends BaseType
         public bool $advanceIndicator,
 
         /**
-         * @var AdvancePaymentDataType Előleg fizetéshez kapcsolódó adatok.
+         * @var ?AdvancePaymentDataType Előleg fizetéshez kapcsolódó adatok.
          */
-        public AdvancePaymentDataType $advancePaymentData,
+        #[SkipWhenEmpty]
+        public ?AdvancePaymentDataType $advancePaymentData = null,
     ) {
         parent::__construct();
     }

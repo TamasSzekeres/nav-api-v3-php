@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 
 /**
  * Számla összesítés (nem egyszerűsített számla esetén).
@@ -22,25 +22,25 @@ final readonly class SummaryNormalType extends BaseType
         /**
          * @var float A számla nettó összege a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $invoiceNetAmount,
 
         /**
          * @var float A számla nettó összege forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $invoiceNetAmountHUF,
 
         /**
          * @var float A számla ÁFA összege a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $invoiceVatAmount,
 
         /**
          * @var float A számla ÁFA összege forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $invoiceVatAmountHUF,
     ) {
         parent::__construct();

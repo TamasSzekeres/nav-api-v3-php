@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 
 /**
  * Adott adómértékhez tartozó nettó adatok.
@@ -17,13 +17,13 @@ final readonly class VatRateNetDataType extends BaseType
         /**
          * @var float Az adott adómértékhez tartozó értékesítés vagy szolgáltatásnyújtás nettó összege a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $vatRateNetAmount,
 
         /**
          * @var float Az adott adómértékhez tartozó értékesítés vagy szolgáltatásnyújtás nettó összege forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $vatRateNetAmountHUF,
     ) {
         parent::__construct();

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 
 /**
  * Egyszerűsített számla esetén kitöltendő tétel érték adatok.
@@ -22,13 +22,13 @@ final readonly class LineAmountsSimplifiedType extends BaseType
         /**
          * @var float Tétel bruttó értéke a számla pénznemében.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $lineGrossAmountSimplified,
 
         /**
          * @var float Tétel bruttó értéke forintban.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         public float $lineGrossAmountSimplifiedHUF,
     ) {
         parent::__construct();

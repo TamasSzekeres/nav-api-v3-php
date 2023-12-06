@@ -6,7 +6,8 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * A számla adatszolgáltatás adatai.
@@ -19,12 +20,13 @@ final readonly class InvoiceDataType extends BaseType
         /**
          * @var string Számla vagy módosító okirat sorszáma - ÁFA tv. 169. § b) vagy 170. § (1) bek. b) pont.
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public string $invoiceNumber,
 
         /**
          * @var DateTimeImmutable Számla vagy módosító okirat kelte - ÁFA tv. 169. § a), ÁFA tv. 170. § (1) bek. a).
          */
+        #[InvoiceDateTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
         public DateTimeImmutable $invoiceIssueDate,
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\LineOperationType;
 
 /**
@@ -19,7 +19,7 @@ final readonly class LineModificationReferenceType extends BaseType
          * @var int Az eredeti számla módosítással érintett tételének sorszáma (lineNumber).
          * Új tétel létrehozása esetén az új tétel sorszáma, a meglévő tételsorok számozásának folytatásaként.
          */
-        #[IntegerValidation(minInclusive: 1)]
+        #[LineNumberTypeValidation]
         public int $lineNumberReference,
 
         /**

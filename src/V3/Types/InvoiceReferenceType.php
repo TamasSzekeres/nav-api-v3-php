@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * A módosítás vagy érvénytelenítés hivatkozási adatai.
@@ -18,7 +18,7 @@ final readonly class InvoiceReferenceType extends BaseType
         /**
          * @var string Az eredeti számla sorszáma, melyre a módosítás vonatkozik  - ÁFA tv. 170. § (1) c).
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public string $originalInvoiceNumber,
 
         /**
@@ -30,7 +30,7 @@ final readonly class InvoiceReferenceType extends BaseType
         /**
          * @var int A számlára vonatkozó módosító okirat egyedi sorszáma.
          */
-        #[IntegerValidation(minInclusive: 1)]
+        #[InvoiceUnboundedIndexTypeValidation]
         public int $modificationIndex,
     ) {
         parent::__construct();

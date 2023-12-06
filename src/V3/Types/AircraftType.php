@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 
 /**
  * Légi közlekedési eszköz.
@@ -17,7 +17,7 @@ final readonly class AircraftType extends BaseType
         /**
          * @var float Felszállási tömeg kilogrammban.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         public float $takeOffWeight,
 
         /**
@@ -28,7 +28,7 @@ final readonly class AircraftType extends BaseType
         /**
          * @var float Repült órák száma.
          */
-        #[FloatValidation(totalDigits: 22, fractionDigits: 10)]
+        #[QuantityTypeValidation]
         public float $operationHours,
     ) {
         parent::__construct();

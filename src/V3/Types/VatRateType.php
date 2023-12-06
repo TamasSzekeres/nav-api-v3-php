@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use InvalidArgumentException;
+use LightSideSoftware\NavApi\V3\Types\Annotations\RateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\MarginSchemeType;
 
 /**
@@ -16,47 +17,61 @@ final readonly class VatRateType extends BaseType
 {
     public function __construct(
         /**
-         * @var float Az alkalmazott adó mértéke - ÁFA tv. 169. § j).
+         * @var ?float Az alkalmazott adó mértéke - ÁFA tv. 169. § j).
          */
-        #[FloatValidation(minInclusive: 0, maxInclusive: 1, totalDigits: 5, fractionDigits: 4)]
-        public float $vatPercentage,
+        #[RateTypeValidation]
+        public ?float $vatPercentage = null,
 
         /**
          * @var float ÁFA tartalom egyszerűsített számla esetén.
          */
-        #[FloatValidation(minInclusive: 0, maxInclusive: 1, totalDigits: 5, fractionDigits: 4)]
-        public float $vatContent,
+        #[RateTypeValidation]
+        public ?float $vatContent = null,
 
         /**
-         * @var DetailedReasonType Az adómentesség jelölése - ÁFA tv. 169. § m)
+         * @var ?DetailedReasonType Az adómentesség jelölése - ÁFA tv. 169. § m)
          */
-        public DetailedReasonType $vatExemption,
+        public ?DetailedReasonType $vatExemption = null,
 
         /**
-         * @var DetailedReasonType Az ÁFA törvény hatályán kívüli.
+         * @var ?DetailedReasonType Az ÁFA törvény hatályán kívüli.
          */
-        public DetailedReasonType $vatOutOfScope,
+        public ?DetailedReasonType $vatOutOfScope = null,
 
         /**
-         * @var bool A belföldi fordított adózás jelölése - ÁFA tv. 142. §.
+         * @var ?bool A belföldi fordított adózás jelölése - ÁFA tv. 142. §.
          */
-        public bool $vatDomesticReverseCharge,
+        public ?bool $vatDomesticReverseCharge = null,
 
         /**
-         * @var MarginSchemeType Különbözet szerinti szabályozás jelölése - ÁFA tv. 169. § p) q).
+         * @var ?MarginSchemeType Különbözet szerinti szabályozás jelölése - ÁFA tv. 169. § p) q).
          */
-        public MarginSchemeType $marginSchemeIndicator,
+        public ?MarginSchemeType $marginSchemeIndicator = null,
 
         /**
-         * @var VatAmountMismatchType Adóalap és felszámított adó eltérésének esetei.
+         * @var ?VatAmountMismatchType Adóalap és felszámított adó eltérésének esetei.
          */
-        public VatAmountMismatchType $vatAmountMismatch,
+        public ?VatAmountMismatchType $vatAmountMismatch = null,
 
         /**
-         * @var bool Nincs felszámított áfa a 17. § alapján.
+         * @var ?bool Nincs felszámított áfa a 17. § alapján.
          */
-        public bool $noVatCharge,
+        public ?bool $noVatCharge = null,
     ) {
+        $notNullElements = array_reduce(
+            $this->toArray(),
+            static fn (int $count, mixed $value) => $count + (is_null($value) ? 0 : 1),
+            initial: 0
+        );
+
+        if ($notNullElements != 1) {
+            throw new InvalidArgumentException("A konstruktor paraméterk közül csak egyet lehet megadni.");
+        }
+
+        if (is_bool($this->noVatCharge) && ($this->noVatCharge !== true)) {
+            throw new InvalidArgumentException('A "noVatCharge" konstruktor paraméternek fixen true-nak kell lennie.');
+        }
+
         parent::__construct();
     }
 }

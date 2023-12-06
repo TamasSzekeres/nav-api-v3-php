@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValidation;
 
 /**
  * Kötegelt módosító okirat adatai.
@@ -17,7 +17,7 @@ readonly final class BatchInvoiceType extends BaseType
         /**
          * @var int A módosító okirat sorszáma a kötegen belül.
          */
-        #[IntegerValidation(minInclusive: 1)]
+        #[InvoiceUnboundedIndexTypeValidation]
         public int $batchIndex,
 
         /**

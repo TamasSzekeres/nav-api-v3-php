@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\CountyCodeTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\VatCodeTypeValidation;
 
 /**
  * Adószám típus.
@@ -18,21 +20,21 @@ readonly class TaxNumberType extends BaseType
         /**
          * @var string Az adóalany adó törzsszáma. Csoportos adóalany esetén csoportazonosító szám.
          */
-        #[StringValidation(minLength: 8, maxLength: 8, pattern: "[0-9]{8}")]
+        #[TaxPayerIdTypeValidation]
         public string $taxpayerId,
 
         /**
          * @var ?string ÁFA kód az adóalanyiság típusának jelzésére. Egy számjegy.
          */
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 1, maxLength: 1, pattern: "[0-5]{1}")]
+        #[VatCodeTypeValidation]
         public ?string $vatCode = null,
 
         /**
          * @var ?string Megyekód, két számjegy.
          */
         #[SkipWhenEmpty]
-        #[StringValidation(minLength: 2, maxLength: 2, pattern: "[0-9]{2}")]
+        #[CountyCodeTypeValidation]
         public ?string $countyCode = null,
     ) {
         parent::__construct();

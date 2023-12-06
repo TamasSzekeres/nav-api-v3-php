@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\TakeoverType;
 
 /**
@@ -24,7 +24,7 @@ final readonly class ProductFeeTakeoverDataType extends BaseType
         /**
          * @var ?float Az átvállalt termékdíj összege forintban, ha a vevő vállalja át az eladó termékdíj-kötelezettségét.
          */
-        #[FloatValidation(totalDigits: 18, fractionDigits: 2)]
+        #[MonetaryTypeValidation]
         #[SkipWhenEmpty]
         public ?float $takeoverAmount = null,
     ) {

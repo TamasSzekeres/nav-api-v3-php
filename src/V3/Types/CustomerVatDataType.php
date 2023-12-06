@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * A vevő ÁFA alanyisági adatai.
@@ -23,13 +24,13 @@ final readonly class CustomerVatDataType extends BaseType
         /**
          * @var string Közösségi adószám.
          */
-        #[StringValidation(minLength: 4, maxLength: 15, pattern: "[A-Z]{2}[0-9A-Z]{2,13}")]
+        #[CommunityVatNumberTypeValidation]
         public string $communityVatNumber,
 
         /**
          * @var string Harmadik országbeli adóazonosító.
          */
-        #[StringValidation(minLength: 1, maxLength: 50, pattern: ".*[^\s].*")]
+        #[SimpleText50NotBlankTypeValidation]
         public string $thirdStateTaxId,
     ) {
         parent::__construct();
