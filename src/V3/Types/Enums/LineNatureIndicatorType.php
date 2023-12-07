@@ -7,7 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
 /**
  * Adott tételsor termékértékesítés vagy szolgáltatás nyújtás jellegének jelzése.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 enum LineNatureIndicatorType: string
 {

@@ -7,13 +7,14 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use JMS\Serializer\Annotation\XmlAttribute;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlValue;
+use LightSideSoftware\NavApi\V3\Exceptions\ValidationException;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 
 /**
  * Kriptográfiai metódust leíró típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class CryptoType extends BaseType
 {
@@ -33,6 +34,9 @@ final readonly class CryptoType extends BaseType
         parent::__construct();
     }
 
+    /**
+     * @throws ValidationException
+     */
     public static function sha(string $data): self
     {
         return new CryptoType(
@@ -41,6 +45,9 @@ final readonly class CryptoType extends BaseType
         );
     }
 
+    /**
+     * @throws ValidationException
+     */
     public static function sha3(string $data): self
     {
         return new CryptoType(

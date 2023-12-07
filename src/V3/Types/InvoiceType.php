@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 /**
  * Egy számla vagy módosító okirat adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class InvoiceType extends BaseType
 {

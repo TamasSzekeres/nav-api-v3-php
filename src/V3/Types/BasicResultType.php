@@ -15,7 +15,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 /**
  * Alap válaszeredmény adatok.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 readonly class BasicResultType extends BaseType
 {

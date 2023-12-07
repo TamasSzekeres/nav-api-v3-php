@@ -14,7 +14,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\EntityIdTypeValidation;
 /**
  * A kérés tranzakcionális adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 readonly class BasicHeaderType extends BaseType
 {

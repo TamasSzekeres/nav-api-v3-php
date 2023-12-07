@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
 
 /**
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class ContextType extends BaseType
 {

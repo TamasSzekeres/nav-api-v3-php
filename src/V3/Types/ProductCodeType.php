@@ -12,7 +12,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\ProductCodeCategoryType;
 /**
  * Különböző termék- vagy szolgáltatáskódokat tartalmazó típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class ProductCodeType extends BaseType
 {
@@ -40,7 +40,7 @@ final readonly class ProductCodeType extends BaseType
     ) {
         $productCodeValueValidation = new ProductCodeValueTypeValidation();
         $errors = $productCodeValueValidation->validateProperty('productCodeValue', $productCodeValue);
-        if (! $errors->hasErrors()) {
+        if (!$errors->hasErrors()) {
             $this->productCodeValue = $productCodeValue;
             $this->productCodeOwnValue = null;
         } else {

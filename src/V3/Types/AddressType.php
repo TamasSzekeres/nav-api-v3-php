@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 /**
  * Cím típus, amely vagy egyszerű, vagy részletes címet tartalmaz.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class AddressType extends BaseType
 {
@@ -27,13 +27,8 @@ final readonly class AddressType extends BaseType
 
     public function __construct(SimpleAddressType|DetailedAddressType $address)
     {
-        if ($address instanceof SimpleAddressType) {
-            $this->simpleAddress = $address;
-            $this->detailedAddress = null;
-        } else {
-            $this->simpleAddress = null;
-            $this->detailedAddress = $address;
-        }
+        $this->simpleAddress = ($address instanceof SimpleAddressType) ? $address : null;
+        $this->detailedAddress = ($address instanceof DetailedAddressType) ? $address : null;
 
         parent::__construct();
     }

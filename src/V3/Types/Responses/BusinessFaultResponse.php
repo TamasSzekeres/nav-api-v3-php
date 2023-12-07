@@ -9,7 +9,7 @@ use LightSideSoftware\NavApi\V3\Types\ContextType;
 use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 
 /**
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class BusinessFaultResponse extends BaseType
 {

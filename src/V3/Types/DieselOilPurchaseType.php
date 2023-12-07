@@ -14,7 +14,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 /**
  * Gázolaj adózottan történő beszerzésének adatai – 45/2016 (XI. 29.) NGM rendelet 75. § (1) a).
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class DieselOilPurchaseType extends BaseType
 {

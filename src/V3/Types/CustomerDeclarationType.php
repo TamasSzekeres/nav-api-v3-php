@@ -11,7 +11,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\ProductStreamType;
 /**
  * Ha az eladó a vevő nyilatkozata alapján mentesül a termékdíj megfizetése alól, akkor az érintett termékáram.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class CustomerDeclarationType extends BaseType
 {

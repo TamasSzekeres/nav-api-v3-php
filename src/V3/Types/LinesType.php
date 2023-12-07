@@ -7,7 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 /**
  * Termék/szolgáltatás tételek.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class LinesType extends BaseType
 {

@@ -10,7 +10,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\LineOperationType;
 /**
  * Módosításról történő adatszolgáltatás esetén a tételsor módosítás jellegének jelölése.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class LineModificationReferenceType extends BaseType
 {

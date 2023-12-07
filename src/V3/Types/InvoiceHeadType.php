@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+
 /**
  * Számla fejléc adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class InvoiceHeadType extends BaseType
 {
@@ -25,11 +27,13 @@ final readonly class InvoiceHeadType extends BaseType
         /**
          * @var ?CustomerInfoType Vevő adatai.
          */
+        #[SkipWhenEmpty]
         public ?CustomerInfoType $customerInfo = null,
 
         /**
          * @var ?FiscalRepresentativeType Pénzügyi képviselő adatai.
          */
+        #[SkipWhenEmpty]
         public ?FiscalRepresentativeType $fiscalRepresentativeInfo = null,
     ) {
         parent::__construct();

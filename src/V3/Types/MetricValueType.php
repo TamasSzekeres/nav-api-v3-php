@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation\XmlElement;
 /**
  * Metrika érték típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class MetricValueType extends BaseType
 {

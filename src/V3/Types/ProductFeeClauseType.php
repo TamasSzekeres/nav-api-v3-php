@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 /**
  * A környezetvédelmi termékdíjról szóló 2011. évi LXXXV. tv. szerinti, tételre vonatkozó záradékok.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class ProductFeeClauseType extends BaseType
 {

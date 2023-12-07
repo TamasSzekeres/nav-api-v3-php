@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  * Adószám, amely alatt a számlán szereplő termékbeszerzés vagy szolgáltatás igénybevétele történt.
  * Lehet csoportazonosító szám is.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class CustomerTaxNumberType extends TaxNumberType
 {

@@ -13,7 +13,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValid
 /**
  * A szállító (eladó) adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class SupplierInfoType extends BaseType
 {
@@ -57,6 +57,7 @@ final readonly class SupplierInfoType extends BaseType
         /**
          * @var ?bool Értéke true, amennyiben az eladó (szállító) alanyi ÁFA mentes.
          */
+        #[SkipWhenEmpty]
         public ?bool $individualExemption = null,
 
         /**

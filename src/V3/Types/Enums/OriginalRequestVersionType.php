@@ -5,7 +5,7 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
 /**
  * A lekérdezett számla `requestVersion` értéke.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 enum OriginalRequestVersionType: string
 {

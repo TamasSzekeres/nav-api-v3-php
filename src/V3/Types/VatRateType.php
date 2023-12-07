@@ -11,7 +11,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\MarginSchemeType;
 /**
  * Az adómérték vagy az adómentes értékesítés jelölése.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class VatRateType extends BaseType
 {
@@ -66,6 +66,10 @@ final readonly class VatRateType extends BaseType
 
         if ($notNullElements != 1) {
             throw new InvalidArgumentException("A konstruktor paraméterk közül csak egyet lehet megadni.");
+        }
+
+        if (is_bool($this->vatDomesticReverseCharge) && ($this->vatDomesticReverseCharge !== true)) {
+            throw new InvalidArgumentException('A "vatDomesticReverseCharge" konstruktor paraméternek fixen true-nak kell lennie.');
         }
 
         if (is_bool($this->noVatCharge) && ($this->noVatCharge !== true)) {

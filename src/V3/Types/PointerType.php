@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
  * Feldolgozási kurzor adatok.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class PointerType extends BaseType
 {
@@ -21,6 +23,27 @@ final readonly class PointerType extends BaseType
         #[SimpleText1024NotBlankTypeValidation]
         #[SkipWhenEmpty]
         public ?string $tag = null,
+
+        /**
+         * @var ?string Érték hivatkozás.
+         */
+        #[SimpleText1024NotBlankTypeValidation]
+        #[SkipWhenEmpty]
+        public ?string $value = null,
+
+        /**
+         * @var ?int Sorhivatkozás.
+         */
+        #[LineNumberTypeValidation]
+        #[SkipWhenEmpty]
+        public ?int $line = null,
+
+        /**
+         * @var ?string Kötegelt számla művelet esetén az eredeti számla sorszáma, melyre a módosítás vonatkozik.
+         */
+        #[SimpleText50NotBlankTypeValidation]
+        #[SkipWhenEmpty]
+        public ?string $originalInvoiceNumber = null,
     ) {
         parent::__construct();
     }

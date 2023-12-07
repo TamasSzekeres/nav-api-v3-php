@@ -7,7 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
 /**
  * A termékkód fajtájának jelölésére szolgáló típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 enum ProductCodeCategoryType: string
 {

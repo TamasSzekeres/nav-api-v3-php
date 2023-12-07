@@ -13,7 +13,7 @@ use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 /**
  * Online Számla rendszerre specifikus általános válasz adatok.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/api', prefix: 'ns2')]
 abstract readonly class BasicOnlineInvoiceResponseType extends BasicResponseType

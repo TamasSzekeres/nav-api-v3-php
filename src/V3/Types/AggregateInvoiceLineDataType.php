@@ -13,7 +13,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 /**
  * A gyűjtő számlára vonatkozó speciális adatokat tartalmazó típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class AggregateInvoiceLineDataType extends BaseType
 {

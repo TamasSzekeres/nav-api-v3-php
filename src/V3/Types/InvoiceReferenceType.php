@@ -10,7 +10,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValida
 /**
  * A módosítás vagy érvénytelenítés hivatkozási adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class InvoiceReferenceType extends BaseType
 {

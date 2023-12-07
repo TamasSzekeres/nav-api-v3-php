@@ -11,6 +11,8 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
+use function is_integer;
+
 /**
  * A módosítás vagy érvénytelenítés adatai.
  *

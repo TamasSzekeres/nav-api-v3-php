@@ -9,12 +9,11 @@ use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 
 /**
  * A termékdíj bevallását igazoló dokumentum adatai a 2011. évi LXXXV. tv. 13. § (3) szerint és a 25. § (3) szerint.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class PaymentEvidenceDocumentDataType extends BaseType
 {

@@ -2,17 +2,20 @@
 
 namespace LightSideSoftware\NavApi\V3\Types\Responses;
 
+use DateTimeImmutable;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 
 /**
- * A POST /tokenExchange REST operáció válasz típusa.
+ * A POST /tokenExchange REST operáció válaszának root elementje.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/api', prefix: 'ns2')]
@@ -33,16 +36,20 @@ final readonly class TokenExchangeResponse extends BasicOnlineInvoiceResponseTyp
         public string $encodedExchangeToken,
 
         /**
-         * @var string A kiadott token érvényességének kezdete.
+         * @var DateTimeImmutable A kiadott token érvényességének kezdete.
          */
+        #[InvoiceTimestampTypeValidation]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-        public string $tokenValidityFrom,
+        public DateTimeImmutable $tokenValidityFrom,
 
         /**
-         * @var string A kiadott token érvényességének vége.
+         * @var DateTimeImmutable A kiadott token érvényességének vége.
          */
+        #[InvoiceTimestampTypeValidation]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-        public string $tokenValidityTo,
+        public DateTimeImmutable $tokenValidityTo,
     ) {
         parent::__construct($header, $result, $software);
     }

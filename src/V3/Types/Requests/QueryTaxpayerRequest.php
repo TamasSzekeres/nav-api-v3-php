@@ -7,14 +7,15 @@ namespace LightSideSoftware\NavApi\V3\Types\Requests;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
+use LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
 
 /**
- * A POST /queryTaxpayer REST operáció kérés típusa.
+ * A POST /queryTaxpayer REST operáció kérésének root elementje.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common', prefix: 'common')]
@@ -27,8 +28,9 @@ final readonly class QueryTaxpayerRequest extends BasicOnlineInvoiceRequestType
         SoftwareType $software,
 
         /**
-         * @var string A lekérdezett adózó adószáma
+         * @var string A lekérdezett adózó adószáma.
          */
+        #[TaxPayerIdTypeValidation]
         #[XmlElement(cdata: false)]
         public string $taxNumber,
     ) {

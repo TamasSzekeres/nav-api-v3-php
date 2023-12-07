@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 /**
  * ÁFA mértékek szerinti összesítés.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class SummaryByVatRateType extends BaseType
 {

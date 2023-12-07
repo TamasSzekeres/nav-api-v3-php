@@ -9,7 +9,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 /**
  * Számla összesítés (nem egyszerűsített számla esetén).
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class SummaryNormalType extends BaseType
 {

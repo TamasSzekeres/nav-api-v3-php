@@ -14,7 +14,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValida
 /**
  * Új közlekedési eszköz értékesítés ÁFA tv. 89 § ill. 169 § o).
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class NewTransportMeanType extends BaseType
 {

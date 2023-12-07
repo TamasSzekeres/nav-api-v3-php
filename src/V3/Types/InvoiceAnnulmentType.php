@@ -7,13 +7,14 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentCodeType;
 
 /**
  * Korábbi adatszolgáltatás technikai érvénytelenítésének adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class InvoiceAnnulmentType extends BaseType
 {
@@ -21,7 +22,7 @@ final readonly class InvoiceAnnulmentType extends BaseType
         /**
          * @var string A technikai érvénytelenítéssel érintett számla vagy módosító okirat sorszáma.
          */
-        #[StringValidation(minLength: 1, maxLength: 50)]
+        #[SimpleText50NotBlankTypeValidation]
         public string $annulmentReference,
 
         /**
@@ -39,7 +40,7 @@ final readonly class InvoiceAnnulmentType extends BaseType
         /**
          * @var string A technikai érvénytelenítés oka.
          */
-        #[StringValidation(minLength: 1, maxLength: 1024)]
+        #[SimpleText1024NotBlankTypeValidation]
         public string $annulmentReason,
     ) {
         parent::__construct();

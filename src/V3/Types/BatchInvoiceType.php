@@ -9,7 +9,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValid
 /**
  * Kötegelt módosító okirat adatai.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 readonly final class BatchInvoiceType extends BaseType
 {

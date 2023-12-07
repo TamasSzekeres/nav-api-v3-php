@@ -11,6 +11,7 @@ use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
+use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\BaseType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
 use LightSideSoftware\NavApi\V3\Types\MetricType;
@@ -18,7 +19,7 @@ use LightSideSoftware\NavApi\V3\Types\MetricType;
 /**
  * A GET /queryServiceMetrics REST operáció válaszának root elementje.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/metrics', prefix: 'ns2')]
@@ -35,6 +36,8 @@ final readonly class QueryServiceMetricsResponse extends BaseType
         /**
          * @var ?DateTimeImmutable Időbélyeg típus az Online Számla rendszerben.
          */
+        #[InvoiceTimestampTypeValidation]
+        #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
         public ?DateTimeImmutable $metricsLastUpdateTime = null,

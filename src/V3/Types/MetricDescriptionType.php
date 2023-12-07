@@ -10,7 +10,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\LanguageType;
 /**
  * Metrika leírás típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class MetricDescriptionType extends BaseType
 {

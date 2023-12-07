@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+
 /**
  * Számlaadatok leírására szolgáló közös típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class InvoiceMainType extends BaseType
 {
@@ -18,9 +23,13 @@ final readonly class InvoiceMainType extends BaseType
         public InvoiceType $invoice,
 
         /**
-         * @var ?BatchInvoiceType Kötegelt módosító okirat adatai.
+         * @var array<int, BatchInvoiceType> Kötegelt módosító okirat adatai.
          */
-        public ?BatchInvoiceType $batchInvoice = null,
+        #[ArrayValidation(itemType: BatchInvoiceType::class)]
+        #[SkipWhenEmpty]
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\BatchInvoiceType>')]
+        #[XmlList(entry: 'batchInvoice', inline: true)]
+        public array $batchInvoices = [],
     ) {
         parent::__construct();
     }

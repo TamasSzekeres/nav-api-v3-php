@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\XmlRoot;
 /**
  * Online Számla rendszerre specifikus általános hibaválasz.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
 #[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/api', prefix: 'ns2')]

@@ -7,7 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
 /**
  * Vevő ÁFA szerinti státusz típusa.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 enum CustomerVatStatusType: string
 {

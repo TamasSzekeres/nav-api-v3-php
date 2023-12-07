@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 /**
  * Normál vagy gyűjtő számla esetén kitöltendő tétel érték adatok.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class LineAmountsNormalType extends BaseType
 {

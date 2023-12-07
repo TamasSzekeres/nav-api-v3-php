@@ -7,8 +7,8 @@ namespace LightSideSoftware\NavApi\V3\Types\Responses;
 /**
  * Az összes REST operációra vonatkozó hibaválasz generikus elementje.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
-readonly class GeneralErrorHeaderResponse extends BasicResponseType
+final readonly class GeneralErrorHeaderResponse extends GeneralErrorHeaderResponseType
 {
 }

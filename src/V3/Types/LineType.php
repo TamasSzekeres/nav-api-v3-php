@@ -19,7 +19,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\UnitOfMeasureType;
 /**
  * A számla tételek (termék vagy szolgáltatás) adatait tartalmazó típus.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class LineType extends BaseType
 {
@@ -117,7 +117,8 @@ final readonly class LineType extends BaseType
         public ?DiscountDataType $lineDiscountData = null,
 
         /**
-         * @var ?LineAmountsNormalType Normál (nem egyszerűsített) számla esetén (beleértve a gyűjtőszámlát) kitöltendő tétel érték adatok.
+         * @var ?LineAmountsNormalType Normál (nem egyszerűsített) számla esetén
+         * (beleértve a gyűjtőszámlát) kitöltendő tétel érték adatok.
          */
         #[SkipWhenEmpty]
         public ?LineAmountsNormalType $lineAmountsNormal = null,

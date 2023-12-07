@@ -9,7 +9,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 /**
  * Légi közlekedési eszköz.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 final readonly class AircraftType extends BaseType
 {

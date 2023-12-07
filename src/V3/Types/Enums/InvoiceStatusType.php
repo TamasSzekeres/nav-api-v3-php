@@ -5,7 +5,7 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
 /**
  * A számla feldolgozási státusza.
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 enum InvoiceStatusType
 {
