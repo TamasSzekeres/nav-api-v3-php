@@ -7,30 +7,30 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum SourceType
+enum SourceType: string
 {
     /**
      * Webes adatszolgáltatás.
      */
-    case WEB;
+    case WEB = 'WEB';
 
     /**
      * Kézi XML feltöltés.
      */
-    case XML;
+    case XML = 'XML';
 
     /**
      * Gép-gép adatkapcsolati adatszolgáltatás.
      */
-    case MGM;
+    case MGM = 'MGM';
 
     /**
      * Online pénztárgépes adatszolgáltatás.
      */
-    case OPG;
+    case OPG = 'OPG';
 
     /**
      * NAV online számlázó.
      */
-    case OSZ;
+    case OSZ = 'OSZ';
 }

@@ -39,7 +39,7 @@ final readonly class TokenExchangeResponse extends BasicOnlineInvoiceResponseTyp
          * @var DateTimeImmutable A kiadott token érvényességének kezdete.
          */
         #[InvoiceTimestampTypeValidation]
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public DateTimeImmutable $tokenValidityFrom,
 
@@ -47,7 +47,7 @@ final readonly class TokenExchangeResponse extends BasicOnlineInvoiceResponseTyp
          * @var DateTimeImmutable A kiadott token érvényességének vége.
          */
         #[InvoiceTimestampTypeValidation]
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public DateTimeImmutable $tokenValidityTo,
     ) {

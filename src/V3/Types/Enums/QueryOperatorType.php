@@ -7,30 +7,30 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum QueryOperatorType
+enum QueryOperatorType: string
 {
     /**
      * Egyenlőség.
      */
-    case EQ;
+    case EQ = 'EQ';
 
     /**
      * Nagyobb mint reláció.
      */
-    case GT;
+    case GT = 'GT';
 
     /**
      * Nagyobb vagy egyenlő reláció.
      */
-    case GTE;
+    case GTE = 'GTE';
 
     /**
      * Kisebb mint reláció.
      */
-    case LT;
+    case LT = 'LT';
 
     /**
      * Kisebb vagy egyenlő reláció.
      */
-    case LTE;
+    case LTE = 'LTE';
 }

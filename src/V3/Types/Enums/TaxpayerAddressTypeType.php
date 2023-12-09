@@ -7,20 +7,20 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum TaxpayerAddressTypeType
+enum TaxpayerAddressTypeType: string
 {
     /**
      * Székhely.
      */
-    case HQ;
+    case HQ = 'HQ';
 
     /**
      * Telephely.
      */
-    case SITE;
+    case SITE = 'SITE';
 
     /**
      * Fióktelep.
      */
-    case BRANCH;
+    case BRANCH = 'BRANCH';
 }

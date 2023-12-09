@@ -25,7 +25,7 @@ final readonly class InvoiceReferenceDataType extends BaseType
      */
     #[InvoiceTimestampTypeValidation]
     #[SkipWhenEmpty]
-    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
     public ?DateTimeImmutable $modificationTimestamp;
 
     /**

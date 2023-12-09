@@ -7,15 +7,15 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum InvoiceDirectionType
+enum InvoiceDirectionType: string
 {
     /**
      * Bejövő (vevő oldali) számla keresési paramétere.
      */
-    case INBOUND;
+    case INBOUND = 'INBOUND';
 
     /**
      * Kimenő (kiállító oldali) számla keresési paramétere.
      */
-    case OUTBOUND;
+    case OUTBOUND = 'OUTBOUND';
 }

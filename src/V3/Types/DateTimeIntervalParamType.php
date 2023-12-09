@@ -20,14 +20,14 @@ final readonly class DateTimeIntervalParamType extends BaseType
          * @var DateTimeImmutable Időpontos intervallum nagyobb vagy egyenlő paramétere UTC idő szerint.
          */
         #[InvoiceTimestampTypeValidation]
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         public DateTimeImmutable $dateTimeFrom,
 
         /**
          * @var DateTimeImmutable Időpontos intervallum kisebb vagy egyenlő paramétere UTC idő szerint.
          */
         #[InvoiceTimestampTypeValidation]
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         public DateTimeImmutable $dateTimeTo,
     ) {
         parent::__construct();

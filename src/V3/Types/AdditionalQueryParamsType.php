@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\QueryNameTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation;
@@ -26,6 +27,7 @@ final readonly class AdditionalQueryParamsType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false)]
         public ?string $taxNumber = null,
 
         /**
@@ -33,6 +35,7 @@ final readonly class AdditionalQueryParamsType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false)]
         public ?string $groupMemberTaxNumber = null,
 
         /**
@@ -40,6 +43,7 @@ final readonly class AdditionalQueryParamsType extends BaseType
          */
         #[QueryNameTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $name = null,
 
         /**
@@ -71,6 +75,7 @@ final readonly class AdditionalQueryParamsType extends BaseType
          */
         #[CurrencyTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $currency = null,
     ) {
         parent::__construct();

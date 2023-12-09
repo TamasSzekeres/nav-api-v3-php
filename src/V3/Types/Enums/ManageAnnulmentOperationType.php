@@ -7,10 +7,10 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum ManageAnnulmentOperationType
+enum ManageAnnulmentOperationType: string
 {
     /**
      * Korábbi adatszolgáltatás technikai érvénytelenítése.
      */
-    case ANNUL;
+    case ANNUL = 'ANNUL';
 }

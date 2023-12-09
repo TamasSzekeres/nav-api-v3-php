@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
 /**
@@ -20,14 +21,15 @@ final readonly class MandatoryQueryParamsType extends BaseType
         public DateIntervalParamType $invoiceIssueDate,
 
         /**
-         * @var DateIntervalParamType Számla adatszolgáltatás feldolgozásának időpont tartománya UTC idő szerint.
+         * @var DateTimeIntervalParamType Számla adatszolgáltatás feldolgozásának időpont tartománya UTC idő szerint.
          */
-        public DateIntervalParamType $insDate,
+        public DateTimeIntervalParamType $insDate,
 
         /**
          * @var string Az eredeti számla sorszáma, melyre a módosítás vonatkozik
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $originalInvoiceNumber,
     ) {
         parent::__construct();

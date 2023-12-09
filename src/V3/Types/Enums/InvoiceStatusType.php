@@ -7,30 +7,30 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum InvoiceStatusType
+enum InvoiceStatusType: string
 {
     /**
      * Befogadva.
      */
-    case RECEIVED;
+    case RECEIVED = 'RECEIVED';
 
     /**
      * Feldolgozás alatt.
      */
-    case PROCESSING;
+    case PROCESSING = 'PROCESSING';
 
     /**
      * Elmentve.
      */
-    case SAVED;
+    case SAVED = 'SAVED';
 
     /**
      * Kész.
      */
-    case DONE;
+    case DONE = 'DONE';
 
     /**
      * Kihagyva.
      */
-    case ABORTED;
+    case ABORTED = 'ABORTED';
 }

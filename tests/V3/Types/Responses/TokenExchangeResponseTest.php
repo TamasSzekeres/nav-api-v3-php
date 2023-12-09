@@ -3,6 +3,7 @@
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
 use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
+use LightSideSoftware\NavApi\V3\Types\Enums\SoftwareOperationType;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 use LightSideSoftware\NavApi\V3\Types\Responses\TokenExchangeResponse;
 
@@ -51,7 +52,7 @@ XML;
         ->and($response->software)->toBeInstanceOf(SoftwareType::class)
         ->and($response->software->softwareId)->toBe('123456789123456789')
         ->and($response->software->softwareName)->toBe('Test Online Számlázó')
-        ->and($response->software->softwareOperation)->toBe('ONLINE_SERVICE')
+        ->and($response->software->softwareOperation)->toBe(SoftwareOperationType::ONLINE_SERVICE)
         ->and($response->software->softwareMainVersion)->toBe('1.0')
         ->and($response->software->softwareDevName)->toBe('Test Software Kft.')
         ->and($response->software->softwareDevContact)->toBe('test@example.com')

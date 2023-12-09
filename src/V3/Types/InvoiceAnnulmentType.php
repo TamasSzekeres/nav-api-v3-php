@@ -29,7 +29,7 @@ final readonly class InvoiceAnnulmentType extends BaseType
          * @var DateTimeImmutable A technikai érvénytelenítés időbélyege a forrásrendszerben UTC idő szerint.
          */
         #[InvoiceTimestampTypeValidation]
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         public DateTimeImmutable $annulmentTimestamp,
 
         /**

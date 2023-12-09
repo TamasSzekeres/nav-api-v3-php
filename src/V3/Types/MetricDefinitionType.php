@@ -7,6 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\MetricTypeType;
 
 /**
@@ -31,9 +32,8 @@ final readonly class MetricDefinitionType extends BaseType
 
         /**
          * @var array<int, MetricDescriptionType> Metrikák leírásai.
-         *
-         * @todo minOccurs=3 maxOccurs=3
          */
+        #[ArrayValidation(minItems: 3, maxItems: 3, itemType: MetricDescriptionType::class)]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricDescriptionType>')]
         #[XmlList(entry: 'metricDescription', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
         public array $metricDescriptions,

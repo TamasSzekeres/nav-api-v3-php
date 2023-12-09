@@ -7,15 +7,15 @@ namespace LightSideSoftware\NavApi\V3\Types\Enums;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum SoftwareOperationType
+enum SoftwareOperationType: string
 {
     /**
      * Lokális program.
      */
-    case LOCAL_SOFTWARE;
+    case LOCAL_SOFTWARE = 'LOCAL_SOFTWARE';
 
     /**
      * Online számlázó szolgáltatás.
      */
-    case ONLINE_SERVICE;
+    case ONLINE_SERVICE = 'ONLINE_SERVICE';
 }

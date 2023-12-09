@@ -21,7 +21,7 @@ final readonly class ContextType extends BaseType
         /**
          * @var DateTimeImmutable A kérés kliensoldali időpontja UTC-ben.
          */
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         public DateTimeImmutable $timestamp,
     ) {
         parent::__construct();

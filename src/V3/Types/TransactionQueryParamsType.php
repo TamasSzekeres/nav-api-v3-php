@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\EntityIdTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceIndexTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ManageInvoiceOperationType;
@@ -21,6 +22,7 @@ final readonly class TransactionQueryParamsType extends BaseType
          * @var string Az adatszolgáltatás tranzakció azonosítója.
          */
         #[EntityIdTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $transactionId,
 
         /**

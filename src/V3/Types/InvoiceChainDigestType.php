@@ -43,7 +43,7 @@ final readonly class InvoiceChainDigestType extends BaseType
          * @var DateTimeImmutable A beszúrás időpontja UTC időben.
          */
         #[InvoiceTimestampTypeValidation]
-        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.vP'>")]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
         public DateTimeImmutable $insDate,
 
         /**

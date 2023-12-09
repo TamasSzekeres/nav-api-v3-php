@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation;
@@ -22,6 +23,7 @@ final readonly class InvoiceNumberQueryType extends BaseType
          * @var string Számla vagy módosító okirat sorszámaa.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $invoiceNumber,
 
         /**
@@ -37,9 +39,12 @@ final readonly class InvoiceNumberQueryType extends BaseType
         public ?int $batchIndex = null,
 
         /**
-         * @var ?string Vevő oldali lekérdezés esetén a számla kiállítójának adószáma, ha több érvényes számla is megtalálható azonos sorszámmal.
+         * @var ?string Vevő oldali lekérdezés esetén a számla kiállítójának adószáma,
+         * ha több érvényes számla is megtalálható azonos sorszámmal.
          */
         #[TaxPayerIdTypeValidation]
+        #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $supplierTaxNumber = null,
     ) {
         parent::__construct();
