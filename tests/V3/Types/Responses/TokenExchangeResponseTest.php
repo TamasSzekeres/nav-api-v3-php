@@ -59,6 +59,6 @@ XML;
         ->and($response->software->softwareDevCountryCode)->toBe('HU')
         ->and($response->software->softwareDevTaxNumber)->toBe('66445533')
         ->and($response->encodedExchangeToken)->toBe('VqJlBJwJGk2Uta7pfa0wTzyWjFGxItxoGTnYgbZCjOCXaQsWJqX5Iao4iw7uh0CU7cnWwtawHkbpLUbQi/wE6Q==')
-        ->and($response->tokenValidityFrom)->toBe('2021-09-20T19:16:06.333Z')
-        ->and($response->tokenValidityTo)->toBe('2021-09-20T19:21:06.333Z');
+        ->and($response->tokenValidityFrom)->toEqualDateTimeImmutable(new DateTimeImmutable('2021-09-20T19:16:06.333Z'))
+        ->and($response->tokenValidityTo)->toEqualDateTimeImmutable(new DateTimeImmutable('2021-09-20T19:21:06.333Z'));
 });
