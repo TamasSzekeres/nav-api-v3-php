@@ -49,7 +49,11 @@ class StringValidation implements PropertyValidatorInterface
     {
         $errors = new ErrorBag();
 
-        if (!is_null($value) && !is_string($value)) {
+        if (is_null($value)) {
+            return $errors;
+        }
+
+        if (!is_string($value)) {
             $errors->addError($name, "{$name} tulajdondágnak string típusúnak kell lennie.");
             return $errors;
         }

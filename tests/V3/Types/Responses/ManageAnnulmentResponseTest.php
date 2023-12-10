@@ -5,14 +5,13 @@ use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
 use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 use LightSideSoftware\NavApi\V3\Types\Enums\SoftwareOperationType;
+use LightSideSoftware\NavApi\V3\Types\Responses\ManageAnnulmentResponse;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
-use LightSideSoftware\NavApi\V3\Types\Responses\TokenExchangeResponse;
-use LightSideSoftware\NavApi\V3\Util;
 
-test('create token-exchange-response from xml', function () {
-    $responseXml = loadTestResponse('TokenExchangeResponse');
+test('create manage-annulment-response from xml', function () {
+    $responseXml = loadTestResponse('ManageAnnulmentResponse');
 
-    $response = TokenExchangeResponse::fromXml($responseXml);
+    $response = ManageAnnulmentResponse::fromXml($responseXml);
 
     expect($response->header)->toBeInstanceOf(BasicHeaderType::class)
         ->and($response->header->requestId)->toBe('RID215118906689')
@@ -30,35 +29,27 @@ test('create token-exchange-response from xml', function () {
         ->and($response->software->softwareDevContact)->toBe('test@example.com')
         ->and($response->software->softwareDevCountryCode)->toBe('HU')
         ->and($response->software->softwareDevTaxNumber)->toBe('66445533')
-        ->and($response->encodedExchangeToken)->toBe('VqJlBJwJGk2Uta7pfa0wTzyWjFGxItxoGTnYgbZCjOCXaQsWJqX5Iao4iw7uh0CU7cnWwtawHkbpLUbQi/wE6Q==')
-        ->and($response->tokenValidityFrom)->toEqualDateTimeImmutable(new DateTimeImmutable('2021-09-20T19:16:06.333Z'))
-        ->and($response->tokenValidityTo)->toEqualDateTimeImmutable(new DateTimeImmutable('2021-09-20T19:21:06.333Z'));
+        ->and($response->transactionId)->toEqual('T0001');
 });
 
 it('throws no exceptions', function () {
-    new TokenExchangeResponse(
+    new ManageAnnulmentResponse(
         header: BASIC_HEADER_TYPE_EXAMPLE,
         result: new BasicResultType(
             funcCode: FunctionCodeType::OK,
         ),
         software: SOFTWARE_TYPE_EXAMPLE,
-        encodedExchangeToken: Util::encryptAes128('test-date', 'test-key'),
-        tokenValidityFrom: new DateTimeImmutable('2020-01-01 12:00:00'),
-        tokenValidityTo: new DateTimeImmutable('2020-01-01 13:00:00'),
+        transactionId: 'T0001',
     );
 })->throwsNoExceptions();
 
 it('throws InvalidValidationException', function () {
-    new TokenExchangeResponse(
+    new ManageAnnulmentResponse(
         header: BASIC_HEADER_TYPE_EXAMPLE,
         result: new BasicResultType(
-            funcCode: FunctionCodeType::ERROR,
-            errorCode: ' ',
-            message: ' ',
+            funcCode: FunctionCodeType::OK,
         ),
         software: SOFTWARE_TYPE_EXAMPLE,
-        encodedExchangeToken: Util::encryptAes128('test-date', 'test-key'),
-        tokenValidityFrom: new DateTimeImmutable('2000-01-01 12:00:00'),
-        tokenValidityTo: new DateTimeImmutable('2000-01-01 13:00:00'),
+        transactionId: 'T00;;01',
     );
 })->throws(ValidationException::class);
