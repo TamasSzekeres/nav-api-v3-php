@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:QueryInvoiceDataResponse
+    xmlns="http://schemas.nav.gov.hu/NTCA/1.0/common"
+    xmlns:ns2="http://schemas.nav.gov.hu/OSA/3.0/api"
+    xmlns:ns3="http://schemas.nav.gov.hu/OSA/3.0/base"
+    xmlns:ns4="http://schemas.nav.gov.hu/OSA/3.0/data">
+    <header>
+        <requestId>RID215118906689</requestId>
+        <timestamp>2021-09-20T19:16:05.000Z</timestamp>
+        <requestVersion>3.0</requestVersion>
+        <headerVersion>1.0</headerVersion>
+    </header>
+    <result>
+        <funcCode>OK</funcCode>
+    </result>
+    <ns2:software>
+        <ns2:softwareId>123456789123456789</ns2:softwareId>
+        <ns2:softwareName>Test Online Számlázó</ns2:softwareName>
+        <ns2:softwareOperation>ONLINE_SERVICE</ns2:softwareOperation>
+        <ns2:softwareMainVersion>1.0</ns2:softwareMainVersion>
+        <ns2:softwareDevName>Test Software Kft.</ns2:softwareDevName>
+        <ns2:softwareDevContact>test@example.com</ns2:softwareDevContact>
+        <ns2:softwareDevCountryCode>HU</ns2:softwareDevCountryCode>
+        <ns2:softwareDevTaxNumber>66445533</ns2:softwareDevTaxNumber>
+    </ns2:software>
+    <ns2:invoiceDataResult>
+        <ns2:invoiceData>ABCE</ns2:invoiceData>
+        <ns2:auditData>
+            <ns2:insdate>2020-01-01T02:00:00.333Z</ns2:insdate>
+            <ns2:insCusUser>A123456</ns2:insCusUser>
+            <ns2:source>XML</ns2:source>
+            <ns2:originalRequestVersion>3.0</ns2:originalRequestVersion>
+        </ns2:auditData>
+        <ns2:compressedContentIndicator>false</ns2:compressedContentIndicator>
+    </ns2:invoiceDataResult>
+</ns2:QueryInvoiceDataResponse>

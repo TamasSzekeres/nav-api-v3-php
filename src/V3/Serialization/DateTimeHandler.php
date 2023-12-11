@@ -65,6 +65,12 @@ final class DateTimeHandler implements SubscribingHandlerInterface
         Context $context
     ) {
         $format = $type['params'][0] ?? self::DEFAULT_DATETIME_FORMAT;
+
+        if ($format == 'Y-m-d') {
+            $value .= ' 00:00:00';
+            $format = 'Y-m-d H:i:s';
+        }
+
         return DateTimeImmutable::createFromFormat($format, (string)$value);
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:QueryServiceMetricsResponse xmlns="http://schemas.nav.gov.hu/NTCA/1.0/common"
+                                 xmlns:ns2="http://schemas.nav.gov.hu/OSA/3.0/metrics">
+    <ns2:result>
+        <funcCode>OK</funcCode>
+    </ns2:result>
+    <ns2:metricsLastUpdateTime>2022-05-28T09:13:30.020Z</ns2:metricsLastUpdateTime>
+    <ns2:metric>
+        <ns2:metricDefinition>
+            <ns2:metricName>responseTimeAverageMsManageInvoice</ns2:metricName>
+            <ns2:metricType>GAUGE</ns2:metricType>
+            <ns2:metricDescription>
+                <ns2:language>HU</ns2:language>
+                <ns2:localizedDescription>ManageInvoice végpont átlagos válaszideje.</ns2:localizedDescription>
+            </ns2:metricDescription>
+            <ns2:metricDescription>
+                <ns2:language>EN</ns2:language>
+                <ns2:localizedDescription>Avarage response time of ManageInvoice endpoint.</ns2:localizedDescription>
+            </ns2:metricDescription>
+            <ns2:metricDescription>
+                <ns2:language>DE</ns2:language>
+                <ns2:localizedDescription>Durchschnittliche Antwortzeit des Endpunkts ManageInvoice.</ns2:localizedDescription>
+            </ns2:metricDescription>
+        </ns2:metricDefinition>
+        <ns2:metricValues>
+            <ns2:value>47.59</ns2:value>
+            <ns2:timestamp>2022-05-28T08:14:00.023Z</ns2:timestamp>
+        </ns2:metricValues>
+        <ns2:metricValues>
+            <ns2:value>5.53</ns2:value>
+            <ns2:timestamp>2022-05-28T08:15:00.023Z</ns2:timestamp>
+        </ns2:metricValues>
+        <ns2:metricValues>
+            <ns2:value>46.93</ns2:value>
+            <ns2:timestamp>2022-05-28T08:29:00.023Z</ns2:timestamp>
+        </ns2:metricValues>
+    </ns2:metric>
+    <ns2:metric>
+        <ns2:metricDefinition>
+            <ns2:metricName>responseTimeAverageMsQueryInvoiceData</ns2:metricName>
+            <ns2:metricType>GAUGE</ns2:metricType>
+            <ns2:metricDescription>
+                <ns2:language>HU</ns2:language>
+                <ns2:localizedDescription>QueryInvoiceData végpont átlagos válaszideje.</ns2:localizedDescription>
+            </ns2:metricDescription>
+            <ns2:metricDescription>
+                <ns2:language>EN</ns2:language>
+                <ns2:localizedDescription>Avarage response time of QueryInvoiceData endpoint.</ns2:localizedDescription>
+            </ns2:metricDescription>
+            <ns2:metricDescription>
+                <ns2:language>DE</ns2:language>
+                <ns2:localizedDescription>Durchschnittliche Antwortzeit des Endpunkts QueryInvoiceData.</ns2:localizedDescription>
+            </ns2:metricDescription>
+        </ns2:metricDefinition>
+        <ns2:metricValues>
+            <ns2:value>128.7998798193324</ns2:value>
+            <ns2:timestamp>2022-05-28T08:14:05.020Z</ns2:timestamp>
+        </ns2:metricValues>
+        <ns2:metricValues>
+            <ns2:value>129.3830853073864</ns2:value>
+            <ns2:timestamp>2022-05-28T08:15:05.020Z</ns2:timestamp>
+        </ns2:metricValues>
+    </ns2:metric>
+</ns2:QueryServiceMetricsResponse>

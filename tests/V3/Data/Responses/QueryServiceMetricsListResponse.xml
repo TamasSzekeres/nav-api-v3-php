@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:QueryServiceMetricsListResponse xmlns="http://schemas.nav.gov.hu/NTCA/1.0/common"
+                                     xmlns:ns2="http://schemas.nav.gov.hu/OSA/3.0/metrics">
+    <ns2:metricDefinition>
+        <ns2:metricName>Metric001</ns2:metricName>
+        <ns2:metricType>COUNTER</ns2:metricType>
+        <ns2:metricDescription>
+            <ns2:language>HU</ns2:language>
+            <ns2:localizedDescription>Metric001 - Description 1</ns2:localizedDescription>
+        </ns2:metricDescription>
+        <ns2:metricDescription>
+            <ns2:language>EN</ns2:language>
+            <ns2:localizedDescription>Metric001 - Description 2</ns2:localizedDescription>
+        </ns2:metricDescription>
+        <ns2:metricDescription>
+            <ns2:language>DE</ns2:language>
+            <ns2:localizedDescription>Metric001 - Description 3</ns2:localizedDescription>
+        </ns2:metricDescription>
+    </ns2:metricDefinition>
+</ns2:QueryServiceMetricsListResponse>
