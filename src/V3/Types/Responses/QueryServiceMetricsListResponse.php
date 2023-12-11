@@ -10,6 +10,7 @@ use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\BaseType;
 use LightSideSoftware\NavApi\V3\Types\MetricDefinitionType;
 
@@ -18,8 +19,8 @@ use LightSideSoftware\NavApi\V3\Types\MetricDefinitionType;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-#[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
-#[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common', prefix: 'ns2')]
+#[XmlNamespace(uri: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
+#[XmlNamespace(uri: 'http://schemas.nav.gov.hu/OSA/3.0/metrics', prefix: 'ns2')]
 #[XmlRoot('QueryServiceMetricsListResponse')]
 final readonly class QueryServiceMetricsListResponse extends BaseType
 {
@@ -27,6 +28,7 @@ final readonly class QueryServiceMetricsListResponse extends BaseType
         /**
          * @var array<int, MetricDefinitionType> Metrika definíciói.
          */
+        #[ArrayValidation(itemType: MetricDefinitionType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricDefinitionType>')]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]

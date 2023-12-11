@@ -8,6 +8,7 @@ use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText200NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\MetricTypeType;
 
 /**
@@ -21,13 +22,14 @@ final readonly class MetricDefinitionType extends BaseType
         /**
          * @var string Metrika neve.
          */
+        #[SimpleText200NotBlankTypeValidation]
         #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
         public string $metricName,
 
         /**
          * @var MetricTypeType Metrika típusa.
          */
-        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
         public MetricTypeType $metricType,
 
         /**

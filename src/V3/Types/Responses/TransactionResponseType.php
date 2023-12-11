@@ -26,7 +26,7 @@ abstract readonly class TransactionResponseType extends BasicOnlineInvoiceRespon
          * @var string A kért operáció tranzakció azonosítója.
          */
         #[EntityIdTypeValidation]
-        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public string $transactionId,
     ) {
         parent::__construct($header, $result, $software);

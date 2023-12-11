@@ -55,7 +55,11 @@ class IntegerValidation implements PropertyValidatorInterface
     {
         $errors = new ErrorBag();
 
-        if (!is_null($value) && (gettype($value) !== 'integer')) {
+        if (is_null($value)) {
+            return $errors;
+        }
+
+        if (gettype($value) !== 'integer') {
             $errors->addError($name, "{$name} tulajdonságnak integer típusúnak kell lennie.");
             return $errors;
         }

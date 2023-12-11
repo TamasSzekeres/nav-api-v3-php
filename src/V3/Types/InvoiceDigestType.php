@@ -7,6 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\EntityIdTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
@@ -35,16 +36,19 @@ final readonly class InvoiceDigestType extends BaseType
          * @var string Számla vagy módosító okirat sorszáma - ÁFA tv. 169. § b) vagy 170. § (1) bek. b) pont.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public string $invoiceNumber,
 
         /**
          * @var ManageInvoiceOperationType Számlaművelet típus.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ManageInvoiceOperationType $invoiceOperation,
 
         /**
          * @var InvoiceCategoryType A számla típusa.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public InvoiceCategoryType $invoiceCategory,
 
         /**
@@ -52,18 +56,21 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[InvoiceDateTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public DateTimeImmutable $invoiceIssueDate,
 
         /**
          * @var string A kibocsátó adószáma.
          */
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public string $supplierTaxNumber,
 
         /**
          * @var string Az eladó (szállító) neve.
          */
         #[SimpleText512NotBlankTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public string $supplierName,
 
         /**
@@ -71,6 +78,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[InvoiceTimestampTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public DateTimeImmutable $insDate,
 
         /**
@@ -78,6 +86,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[InvoiceUnboundedIndexTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?int $batchIndex = null,
 
         /**
@@ -85,6 +94,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $supplierGroupMemberTaxNumber = null,
 
         /**
@@ -92,6 +102,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $customerTaxNumber = null,
 
         /**
@@ -99,6 +110,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $customerGroupMemberTaxNumber = null,
 
         /**
@@ -106,12 +118,14 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[SimpleText512NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $customerName = null,
 
         /**
          * @var ?PaymentMethodType Fizetés módja.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?PaymentMethodType $paymentMethod = null,
 
         /**
@@ -120,18 +134,21 @@ final readonly class InvoiceDigestType extends BaseType
         #[InvoiceDateTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?DateTimeImmutable $paymentDate = null,
 
         /**
          * @var ?InvoiceAppearanceType A számla megjelenési formája.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?InvoiceAppearanceType $invoiceAppearance = null,
 
         /**
          * @var ?SourceType Az adatszolgáltatás forrása.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?SourceType $source = null,
 
         /**
@@ -140,6 +157,7 @@ final readonly class InvoiceDigestType extends BaseType
         #[InvoiceDateTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?DateTimeImmutable $invoiceDeliveryDate = null,
 
         /**
@@ -147,6 +165,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[CurrencyTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $currency = null,
 
         /**
@@ -154,6 +173,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[MonetaryTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?float $invoiceNetAmount = null,
 
         /**
@@ -161,6 +181,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[MonetaryTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?float $invoiceNetAmountHUF = null,
 
         /**
@@ -168,6 +189,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[MonetaryTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?float $invoiceVatAmount = null,
 
         /**
@@ -175,6 +197,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[MonetaryTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?float $invoiceVatAmountHUF = null,
 
         /**
@@ -182,6 +205,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[EntityIdTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $transactionId = null,
 
         /**
@@ -189,6 +213,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[InvoiceIndexTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?int $index = null,
 
         /**
@@ -196,6 +221,7 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[SimpleText50NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $originalInvoiceNumber = null,
 
         /**
@@ -203,12 +229,14 @@ final readonly class InvoiceDigestType extends BaseType
          */
         #[InvoiceUnboundedIndexTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?int $modificationIndex = null,
 
         /**
          * @var ?bool Jelöli, ha az adatszolgáltatás maga a számla (a számlán nem szerepel több adat)
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?bool $completenessIndicator = null,
     ) {
         parent::__construct();

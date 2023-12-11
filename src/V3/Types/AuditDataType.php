@@ -7,6 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\EntityIdTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceIndexTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
@@ -28,22 +29,26 @@ final readonly class AuditDataType extends BaseType
          */
         #[InvoiceTimestampTypeValidation]
         #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public DateTimeImmutable $insdate,
 
         /**
          * @var string A beszúrást végző technikai felhasználó.
          */
         #[LoginTypeValidation]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public string $insCusUser,
 
         /**
          * @var string Az adatszolgáltatás forrása.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public SourceType $source,
 
         /**
          * @var OriginalRequestVersionType Az adatszolgáltatás requestVersion értéke.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public OriginalRequestVersionType $originalRequestVersion,
 
         /**
@@ -51,6 +56,7 @@ final readonly class AuditDataType extends BaseType
          */
         #[EntityIdTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $transactionId = null,
 
         /**
@@ -58,6 +64,7 @@ final readonly class AuditDataType extends BaseType
          */
         #[InvoiceIndexTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?int $index = null,
 
         /**
@@ -65,6 +72,7 @@ final readonly class AuditDataType extends BaseType
          */
         #[InvoiceUnboundedIndexTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?int $batchIndex = null,
     ) {
         parent::__construct();

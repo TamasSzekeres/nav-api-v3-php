@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText200NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation;
@@ -22,6 +23,7 @@ final readonly class TaxpayerDataType extends BaseType
          * @var string Az adózó neve.
          */
         #[SimpleText512NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $taxpayerName,
 
         /**
@@ -39,6 +41,7 @@ final readonly class TaxpayerDataType extends BaseType
          */
         #[SimpleText200NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $taxpayerShortName = null,
 
         /**
@@ -46,6 +49,7 @@ final readonly class TaxpayerDataType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
+        #[XmlElement(cdata: false)]
         public ?string $vatGroupMembership = null,
 
         /**

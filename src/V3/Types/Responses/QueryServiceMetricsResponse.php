@@ -11,6 +11,7 @@ use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\BaseType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
@@ -45,6 +46,7 @@ final readonly class QueryServiceMetricsResponse extends BaseType
         /**
          * @var array<int, MetricType> Metrikák adatai.
          */
+        #[ArrayValidation(itemType: MetricType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\MetricType>')]
         #[XmlList(entry: 'metric', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
