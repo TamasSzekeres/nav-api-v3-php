@@ -1,44 +1,17 @@
 <?php
 
+use LightSideSoftware\NavApi\V3\Exceptions\ValidationException;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\BasicResultType;
 use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
 use LightSideSoftware\NavApi\V3\Types\Enums\SoftwareOperationType;
+use LightSideSoftware\NavApi\V3\Types\Enums\TechnicalResultCodeType;
 use LightSideSoftware\NavApi\V3\Types\Responses\GeneralErrorResponse;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
+use LightSideSoftware\NavApi\V3\Types\TechnicalValidationResultType;
 
-test('fromXml', function () {
-    $responseXml = <<<XML
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:GeneralErrorResponse
-    xmlns="http://schemas.nav.gov.hu/NTCA/1.0/common"
-    xmlns:ns2="http://schemas.nav.gov.hu/OSA/3.0/api"
-    xmlns:ns3="http://schemas.nav.gov.hu/OSA/3.0/base"
-    xmlns:ns4="http://schemas.nav.gov.hu/OSA/3.0/data"
->
-    <header>
-        <requestId>RID215118906689</requestId>
-        <timestamp>2021-09-20T19:16:05.000Z</timestamp>
-        <requestVersion>3.0</requestVersion>
-        <headerVersion>1.0</headerVersion>
-    </header>
-    <result>
-        <funcCode>ERROR</funcCode>
-        <errorCode>INVALID_REQUEST_SIGNATURE</errorCode>
-        <message>Érvénytelen kérés aláírás!</message>
-    </result>
-    <ns2:software>
-        <ns2:softwareId>123456789123456789</ns2:softwareId>
-        <ns2:softwareName>Test Online Számlázó</ns2:softwareName>
-        <ns2:softwareOperation>ONLINE_SERVICE</ns2:softwareOperation>
-        <ns2:softwareMainVersion>1.0</ns2:softwareMainVersion>
-        <ns2:softwareDevName>Test Software Kft.</ns2:softwareDevName>
-        <ns2:softwareDevContact>test@example.com</ns2:softwareDevContact>
-        <ns2:softwareDevCountryCode>HU</ns2:softwareDevCountryCode>
-        <ns2:softwareDevTaxNumber>12345678</ns2:softwareDevTaxNumber>
-    </ns2:software>
-</ns2:GeneralErrorResponse>
-XML;
+test('create general-error-response from xml', function () {
+    $responseXml = loadTestResponse('GeneralErrorResponse');
 
     $response = GeneralErrorResponse::fromXml($responseXml);
 
@@ -59,5 +32,45 @@ XML;
         ->and($response->software->softwareDevName)->toBe('Test Software Kft.')
         ->and($response->software->softwareDevContact)->toBe('test@example.com')
         ->and($response->software->softwareDevCountryCode)->toBe('HU')
-        ->and($response->software->softwareDevTaxNumber)->toBe('12345678');
+        ->and($response->software->softwareDevTaxNumber)->toBe('12345678')
+        ->and($response->technicalValidationMessages)->toBeArray()
+        ->and($response->technicalValidationMessages)->toHaveCount(1)
+        ->and($response->technicalValidationMessages[0])->toBeInstanceOf(TechnicalValidationResultType::class)
+        ->and($response->technicalValidationMessages[0]->validationResultCode)->toBe(TechnicalResultCodeType::CRITICAL)
+        ->and($response->technicalValidationMessages[0]->validationErrorCode)->toBe('100')
+        ->and($response->technicalValidationMessages[0]->message)->toBe('Message');
 });
+
+it('throws no exceptions', function () {
+    new GeneralErrorResponse(
+        header: BASIC_HEADER_TYPE_EXAMPLE,
+        result: new BasicResultType(
+            funcCode: FunctionCodeType::OK,
+        ),
+        software: SOFTWARE_TYPE_EXAMPLE,
+        technicalValidationMessages: [
+            new TechnicalValidationResultType(
+                validationResultCode: TechnicalResultCodeType::CRITICAL,
+                validationErrorCode: '100',
+                message: 'Message',
+            ),
+        ],
+    );
+})->throwsNoExceptions();
+
+it('throws InvalidValidationException', function () {
+    new GeneralErrorResponse(
+        header: BASIC_HEADER_TYPE_EXAMPLE,
+        result: new BasicResultType(
+            funcCode: FunctionCodeType::OK,
+        ),
+        software: SOFTWARE_TYPE_EXAMPLE,
+        technicalValidationMessages: [
+            new TechnicalValidationResultType(
+                validationResultCode: TechnicalResultCodeType::CRITICAL,
+                validationErrorCode: ' ',
+                message: 'Message',
+            ),
+        ],
+    );
+})->throws(ValidationException::class);

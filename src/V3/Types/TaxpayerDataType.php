@@ -23,17 +23,19 @@ final readonly class TaxpayerDataType extends BaseType
          * @var string Az adózó neve.
          */
         #[SimpleText512NotBlankTypeValidation]
-        #[XmlElement(cdata: false)]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public string $taxpayerName,
 
         /**
          * @var TaxNumberType Az adószám részletes adatai.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public TaxNumberType $taxNumberDetail,
 
         /**
          * @var IncorporationType Gazdasági típus.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public IncorporationType $incorporation,
 
         /**
@@ -41,7 +43,7 @@ final readonly class TaxpayerDataType extends BaseType
          */
         #[SimpleText200NotBlankTypeValidation]
         #[SkipWhenEmpty]
-        #[XmlElement(cdata: false)]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $taxpayerShortName = null,
 
         /**
@@ -49,13 +51,14 @@ final readonly class TaxpayerDataType extends BaseType
          */
         #[SkipWhenEmpty]
         #[TaxPayerIdTypeValidation]
-        #[XmlElement(cdata: false)]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $vatGroupMembership = null,
 
         /**
          * @var ?TaxpayerAddressListType Adózói cím lista típus.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?TaxpayerAddressListType $taxpayerAddressList = null,
     ) {
         parent::__construct();

@@ -15,6 +15,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentVerificationStatusType;
 use LightSideSoftware\NavApi\V3\Types\Enums\BusinessResultCodeType;
 use LightSideSoftware\NavApi\V3\Types\Enums\CustomerVatStatusType;
 use LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType;
+use LightSideSoftware\NavApi\V3\Types\Enums\IncorporationType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceDirectionType;
@@ -60,6 +61,7 @@ final class EnumHandler implements SubscribingHandlerInterface
             BusinessResultCodeType::class,
             CustomerVatStatusType::class,
             FunctionCodeType::class,
+            IncorporationType::class,
             InvoiceAppearanceType::class,
             InvoiceCategoryType::class,
             InvoiceDirectionType::class,

@@ -7,6 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\LoginTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentVerificationStatusType;
@@ -22,6 +23,7 @@ final readonly class AnnulmentDataType extends BaseType
         /**
          * @var AnnulmentVerificationStatusType Technikai érvénytelenítő kérések jóváhagyási státusza.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public AnnulmentVerificationStatusType $annulmentVerificationStatus,
 
         /**
@@ -30,6 +32,7 @@ final readonly class AnnulmentDataType extends BaseType
         #[InvoiceTimestampTypeValidation]
         #[SkipWhenEmpty]
         #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?DateTimeImmutable $annulmentDecisionDate = null,
 
         /**
@@ -37,6 +40,7 @@ final readonly class AnnulmentDataType extends BaseType
          */
         #[LoginTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $annulmentDecisionUser = null,
     ) {
         parent::__construct();

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:QueryTaxpayerResponse xmlns="http://schemas.nav.gov.hu/NTCA/1.0/common"
+                           xmlns:ns2="http://schemas.nav.gov.hu/OSA/3.0/api"
+                           xmlns:ns3="http://schemas.nav.gov.hu/OSA/3.0/base"
+                           xmlns:ns4="http://schemas.nav.gov.hu/OSA/3.0/data">
+    <header>
+        <requestId>RID098907200170111593633035</requestId>
+        <timestamp>2023-11-27T20:12:16.989Z</timestamp>
+        <requestVersion>3.0</requestVersion>
+        <headerVersion>1.0</headerVersion>
+    </header>
+    <result>
+        <funcCode>OK</funcCode>
+    </result>
+    <ns2:software>
+        <ns2:softwareId>123456789123456789</ns2:softwareId>
+        <ns2:softwareName>Test Online Számlázó</ns2:softwareName>
+        <ns2:softwareOperation>ONLINE_SERVICE</ns2:softwareOperation>
+        <ns2:softwareMainVersion>1.0</ns2:softwareMainVersion>
+        <ns2:softwareDevName>Test Software Kft.</ns2:softwareDevName>
+        <ns2:softwareDevContact>test@example.com</ns2:softwareDevContact>
+        <ns2:softwareDevCountryCode>HU</ns2:softwareDevCountryCode>
+        <ns2:softwareDevTaxNumber>66445533</ns2:softwareDevTaxNumber>
+    </ns2:software>
+    <ns2:infoDate>2019-06-23T22:00:00.000Z</ns2:infoDate>
+    <ns2:taxpayerValidity>true</ns2:taxpayerValidity>
+    <ns2:taxpayerData>
+        <ns2:taxpayerName>ABC INFORMATIKA ZÁRTKÖRŰEN MŰKÖDŐ RÉSZVÉNYTÁRSASÁG</ns2:taxpayerName>
+        <ns2:taxpayerShortName>ABC Informatika Zrt.</ns2:taxpayerShortName>
+        <ns2:taxNumberDetail>
+            <ns3:taxpayerId>12345678</ns3:taxpayerId>
+            <ns3:vatCode>2</ns3:vatCode>
+            <ns3:countyCode>42</ns3:countyCode>
+        </ns2:taxNumberDetail>
+        <ns2:incorporation>ORGANIZATION</ns2:incorporation>
+        <ns2:taxpayerAddressList>
+            <ns2:taxpayerAddressItem>
+                <ns2:taxpayerAddressType>HQ</ns2:taxpayerAddressType>
+                <ns2:taxpayerAddress>
+                    <ns3:countryCode>HU</ns3:countryCode>
+                    <ns3:postalCode>1141</ns3:postalCode>
+                    <ns3:city>BUDAPEST</ns3:city>
+                    <ns3:streetName>NINCS</ns3:streetName>
+                    <ns3:publicPlaceCategory>UTCA</ns3:publicPlaceCategory>
+                    <ns3:number>2</ns3:number>
+                </ns2:taxpayerAddress>
+            </ns2:taxpayerAddressItem>
+        </ns2:taxpayerAddressList>
+    </ns2:taxpayerData>
+</ns2:QueryTaxpayerResponse>

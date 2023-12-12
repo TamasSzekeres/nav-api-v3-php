@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText100NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\BusinessResultCodeType;
@@ -20,6 +21,7 @@ final readonly class BusinessValidationResultType extends BaseType
         /**
          * @var BusinessResultCodeType Validációs eredmény.
          */
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public BusinessResultCodeType $validationResultCode,
 
         /**
@@ -27,6 +29,7 @@ final readonly class BusinessValidationResultType extends BaseType
          */
         #[SimpleText100NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $validationErrorCode = null,
 
         /**
@@ -34,12 +37,14 @@ final readonly class BusinessValidationResultType extends BaseType
          */
         #[SimpleText512NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?string $message = null,
 
         /**
          * @var ?PointerType Feldolgozási kurzor adatok.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?PointerType $pointer = null,
     ) {
         parent::__construct();

@@ -37,7 +37,7 @@ abstract readonly class GeneralErrorResponseType extends GeneralErrorHeaderRespo
         #[ArrayValidation(itemType: TechnicalValidationResultType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\TechnicalValidationResultType>')]
-        #[XmlList(entry: 'technicalValidationMessages', inline: false, namespace: 'http://schemas.nav.gov.hu/NTCA/1.0/common')]
+        #[XmlList(entry: 'technicalValidationMessages', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public array $technicalValidationMessages = [],
     ) {
         parent::__construct($header, $result);

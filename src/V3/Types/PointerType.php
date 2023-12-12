@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
@@ -22,6 +23,7 @@ final readonly class PointerType extends BaseType
          */
         #[SimpleText1024NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $tag = null,
 
         /**
@@ -29,6 +31,7 @@ final readonly class PointerType extends BaseType
          */
         #[SimpleText1024NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $value = null,
 
         /**
@@ -43,6 +46,7 @@ final readonly class PointerType extends BaseType
          */
         #[SimpleText50NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $originalInvoiceNumber = null,
     ) {
         parent::__construct();

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText100NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\TechnicalResultCodeType;
@@ -27,6 +28,7 @@ final readonly class TechnicalValidationResultType extends BaseType
          */
         #[SimpleText100NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $validationErrorCode = null,
 
         /**
@@ -34,6 +36,7 @@ final readonly class TechnicalValidationResultType extends BaseType
          */
         #[SimpleText1024NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $message = null,
     ) {
         parent::__construct();
