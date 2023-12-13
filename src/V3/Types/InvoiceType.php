@@ -4,13 +4,27 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 
 /**
  * Egy számla vagy módosító okirat adatai.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'invoiceReference',
+        'invoiceHead',
+        'invoiceLines',
+        'productFeeSummaries',
+        'invoiceSummary',
+    ],
+)]
 final readonly class InvoiceType extends BaseType
 {
     public function __construct(
@@ -37,10 +51,13 @@ final readonly class InvoiceType extends BaseType
         public ?LinesType $invoiceLines = null,
 
         /**
-         * @var ?ProductFeeSummaryType Termékdíjjal kapcsolatos összesítő adatok.
+         * @var array<int, ProductFeeSummaryType> Termékdíjjal kapcsolatos összesítő adatok.
          */
+        #[ArrayValidation(maxItems: 2, itemType: ProductFeeSummaryType::class)]
         #[SkipWhenEmpty]
-        public ?ProductFeeSummaryType $productFeeSummary = null,
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\ProductFeeSummaryType>')]
+        #[XmlList(entry: 'productFeeSummary', inline: true)]
+        public array $productFeeSummaries = [],
     ) {
         parent::__construct();
     }

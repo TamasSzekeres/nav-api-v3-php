@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 
 /**
@@ -11,6 +12,15 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'supplierInfo',
+        'customerInfo',
+        'fiscalRepresentativeInfo',
+        'invoiceDetail',
+    ],
+)]
 final readonly class InvoiceHeadType extends BaseType
 {
     public function __construct(

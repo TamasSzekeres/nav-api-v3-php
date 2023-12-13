@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
+use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
@@ -20,20 +21,7 @@ use function is_integer;
  */
 final readonly class InvoiceReferenceDataType extends BaseType
 {
-    /**
-     * @var ?DateTimeImmutable A módosító okirat készítésének időbélyege a forrásrendszerben UTC időben.
-     */
-    #[InvoiceTimestampTypeValidation]
-    #[SkipWhenEmpty]
-    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
-    public ?DateTimeImmutable $modificationTimestamp;
 
-    /**
-     * @var ?int A számlára vonatkozó módosító okirat egyedi sorszáma.
-     */
-    #[InvoiceUnboundedIndexTypeValidation]
-    #[SkipWhenEmpty]
-    public ?int $modificationIndex;
 
     public function __construct(
         /**
@@ -47,10 +35,32 @@ final readonly class InvoiceReferenceDataType extends BaseType
          */
         public bool $modifyWithoutMaster,
 
-        DateTimeImmutable|int $modification,
+        /**
+         * @var ?DateTimeImmutable A módosító okirat készítésének időbélyege a forrásrendszerben UTC időben.
+         */
+        #[InvoiceTimestampTypeValidation]
+        #[SkipWhenEmpty]
+        #[Type("DateTimeImmutable<'Y-m-d\TH:i:s.v\Z'>")]
+        public ?DateTimeImmutable $modificationTimestamp = null,
+
+        /**
+         * @var ?int A számlára vonatkozó módosító okirat egyedi sorszáma.
+         */
+        #[InvoiceUnboundedIndexTypeValidation]
+        #[SkipWhenEmpty]
+        public ?int $modificationIndex = null,
     ) {
-        $this->modificationTimestamp = ($modification instanceof DateTimeImmutable) ? $modification : null;
-        $this->modificationIndex = is_integer($modification) ? $modification : null;
+        if (
+            (
+                is_null($this->modificationTimestamp)
+                && is_null($this->modificationIndex)
+            ) || (
+                ($this->modificationTimestamp instanceof DateTimeImmutable)
+                && is_integer($this->modificationIndex)
+            )
+        ) {
+            throw new InvalidArgumentException('A "modificationTimestamp" és "modificationIndex" paraméterek közül pontosan egyet meg kell adni.');
+        }
 
         parent::__construct();
     }

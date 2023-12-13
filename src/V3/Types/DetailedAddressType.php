@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CountryCodeTypeValidation;
@@ -16,6 +17,23 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValida
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'countryCode',
+        'region',
+        'postalCode',
+        'city',
+        'streetName',
+        'publicPlaceCategory',
+        'number',
+        'building',
+        'staircase',
+        'floor',
+        'door',
+        'lotNumber',
+    ],
+)]
 final readonly class DetailedAddressType extends BaseType
 {
     public function __construct(

@@ -26,7 +26,7 @@ final readonly class InvoiceOperationListType extends BaseType
          */
         #[ArrayValidation(maxItems: 100, itemType: InvoiceOperationType::class)]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\InvoiceOperationType>')]
-        #[XmlList(entry: 'invoiceOperation', inline: true)]
+        #[XmlList(entry: 'invoiceOperation', inline: true, skipWhenEmpty: false)]
         public array $invoiceOperations = [],
     ) {
         parent::__construct();

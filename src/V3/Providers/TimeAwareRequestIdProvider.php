@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Providers;
 
+use Psr\Clock\ClockInterface;
+
 use function strlen;
 
 /**
@@ -12,7 +14,7 @@ use function strlen;
 readonly class TimeAwareRequestIdProvider implements RequestIdProviderInterface
 {
     public function __construct(
-        private DateTimeProviderInterface $dateTimeProvider = new DateTimeProvider(),
+        private ClockInterface $dateTimeProvider = new DateTimeProvider(),
         private RandomProviderInterface $randomProvider = new RandomProvider(),
         private string $prefix = 'RID'
     ) {

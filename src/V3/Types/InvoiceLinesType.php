@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlList;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
 
@@ -29,6 +30,7 @@ final readonly class InvoiceLinesType extends BaseType
         #[ArrayValidation(itemType: NewCreatedLinesType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\NewCreatedLinesType>')]
+        #[XmlList(entry: 'newCreatedLines', inline: true)]
         public array $newCreatedLines = [],
     ) {
         parent::__construct();

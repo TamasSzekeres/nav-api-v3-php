@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType;
 use LightSideSoftware\NavApi\V3\Types\Enums\PaymentMethodType;
@@ -21,6 +20,28 @@ use LightSideSoftware\NavApi\V3\Types\Enums\PaymentMethodType;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'invoiceCategory',
+        'invoiceDeliveryDate',
+        'invoiceDeliveryPeriodStart',
+        'invoiceDeliveryPeriodEnd',
+        'invoiceAccountingDeliveryDate',
+        'periodicalSettlement',
+        'smallBusinessIndicator',
+        'currencyCode',
+        'exchangeRate',
+        'utilitySettlementIndicator',
+        'selfBillingIndicator',
+        'paymentMethod',
+        'paymentDate',
+        'cashAccountingIndicator',
+        'invoiceAppearance',
+        'conventionalInvoiceInfo',
+        'additionalInvoiceData',
+    ]
+)]
 final readonly class InvoiceDetailType extends BaseType
 {
     public function __construct(

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation;
@@ -15,6 +16,19 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValid
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'supplierTaxNumber',
+        'groupMemberTaxNumber',
+        'communityVatNumber',
+        'supplierName',
+        'supplierAddress',
+        'supplierBankAccountNumber',
+        'individualExemption',
+        'exciseLicenceNum',
+    ],
+)]
 final readonly class SupplierInfoType extends BaseType
 {
     public function __construct(

@@ -8,9 +8,7 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use LightSideSoftware\NavApi\V3\Exceptions\GeneralErrorResponseException;
 use LightSideSoftware\NavApi\V3\Providers\DateTimeProvider;
-use LightSideSoftware\NavApi\V3\Providers\DateTimeProviderInterface;
 use LightSideSoftware\NavApi\V3\Providers\RequestIdProviderInterface;
-use LightSideSoftware\NavApi\V3\Providers\IncrementalRequestIdProvider;
 use LightSideSoftware\NavApi\V3\Providers\TimeAwareRequestIdProvider;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\CryptoType;
@@ -39,6 +37,7 @@ use LightSideSoftware\NavApi\V3\Types\Responses\QueryTransactionStatusResponse;
 use LightSideSoftware\NavApi\V3\Types\Responses\TokenExchangeResponse;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
+use Psr\Clock\ClockInterface;
 
 /**
  * Class Client
@@ -61,7 +60,7 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
         public readonly string $taxNumber,
         public readonly SoftwareType $software,
         public readonly RequestIdProviderInterface $requestIdProvider = new TimeAwareRequestIdProvider(),
-        public readonly DateTimeProviderInterface $dateTimeProvider = new DateTimeProvider()
+        public readonly ClockInterface $dateTimeProvider = new DateTimeProvider()
     ) {
     }
 

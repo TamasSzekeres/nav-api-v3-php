@@ -12,6 +12,7 @@
         "php": ">=8.2",
         "guzzlehttp/guzzle": "^7.3",
         "jms/serializer": "^3.14",
+        "psr/clock": "^1",
         "ext-mbstring": "*",
         "ext-openssl": "*"
     },

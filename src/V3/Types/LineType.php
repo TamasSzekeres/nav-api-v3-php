@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use InvalidArgumentException;
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlList;
@@ -21,6 +23,39 @@ use LightSideSoftware\NavApi\V3\Types\Enums\UnitOfMeasureType;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'lineNumber',
+        'lineModificationReference',
+        'referencesToOtherLines',
+        'advanceData',
+        'productCodes',
+        'lineExpressionIndicator',
+        'lineNatureIndicator',
+        'lineDescription',
+        'quantity',
+        'unitOfMeasure',
+        'unitOfMeasureOwn',
+        'unitPrice',
+        'unitPriceHUF',
+        'lineDiscountData',
+        'lineAmountsNormal',
+        'lineAmountsSimplified',
+        'intermediatedService',
+        'aggregateInvoiceLineData',
+        'newTransportMean',
+        'depositIndicator',
+        'obligatedForProductFee',
+        'GPCExcise',
+        'dieselOilPurchase',
+        'netaDeclaration',
+        'productFeeClause',
+        'lineProductFeeContent',
+        'conventionalLineInfo',
+        'additionalLineData',
+    ],
+)]
 final readonly class LineType extends BaseType
 {
     public function __construct(
@@ -202,6 +237,13 @@ final readonly class LineType extends BaseType
         #[SkipWhenEmpty]
         public ?AdditionalDataType $additionalLineData = null,
     ) {
+        if (
+            ($this->lineAmountsNormal instanceof LineAmountsNormalType)
+            && ($this->lineAmountsSimplified instanceof LineAmountsSimplifiedType)
+        ) {
+            throw new InvalidArgumentException('A "lineAmountsNormal" és "lineAmountsSimplified" paraméterek közül csak egyet lehet megadni.');
+        }
+
         parent::__construct();
     }
 }

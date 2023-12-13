@@ -14,7 +14,7 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValida
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-final readonly class InvoiceDataType extends BaseType
+abstract readonly class InvoiceDataType extends BaseType
 {
     public function __construct(
         /**

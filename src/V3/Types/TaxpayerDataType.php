@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText200NotBlankTypeValidation;
@@ -16,6 +17,17 @@ use LightSideSoftware\NavApi\V3\Types\Enums\IncorporationType;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'taxpayerName',
+        'taxpayerShortName',
+        'taxNumberDetail',
+        'incorporation',
+        'vatGroupMembership',
+        'taxpayerAddressList',
+    ],
+)]
 final readonly class TaxpayerDataType extends BaseType
 {
     public function __construct(

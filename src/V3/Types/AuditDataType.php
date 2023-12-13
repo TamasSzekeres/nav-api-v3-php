@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
@@ -21,6 +22,18 @@ use LightSideSoftware\NavApi\V3\Types\Enums\SourceType;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'insdate',
+        'insCusUser',
+        'source',
+        'transactionId',
+        'index',
+        'batchIndex',
+        'originalRequestVersion',
+    ],
+)]
 final readonly class AuditDataType extends BaseType
 {
     public function __construct(

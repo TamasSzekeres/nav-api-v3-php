@@ -16,7 +16,7 @@ use LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentCodeType;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-final readonly class InvoiceAnnulmentType extends BaseType
+abstract readonly class InvoiceAnnulmentType extends BaseType
 {
     public function __construct(
         /**

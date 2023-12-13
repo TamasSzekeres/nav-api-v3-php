@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
+use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
@@ -15,6 +16,13 @@ use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
+#[AccessorOrder(
+    order: 'custom',
+    custom: [
+        'lineExchangeRate',
+        'lineDeliveryDate',
+    ]
+)]
 final readonly class AggregateInvoiceLineDataType extends BaseType
 {
     public function __construct(

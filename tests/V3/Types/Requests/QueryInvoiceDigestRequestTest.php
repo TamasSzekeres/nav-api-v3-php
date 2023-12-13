@@ -2,7 +2,6 @@
 
 use LightSideSoftware\NavApi\V3\Types\AdditionalQueryParamsType;
 use LightSideSoftware\NavApi\V3\Types\DateIntervalParamType;
-use LightSideSoftware\NavApi\V3\Types\DateTimeIntervalParamType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType;
 use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceDirectionType;
@@ -31,11 +30,6 @@ test('convert inbound invoice-digest-request to xml', function () {
                     dateFrom: new DateTimeImmutable('2019-01-01'),
                     dateTo: new DateTimeImmutable('2019-01-01'),
                 ),
-                insDate: new DateTimeIntervalParamType(
-                    dateTimeFrom: new DateTimeImmutable('2019-01-01 12:00:00'),
-                    dateTimeTo: new DateTimeImmutable('2019-01-01 14:00:00'),
-                ),
-                originalInvoiceNumber: '05921263386905374149059212633869053741490592126355',
             ),
             additionalQueryParams: new AdditionalQueryParamsType(
                 taxNumber: '22222222',
@@ -93,7 +87,7 @@ test('convert inbound invoice-digest-request to xml', function () {
         ),
     );
 
-    $expected = loadTestRequest('QueryInvoiceDigestRequest_inbound');
+    $expected = loadTestRequest('QueryInvoiceDigestRequest');
 
     $xml = $request->toXml(false);
 

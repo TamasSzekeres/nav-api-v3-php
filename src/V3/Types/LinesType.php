@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
+
 /**
  * Termék/szolgáltatás tételek.
  *
@@ -18,9 +22,12 @@ final readonly class LinesType extends BaseType
         public bool $mergedItemIndicator,
 
         /**
-         * @var LineType Termék/szolgáltatás tétel.
+         * @var array<int, LineType> Termék/szolgáltatás tétel.
          */
-        public LineType $line,
+        #[ArrayValidation(minItems: 1, itemType: LineType::class)]
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\LineType>')]
+        #[XmlList(entry: 'line', inline: true)]
+        public array $lines = [],
     ) {
         parent::__construct();
     }

@@ -7,14 +7,15 @@ namespace LightSideSoftware\NavApi\V3\Factories;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
 use LightSideSoftware\NavApi\V3\InvoiceServiceClient;
 use LightSideSoftware\NavApi\V3\InvoiceServiceClientInterface;
-use LightSideSoftware\NavApi\V3\Exceptions\InvalidConfigException;
 use LightSideSoftware\NavApi\V3\Providers\DateTimeProvider;
-use LightSideSoftware\NavApi\V3\Providers\DateTimeProviderInterface;
 use LightSideSoftware\NavApi\V3\Providers\RequestIdProviderInterface;
 use LightSideSoftware\NavApi\V3\Providers\TimeAwareRequestIdProvider;
+use LightSideSoftware\NavApi\V3\Types\Enums\SoftwareOperationType;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
+use Psr\Clock\ClockInterface;
 
 /**
  * @author Tamás Szekeres <szektam2@gmail.com>
@@ -40,7 +41,7 @@ final class InvoiceServiceClientFactory
 
     private string $softwareName;
 
-    private string $softwareOperation;
+    private SoftwareOperationType $softwareOperation;
 
     private string $softwareMainVersion;
 
@@ -54,7 +55,7 @@ final class InvoiceServiceClientFactory
 
     private RequestIdProviderInterface $requestIdProvider;
 
-    private DateTimeProviderInterface $dateTimeProvider;
+    private ClockInterface $dateTimeProvider;
 
     public function __construct()
     {
@@ -119,7 +120,7 @@ final class InvoiceServiceClientFactory
         return $this;
     }
 
-    public function dateTimeProvider(DateTimeProviderInterface $dateTimeProvider): self
+    public function dateTimeProvider(ClockInterface $dateTimeProvider): self
     {
         $this->dateTimeProvider = $dateTimeProvider;
 
@@ -140,7 +141,7 @@ final class InvoiceServiceClientFactory
         return $this;
     }
 
-    public function softwareOperation(string $softwareOperation): self
+    public function softwareOperation(SoftwareOperationType $softwareOperation): self
     {
         $this->softwareOperation = $softwareOperation;
 
@@ -264,7 +265,7 @@ final class InvoiceServiceClientFactory
                 $this->softwareDevName,
                 $this->softwareDevContact,
                 $this->softwareDevCountryCode,
-                $this->softwareDevTaxNumber
+                $this->softwareDevTaxNumber,
             ),
             $this->requestIdProvider ?? new TimeAwareRequestIdProvider(),
             $this->dateTimeProvider ?? new DateTimeProvider()
