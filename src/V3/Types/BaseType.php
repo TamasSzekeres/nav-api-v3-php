@@ -71,7 +71,8 @@ abstract readonly class BaseType extends BaseObject
 
     public static function fromXml(string $xml): static
     {
-        return SerializerBuilder::create()
+        /* @var $object BaseType */
+        $object = SerializerBuilder::create()
             ->configureHandlers(function (HandlerRegistry $registry) {
                 $registry->registerSubscribingHandler(new DateTimeHandler());
                 $registry->registerSubscribingHandler(new EnumHandler());
@@ -79,6 +80,10 @@ abstract readonly class BaseType extends BaseObject
             ->setPropertyNamingStrategy(new IdenticalPropertyNamingStrategy())
             ->build()
             ->deserialize($xml, static::class, 'xml');
+
+        $object->validate();
+
+        return $object;
     }
 
     public function toXml(bool $indent = false): string

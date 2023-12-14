@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3;
 
 use DateTimeImmutable;
@@ -7,11 +9,20 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use LightSideSoftware\NavApi\V3\Exceptions\GeneralErrorResponseException;
+use LightSideSoftware\NavApi\V3\Exceptions\GeneralExceptionResponseException;
 use LightSideSoftware\NavApi\V3\Providers\DateTimeProvider;
 use LightSideSoftware\NavApi\V3\Providers\RequestIdProviderInterface;
 use LightSideSoftware\NavApi\V3\Providers\TimeAwareRequestIdProvider;
+use LightSideSoftware\NavApi\V3\Types\BaseType;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\CryptoType;
+use LightSideSoftware\NavApi\V3\Types\DateTimeIntervalParamType;
+use LightSideSoftware\NavApi\V3\Types\Enums\InvoiceDirectionType;
+use LightSideSoftware\NavApi\V3\Types\Enums\RequestStatusType;
+use LightSideSoftware\NavApi\V3\Types\InvoiceChainQueryType;
+use LightSideSoftware\NavApi\V3\Types\InvoiceNumberQueryType;
+use LightSideSoftware\NavApi\V3\Types\InvoiceOperationListType;
+use LightSideSoftware\NavApi\V3\Types\InvoiceQueryParamsType;
 use LightSideSoftware\NavApi\V3\Types\Requests\BasicRequestType;
 use LightSideSoftware\NavApi\V3\Types\Requests\ManageAnnulmentRequest;
 use LightSideSoftware\NavApi\V3\Types\Requests\ManageInvoiceRequest;
@@ -25,6 +36,7 @@ use LightSideSoftware\NavApi\V3\Types\Requests\QueryTransactionStatusRequest;
 use LightSideSoftware\NavApi\V3\Types\Requests\TokenExchangeRequest;
 use LightSideSoftware\NavApi\V3\Types\Responses\BasicResponseType;
 use LightSideSoftware\NavApi\V3\Types\Responses\GeneralErrorResponse;
+use LightSideSoftware\NavApi\V3\Types\Responses\GeneralExceptionResponse;
 use LightSideSoftware\NavApi\V3\Types\Responses\ManageAnnulmentResponse;
 use LightSideSoftware\NavApi\V3\Types\Responses\ManageInvoiceResponse;
 use LightSideSoftware\NavApi\V3\Types\Responses\QueryInvoiceChainDigestResponse;
@@ -38,17 +50,26 @@ use LightSideSoftware\NavApi\V3\Types\Responses\TokenExchangeResponse;
 use LightSideSoftware\NavApi\V3\Types\SoftwareType;
 use LightSideSoftware\NavApi\V3\Types\UserHeaderType;
 use Psr\Clock\ClockInterface;
+use Throwable;
 
 /**
  * Class Client
  *
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
 class InvoiceServiceClient implements InvoiceServiceClientInterface
 {
     public const REQUEST_VERSION = '3.0';
     public const HEADER_VERSION = '1.0';
 
+    public const MANAGE_ANNULMENT_ENDPOINT = '/invoiceService/v3/manageAnnulment';
+    public const MANAGE_INVOICE_ENDPOINT = '/invoiceService/v3/manageInvoice';
+    public const QUERY_INVOICE_CHAIN_DIGEST_ENDPOINT = '/invoiceService/v3/queryInvoiceChainDigest';
+    public const QUERY_INVOICE_CHECK_ENDPOINT = '/invoiceService/v3/queryInvoiceCheck';
+    public const QUERY_INVOICE_DATA_ENDPOINT = '/invoiceService/v3/queryInvoiceData';
+    public const QUERY_INVOICE_DIGEST_ENDPOINT = '/invoiceService/v3/queryInvoiceDigest';
+    public const QUERY_TRANSACTION_LIST_ENDPOINT = '/invoiceService/v3/queryTransactionList';
+    public const QUERY_TRANSACTION_STATUS_ENDPOINT = '/invoiceService/v3/queryTransactionStatus';
     public const QUERY_TAXPAYER_ENDPOINT = '/invoiceService/v3/queryTaxpayer';
     public const TOKEN_EXCHANGE_ENDPOINT = '/invoiceService/v3/tokenExchange';
 
@@ -56,6 +77,7 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
         public readonly Client $client,
         public readonly string $login,
         public readonly string $xmlSignKey,
+        public readonly string $xmlChangeKey,
         public readonly string $password,
         public readonly string $taxNumber,
         public readonly SoftwareType $software,
@@ -64,42 +86,247 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
     ) {
     }
 
-    public function manageAnnulment(): ManageAnnulmentResponse
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function manageAnnulment(array $annulmentOperations): ManageAnnulmentResponse
     {
-    }
+        $tokenExchangeResponse = $this->tokenExchange();
+        $exchangeToken = Util::decryptAes128($tokenExchangeResponse->encodedExchangeToken, $this->xmlChangeKey);
 
-    public function manageInvoice(): ManageInvoiceResponse
-    {
-    }
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
 
-    public function queryInvoiceChainDigest(): QueryInvoiceChainDigestResponse
-    {
-    }
+        $request = new ManageAnnulmentRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $exchangeToken,
+            $annulmentOperations,
+        );
 
-    public function queryInvoiceCheck(): QueryInvoiceCheckResponse
-    {
-    }
+        /* @var $response ManageAnnulmentResponse */
+        $response = $this->post(
+            uri: self::MANAGE_ANNULMENT_ENDPOINT,
+            request: $request,
+            responseClass: ManageAnnulmentResponse::class,
+        );
 
-    public function queryInvoiceData(): QueryInvoiceDataResponse
-    {
-    }
-
-    public function queryInvoiceDigest(): QueryInvoiceDigestResponse
-    {
-    }
-
-    public function queryTransactionList(): QueryTransactionListResponse
-    {
-    }
-
-    public function queryTransactionStatus(): QueryTransactionStatusResponse
-    {
+        return $response;
     }
 
     /**
-     * @param string $taxNumber
-     * @return QueryTaxpayerResponse
-     * @throws GeneralErrorResponseException
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function manageInvoice(InvoiceOperationListType $invoiceOperations): ManageInvoiceResponse
+    {
+        $tokenExchangeResponse = $this->tokenExchange();
+        $exchangeToken = Util::decryptAes128($tokenExchangeResponse->encodedExchangeToken, $this->xmlChangeKey);
+
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new ManageInvoiceRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $exchangeToken,
+            $invoiceOperations,
+        );
+
+        /* @var $response ManageInvoiceResponse */
+        $response = $this->post(
+            uri: self::MANAGE_INVOICE_ENDPOINT,
+            request: $request,
+            responseClass: ManageInvoiceResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function queryInvoiceChainDigest(InvoiceChainQueryType $invoiceChainQuery, int $page = 1): QueryInvoiceChainDigestResponse
+    {
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new QueryInvoiceChainDigestRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $page,
+            $invoiceChainQuery,
+        );
+
+        /* @var $response QueryInvoiceChainDigestResponse */
+        $response = $this->post(
+            uri: self::QUERY_INVOICE_CHAIN_DIGEST_ENDPOINT,
+            request: $request,
+            responseClass: QueryInvoiceChainDigestResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function queryInvoiceCheck(InvoiceNumberQueryType $invoiceNumberQuery): QueryInvoiceCheckResponse
+    {
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new QueryInvoiceCheckRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $invoiceNumberQuery,
+        );
+
+        /* @var $response QueryInvoiceCheckResponse */
+        $response = $this->post(
+            uri: self::QUERY_INVOICE_CHECK_ENDPOINT,
+            request: $request,
+            responseClass: QueryInvoiceCheckResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function queryInvoiceData(InvoiceNumberQueryType $invoiceNumberQuery): QueryInvoiceDataResponse
+    {
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new QueryInvoiceDataRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $invoiceNumberQuery,
+        );
+
+        /* @var $response QueryInvoiceDataResponse */
+        $response = $this->post(
+            uri: self::QUERY_INVOICE_DATA_ENDPOINT,
+            request: $request,
+            responseClass: QueryInvoiceDataResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function queryInvoiceDigest(
+        InvoiceDirectionType $invoiceDirection,
+        InvoiceQueryParamsType $invoiceQueryParams,
+        int $page = 1,
+    ): QueryInvoiceDigestResponse {
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new QueryInvoiceDigestRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $page,
+            $invoiceDirection,
+            $invoiceQueryParams,
+        );
+
+        /* @var $response QueryInvoiceDigestResponse */
+        $response = $this->post(
+            uri: self::QUERY_INVOICE_DIGEST_ENDPOINT,
+            request: $request,
+            responseClass: QueryInvoiceDigestResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function queryTransactionList(
+        DateTimeIntervalParamType $insDate,
+        ?RequestStatusType $requestStatus = null,
+        int $page = 1,
+    ): QueryTransactionListResponse {
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new QueryTransactionListRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $page,
+            $insDate,
+            $requestStatus,
+        );
+
+        /* @var $response QueryTransactionListResponse */
+        $response = $this->post(
+            uri: self::QUERY_TRANSACTION_LIST_ENDPOINT,
+            request: $request,
+            responseClass: QueryTransactionListResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
+     * @throws GuzzleException
+     */
+    public function queryTransactionStatus(
+        string $transactionId,
+        ?bool $returnOriginalRequest = null,
+    ): QueryTransactionStatusResponse {
+        $header = $this->makeBasicHeader();
+        $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
+
+        $request = new QueryTransactionStatusRequest(
+            $header,
+            $this->makeUserHeader($requestSignature),
+            $this->software,
+            $transactionId,
+            $returnOriginalRequest,
+        );
+
+        /* @var $response QueryTransactionStatusResponse */
+        $response = $this->post(
+            uri: self::QUERY_TRANSACTION_STATUS_ENDPOINT,
+            request: $request,
+            responseClass: QueryTransactionStatusResponse::class,
+        );
+
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @throws ClientException
      * @throws GuzzleException
      */
     public function queryTaxpayer(string $taxNumber): QueryTaxpayerResponse
@@ -114,23 +341,19 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
             $taxNumber,
         );
 
-        try {
-            $response = $this->post(self::QUERY_TAXPAYER_ENDPOINT, $request, QueryTaxpayerResponse::class);
+        /* @var $response QueryTaxpayerResponse */
+        $response = $this->post(
+            uri: self::QUERY_TAXPAYER_ENDPOINT,
+            request: $request,
+            responseClass: QueryTaxpayerResponse::class,
+        );
 
-            if ($response instanceof QueryTaxpayerResponse) {
-                return $response;
-            } else {
-                throw new \Exception();
-            }
-        } catch (ClientException $clientException) {
-            throw GeneralErrorResponseException::fromClientException($clientException);
-        }
+        return $response;
     }
 
     /**
-     * A számlaadat-szolgáltatás és a technikai érvénytelenítés beküldését megelőző egyszer használatos adatszolgáltatási token kiadását végző operáció.
-     *
-     * @throws GeneralErrorResponseException
+     * {@inheritDoc}
+     * @throws ClientException
      * @throws GuzzleException
      */
     public function tokenExchange(): TokenExchangeResponse
@@ -144,17 +367,14 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
             $this->software,
         );
 
-        try {
-            $response = $this->post(self::TOKEN_EXCHANGE_ENDPOINT, $request, TokenExchangeResponse::class);
+        /* @var $response TokenExchangeResponse */
+        $response = $this->post(
+            uri: self::TOKEN_EXCHANGE_ENDPOINT,
+            request: $request,
+            responseClass: TokenExchangeResponse::class,
+        );
 
-            if ($response instanceof TokenExchangeResponse) {
-                return $response;
-            } else {
-                throw new \Exception();
-            }
-        } catch (ClientException $clientException) {
-            throw GeneralErrorResponseException::fromClientException($clientException);
-        }
+        return $response;
     }
 
     /**
@@ -162,20 +382,57 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
      * @param BasicRequestType $request
      * @param class-string<BasicResponseType> $responseClass
      * @return BasicResponseType
+     * @throws ClientException
+     * @throws GeneralExceptionResponseException
+     * @throws GeneralErrorResponseException
      * @throws GuzzleException
      */
-    private function post(string $uri, BasicRequestType $request, string $responseClass): BasicResponseType
-    {
+    private function post(
+        string $uri,
+        BasicRequestType $request,
+        string $responseClass
+    ): BasicResponseType {
         $requestXml = $request->toXml();
 
-        $httpResponse = $this->client->post($uri, [
-            'body' => $requestXml,
-        ]);
+        try {
+            $httpResponse = $this->client->post($uri, [
+                'body' => $requestXml,
+            ]);
 
-        $xmlResponse = $httpResponse->getBody()->getContents();
-        $response = $responseClass::fromXml($xmlResponse);
+            $xmlResponse = $httpResponse->getBody()->getContents();
 
-        return $response;
+            return $responseClass::fromXml($xmlResponse);
+        } catch (ClientException $clientException) {
+            $xmlResponse = $clientException->getResponse()->getBody()->getContents();
+
+            $errorResultClasses = [
+                GeneralErrorResponse::class => GeneralErrorResponseException::class,
+                GeneralExceptionResponse::class => GeneralErrorResponseException::class,
+            ];
+
+            /* @var $errorException GeneralErrorResponseException|GeneralExceptionResponseException */
+            $errorException = null;
+
+            /* @var $response BaseType|null */
+            /* @var $resultClass BaseType|class-string<BaseType> */
+            /* @var $exceptionClass class-string<GeneralErrorResponseException|GeneralExceptionResponseException> */
+            foreach ($errorResultClasses as $resultClass => $exceptionClass) {
+                try {
+                    $response = $resultClass::fromXml($xmlResponse);
+
+                    if ($response instanceof $resultClass) {
+                        $errorException = $exceptionClass::fromClientException($clientException);
+                    }
+                } catch (Throwable) {
+                }
+            }
+
+            if ($errorException) {
+                throw $errorException;
+            }
+
+            throw $clientException;
+        }
     }
 
     private function makeBasicHeader(): BasicHeaderType

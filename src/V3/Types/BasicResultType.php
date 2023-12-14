@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
@@ -30,6 +31,7 @@ readonly class BasicResultType extends BaseType
          */
         #[SkipWhenEmpty]
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public ?string $errorCode = null,
 
         /**
@@ -37,6 +39,7 @@ readonly class BasicResultType extends BaseType
          */
         #[SkipWhenEmpty]
         #[SimpleText1024NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public ?string $message = null,
 
         /**
@@ -45,7 +48,7 @@ readonly class BasicResultType extends BaseType
         #[ArrayValidation(itemType: NotificationType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\NotificationType>')]
-        #[XmlList(entry: 'notification', inline: true)]
+        #[XmlList(entry: 'notification', inline: false)]
         public array $notifications = [],
     ) {
         parent::__construct();

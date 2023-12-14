@@ -33,6 +33,8 @@ final class InvoiceServiceClientFactory
 
     private string $xmlSignKey;
 
+    private string $xmlChangeKey;
+
     private string $password;
 
     private string $taxNumber;
@@ -95,6 +97,13 @@ final class InvoiceServiceClientFactory
     public function xmlSignKey(string $xmlSignKey): self
     {
         $this->xmlSignKey = $xmlSignKey;
+
+        return $this;
+    }
+
+    public function xmlChangeKey(string $xmlChangeKey): self
+    {
+        $this->xmlChangeKey = $xmlChangeKey;
 
         return $this;
     }
@@ -255,6 +264,7 @@ final class InvoiceServiceClientFactory
             $client,
             $this->login,
             $this->xmlSignKey,
+            $this->xmlChangeKey,
             $this->password,
             $this->taxNumber,
             new SoftwareType(

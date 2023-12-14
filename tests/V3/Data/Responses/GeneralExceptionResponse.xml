@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GeneralExceptionResponse xmlns="http://schemas.nav.gov.hu/NTCA/1.0/common">
+    <funcCode>ERROR</funcCode>
+    <errorCode>INVALID_REQUEST</errorCode>
+    <message>Érvénytelen kérés!</message>
+    <notifications>
+        <notification>
+            <notificationCode>N001</notificationCode>
+            <notificationText>Notification 001</notificationText>
+        </notification>
+        <notification>
+            <notificationCode>N002</notificationCode>
+            <notificationText>Notification 002</notificationText>
+        </notification>
+    </notifications>
+</GeneralExceptionResponse>
