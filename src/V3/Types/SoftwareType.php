@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CountryCodeTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText15NotBlankTypeValidation;
@@ -65,18 +66,20 @@ final readonly class SoftwareType extends BaseType
         public string $softwareDevContact,
 
         /**
-         * @var string A számlázó program fejlesztőjének országkódja. (opcionális)
+         * @var ?string A számlázó program fejlesztőjének országkódja. (opcionális)
          */
         #[CountryCodeTypeValidation]
+        #[SkipWhenEmpty]
         #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-        public string $softwareDevCountryCode,
+        public ?string $softwareDevCountryCode = null,
 
         /**
-         * @var string A számlázó program fejleszőjének adószáma. (opcionális)
+         * @var ?string A számlázó program fejleszőjének adószáma. (opcionális)
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[SkipWhenEmpty]
         #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-        public string $softwareDevTaxNumber,
+        public ?string $softwareDevTaxNumber = null,
     ) {
         parent::__construct();
     }

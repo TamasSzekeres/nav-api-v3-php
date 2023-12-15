@@ -14,23 +14,32 @@ use LightSideSoftware\NavApi\V3\Types\Responses\QueryServiceMetricsListResponse;
 use LightSideSoftware\NavApi\V3\Types\Responses\QueryServiceMetricsResponse;
 
 /**
- * @author Tamás Szekeres <szektam2@gmail.com>
+ * Kliens metrikák lekéréséhez.
+ *
+ * @author Szekeres Tamás <szektam2@gmail.com>
  */
-final class MetricServiceClient implements MetricServiceClientInterface
+final readonly class MetricServiceClient implements MetricServiceClientInterface
 {
-    public function __construct(private readonly Client $client)
+    public const METRICS_ENDPOINT = '/metricService/v3/queryServiceMetrics/metric';
+    public const METRICS_LIST_ENDPOINT = '/metricService/v3/queryServiceMetrics/list';
+
+    /**
+     * @param Client $client HTTP-kliens.
+     */
+    public function __construct(private Client $client)
     {
     }
 
     /**
+     * {@inheritDoc}
      * @throws GuzzleException
      * @throws Exception
      */
     public function metric(): QueryServiceMetricsResponse
     {
-        $response = $this->client->get(
-            '/metricService/v3/queryServiceMetrics/metric',
-            $this->httpOptions()
+        $response = $this->getClient()->get(
+            uri: self::METRICS_ENDPOINT,
+            options: $this->httpOptions()
         );
         $statusCode = $response->getStatusCode();
 
@@ -38,19 +47,20 @@ final class MetricServiceClient implements MetricServiceClientInterface
             $xml = $response->getBody()->getContents();
             return QueryServiceMetricsResponse::fromXml($xml);
         } else {
-            throw new Exception("Api call failed!");
+            throw new Exception('Hiba API hívás során!');
         }
     }
 
     /**
+     * {@inheritDoc}
      * @throws GuzzleException
      * @throws Exception
      */
     public function list(): QueryServiceMetricsListResponse
     {
-        $response = $this->client->get(
-            '/metricService/v3/queryServiceMetrics/list',
-            $this->httpOptions()
+        $response = $this->getClient()->get(
+            uri: self::METRICS_LIST_ENDPOINT,
+            options: $this->httpOptions()
         );
         $statusCode = $response->getStatusCode();
 
@@ -58,19 +68,20 @@ final class MetricServiceClient implements MetricServiceClientInterface
             $xml = $response->getBody()->getContents();
             return QueryServiceMetricsListResponse::fromXml($xml);
         } else {
-            throw new Exception("Api call failed!");
+            throw new Exception('Hiba API hívás során!');
         }
     }
 
     /**
+     * {@inheritDoc}
      * @throws GuzzleException
      * @throws BusinessFaultException
      */
     public function metricByName(string $metricName): QueryServiceMetricsResponse
     {
-        $response = $this->client->get(
-            "/metricService/v3/queryServiceMetrics/metric/{$metricName}",
-            $this->httpOptions()
+        $response = $this->getClient()->get(
+            uri: self::METRICS_ENDPOINT . "/{$metricName}",
+            options: $this->httpOptions()
         );
         $statusCode = $response->getStatusCode();
         $xml = $response->getBody()->getContents();
@@ -80,7 +91,7 @@ final class MetricServiceClient implements MetricServiceClientInterface
         } else {
             $businessFaultResponse = BusinessFaultResponse::fromXml($xml);
             throw new BusinessFaultException(
-                'Api call failed!',
+                'Hiba API hívás során!',
                 $businessFaultResponse,
                 $statusCode
             );
@@ -92,7 +103,10 @@ final class MetricServiceClient implements MetricServiceClientInterface
         return $this->client;
     }
 
-    #[ArrayShape(['headers' => 'string[]', 'http_errors' => 'bool'])]
+    #[ArrayShape([
+        'headers' => 'string[]',
+        'http_errors' => 'bool',
+    ])]
     private function httpOptions(): array
     {
         return [

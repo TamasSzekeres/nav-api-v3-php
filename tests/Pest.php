@@ -11,6 +11,7 @@
 |
 */
 
+use GuzzleHttp\Psr7\Response;
 use LightSideSoftware\NavApi\V3\Types\BasicHeaderType;
 use LightSideSoftware\NavApi\V3\Types\CryptoType;
 use LightSideSoftware\NavApi\V3\Types\Enums\SoftwareOperationType;
@@ -50,6 +51,18 @@ function loadTestResponse(string $responseName): string
         "$responseName.xml",
     ]);
     return loadTestFile($filePath);
+}
+
+function createResponseFromXml(string $xmlResponse, int $status = 200): Response
+{
+    return new Response(
+        status: $status,
+        headers: [
+            'Content-Type' => 'application/xml',
+            'Content-Length' => strlen($xmlResponse),
+        ],
+        body: $xmlResponse,
+    );
 }
 
 const BASIC_HEADER_TYPE_EXAMPLE = new BasicHeaderType(

@@ -53,11 +53,11 @@ use Psr\Clock\ClockInterface;
 use Throwable;
 
 /**
- * Class Client
+ * Kliens számla-szolgáltatás operációhoz.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-class InvoiceServiceClient implements InvoiceServiceClientInterface
+final readonly class InvoiceServiceClient implements InvoiceServiceClientInterface
 {
     public const REQUEST_VERSION = '3.0';
     public const HEADER_VERSION = '1.0';
@@ -74,15 +74,15 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
     public const TOKEN_EXCHANGE_ENDPOINT = '/invoiceService/v3/tokenExchange';
 
     public function __construct(
-        public readonly Client $client,
-        public readonly string $login,
-        public readonly string $xmlSignKey,
-        public readonly string $xmlChangeKey,
-        public readonly string $password,
-        public readonly string $taxNumber,
-        public readonly SoftwareType $software,
-        public readonly RequestIdProviderInterface $requestIdProvider = new TimeAwareRequestIdProvider(),
-        public readonly ClockInterface $dateTimeProvider = new DateTimeProvider()
+        public Client $client,
+        public string $login,
+        public string $xmlSignKey,
+        public string $xmlChangeKey,
+        public string $password,
+        public string $taxNumber,
+        public SoftwareType $software,
+        public RequestIdProviderInterface $requestIdProvider = new TimeAwareRequestIdProvider(),
+        public ClockInterface $dateTimeProvider = new DateTimeProvider()
     ) {
     }
 
@@ -153,8 +153,10 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
      * @throws ClientException
      * @throws GuzzleException
      */
-    public function queryInvoiceChainDigest(InvoiceChainQueryType $invoiceChainQuery, int $page = 1): QueryInvoiceChainDigestResponse
-    {
+    public function queryInvoiceChainDigest(
+        InvoiceChainQueryType $invoiceChainQuery,
+        int $page = 1
+    ): QueryInvoiceChainDigestResponse {
         $header = $this->makeBasicHeader();
         $requestSignature = $this->makeRequestSignatureForQuery($header->requestId, $header->timestamp);
 
@@ -407,7 +409,7 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
 
             $errorResultClasses = [
                 GeneralErrorResponse::class => GeneralErrorResponseException::class,
-                GeneralExceptionResponse::class => GeneralErrorResponseException::class,
+                GeneralExceptionResponse::class => GeneralExceptionResponseException::class,
             ];
 
             /* @var $errorException GeneralErrorResponseException|GeneralExceptionResponseException */
@@ -420,9 +422,19 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
                 try {
                     $response = $resultClass::fromXml($xmlResponse);
 
-                    if ($response instanceof $resultClass) {
-                        $errorException = $exceptionClass::fromClientException($clientException);
+                    if (
+                        $response instanceof GeneralExceptionResponse
+                        && is_null($response->funcCode)
+                    ) {
+                        continue;
                     }
+
+                    $errorException = new $exceptionClass(
+                        $clientException->getMessage(),
+                        $response,
+                        $clientException->getCode(),
+                        $clientException,
+                    );
                 } catch (Throwable) {
                 }
             }
@@ -440,8 +452,8 @@ class InvoiceServiceClient implements InvoiceServiceClientInterface
         return new BasicHeaderType(
             requestId: $this->requestIdProvider->nextRequestId(),
             timestamp: $this->dateTimeProvider->now(),
-            requestVersion: static::REQUEST_VERSION,
-            headerVersion: static::HEADER_VERSION,
+            requestVersion: self::REQUEST_VERSION,
+            headerVersion: self::HEADER_VERSION,
         );
     }
 

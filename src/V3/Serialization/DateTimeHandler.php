@@ -71,6 +71,6 @@ final class DateTimeHandler implements SubscribingHandlerInterface
             $format = 'Y-m-d H:i:s';
         }
 
-        return DateTimeImmutable::createFromFormat($format, (string)$value);
+        return new DateTimeImmutable((string)$value);
     }
 }

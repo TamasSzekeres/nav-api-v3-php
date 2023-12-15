@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BusinessFault
+    xmlns="http://common.dto.coffee.icellmobilsoft.hu/commonservice"
+    xmlns:ns2="http://common.dto.icon.icellmobilsoft.hu/commonsecurity"
+    xmlns:ns3="http://user.dto.icon.icellmobilsoft.hu/external/vader"
+    xmlns:ns4="http://common.dto.coffee.icellmobilsoft.hu/common"
+    xmlns:ns5="http://navdata.dto.icon.icellmobilsoft.hu/external/vader"
+    xmlns:ns6="http://invoice.dto.icon.icellmobilsoft.hu/invoiceStatistics"
+    xmlns:ns7="http://schemas.nav.gov.hu/OSA/1.0/data"
+    xmlns:ns8="http://test.dto.icon.icellmobilsoft.hu/invoicetest"
+    xmlns:ns9="http://schemas.nav.gov.hu/OSA/2.0/data"
+    xmlns:ns10="http://schemas.nav.gov.hu/OSA/3.0/data"
+    xmlns:ns11="http://schemas.nav.gov.hu/OSA/3.0/base"
+    xmlns:ns12="http://invoice.dto.icon.icellmobilsoft.hu/invoiceitem"
+    xmlns:ns13="http://document.dto.icon.icellmobilsoft.hu/document"
+    xmlns:ns14="http://artemis.dto.icon.icellmobilsoft.hu/artemis"
+    xmlns:ns15="http://config.dto.icon.icellmobilsoft.hu/config"
+    xmlns:ns16="http://invoice.dto.icon.icellmobilsoft.hu/invoice/history/v2"
+    xmlns:ns17="http://invoice.dto.icon.icellmobilsoft.hu/invoice"
+    xmlns:ns18="http://invoice.dto.icon.icellmobilsoft.hu/invoice/history/v1"
+    xmlns:ns19="http://navdata.dto.icon.icellmobilsoft.hu/navdata"
+    xmlns:ns20="http://user.dto.icon.icellmobilsoft.hu/twostep"
+    xmlns:ns21="http://user.dto.icon.icellmobilsoft.hu/device"
+    xmlns:ns22="http://user.dto.icon.icellmobilsoft.hu/user"
+    xmlns:ns23="http://evict.dto.icon.icellmobilsoft.hu/evict"
+    xmlns:ns24="http://common.dto.icon.icellmobilsoft.hu/commonservice"
+    xmlns:ns25="http://user.dto.vdr.icellmobilsoft.hu/external/sso"
+    xmlns:ns26="http://schemas.nav.gov.hu/OSA/3.0/annul"
+    xmlns:ns27="http://schemas.nav.gov.hu/OSA/3.0/api"
+    xmlns:ns28="http://common.dto.icon.icellmobilsoft.hu/export"
+    xmlns:ns29="http://invoice.dto.icon.icellmobilsoft.hu/invoiceExport"
+    xmlns:ns30="http://common.dto.icon.icellmobilsoft.hu/jms"
+    xmlns:ns31="http://notification.dto.coffee.icellmobilsoft.hu/notification">
+    <context>
+        <requestId>4ESKFA3RIDLWCRJ6</requestId>
+        <timestamp>2023-12-15T16:22:47.271936Z</timestamp>
+    </context>
+    <funcCode>ERROR</funcCode>
+    <message>A kért erőforrás nem található!</message>
+    <faultType>RESOURCE_NOT_FOUND</faultType>
+    <service>metric</service>
+</BusinessFault>
