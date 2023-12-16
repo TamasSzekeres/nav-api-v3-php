@@ -42,7 +42,11 @@ class DateTimeValidation implements PropertyValidatorInterface
     {
         $errors = new ErrorBag();
 
-        if (!is_null($value) && !($value instanceof DateTimeImmutable)) {
+        if (is_null($value)) {
+            return $errors;
+        }
+
+        if (!($value instanceof DateTimeImmutable)) {
             $errors->addError($name, "{$name} tulajdonságnak DataTimeImmutable típusúnak kell lennie!");
 
             return $errors;

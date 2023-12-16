@@ -44,7 +44,7 @@ final readonly class ConventionalInvoiceInfoType extends BaseType
         #[SkipWhenEmpty]
         #[Type('array<string>')]
         #[XmlList(entry: 'shippingDate', inline: false)]
-        public array $shippingdates = [],
+        public array $shippingDates = [],
 
         /**
          * @var array<int, string> Szerződésszám(ok).

@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
@@ -21,6 +22,7 @@ abstract readonly class InvoiceDataType extends BaseType
          * @var string Számla vagy módosító okirat sorszáma - ÁFA tv. 169. § b) vagy 170. § (1) bek. b) pont.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $invoiceNumber,
 
         /**

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
@@ -19,6 +20,7 @@ final readonly class InvoiceReferenceType extends BaseType
          * @var string Az eredeti számla sorszáma, melyre a módosítás vonatkozik  - ÁFA tv. 170. § (1) c).
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $originalInvoiceNumber,
 
         /**

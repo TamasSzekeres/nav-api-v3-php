@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ProductCodeValueTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ProductCodeCategoryType;
@@ -28,6 +29,7 @@ final readonly class ProductCodeType extends BaseType
          */
         #[ProductCodeValueTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $productCodeValue = null,
 
         /**
@@ -35,6 +37,7 @@ final readonly class ProductCodeType extends BaseType
          */
         #[SimpleText255NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $productCodeOwnValue = null,
     ) {
         if (

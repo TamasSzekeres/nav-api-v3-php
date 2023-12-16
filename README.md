@@ -3,6 +3,7 @@
 Api-kliens komponens Nav Api használatához.
 
 [![Pest Tests](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/tests.yml/badge.svg?branch=master&event=push)](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/tests.yml)
+[![Test Coverage](https://raw.githubusercontent.com/Hi-Folks/array/main/badge-coverage.svg)](https://packagist.org/packages/hi-folks/array)
 
 ## Telepítés
 
@@ -44,6 +45,6 @@ a `composer cs-check` paranccsal.
 
 ## Közreműködtek
 
-- [szekerest][link-author]
+- [Szekeres Tamás][link-author]
 
 [link-author]: https://github.com/TamasSzekeres

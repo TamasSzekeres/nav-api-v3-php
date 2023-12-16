@@ -8,6 +8,7 @@ use InvalidArgumentException;
 use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
@@ -96,7 +97,7 @@ final readonly class LineType extends BaseType
         #[ArrayValidation(itemType: ProductCodeType::class)]
         #[SkipWhenEmpty]
         #[Type('array<LightSideSoftware\NavApi\V3\Types\ProductCodeType>')]
-        #[XmlList(entry: 'productCode', inline: true)]
+        #[XmlList(entry: 'productCode', inline: false)]
         public array $productCodes = [],
 
         /**
@@ -110,6 +111,7 @@ final readonly class LineType extends BaseType
          */
         #[SimpleText512NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $lineDescription = null,
 
         /**
@@ -129,6 +131,7 @@ final readonly class LineType extends BaseType
          * @var ?string A számlán szereplő mennyiségi egység literális kifejezése.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public ?string $unitOfMeasureOwn = null,
 
         /**

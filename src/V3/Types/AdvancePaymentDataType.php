@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
@@ -22,6 +23,7 @@ final readonly class AdvancePaymentDataType extends BaseType
          * @var string Az előlegszámlának a sorszáma, amelyben az előlegfizetés történt.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $advanceOriginalInvoice,
 
         /**

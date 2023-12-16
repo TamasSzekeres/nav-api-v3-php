@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\CustomerVatStatusType;
@@ -33,6 +34,7 @@ final readonly class CustomerInfoType extends BaseType
          */
         #[SimpleText512NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $customerName = null,
 
         /**
@@ -46,6 +48,7 @@ final readonly class CustomerInfoType extends BaseType
          */
         #[BankAccountNumberTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $customerBankAccountNumber = null,
     ) {
         parent::__construct();

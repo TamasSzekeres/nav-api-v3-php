@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
@@ -41,6 +42,7 @@ final readonly class SupplierInfoType extends BaseType
          * @var string Az eladó (szállító) neve.
          */
         #[SimpleText512NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $supplierName,
 
         /**
@@ -59,6 +61,7 @@ final readonly class SupplierInfoType extends BaseType
          */
         #[CommunityVatNumberTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $communityVatNumber = null,
 
         /**
@@ -66,6 +69,7 @@ final readonly class SupplierInfoType extends BaseType
          */
         #[BankAccountNumberTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $supplierBankAccountNumber = null,
 
         /**
@@ -79,6 +83,7 @@ final readonly class SupplierInfoType extends BaseType
          */
         #[SimpleText50NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $exciseLicenceNum = null,
     ) {
         parent::__construct();

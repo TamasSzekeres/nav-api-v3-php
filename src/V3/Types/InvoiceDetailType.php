@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
@@ -61,6 +62,7 @@ final readonly class InvoiceDetailType extends BaseType
          * @var string A számla pénzneme az ISO 4217 szabvány szerint.
          */
         #[CurrencyTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $currencyCode,
 
         /**

@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
@@ -25,6 +26,7 @@ final readonly class NewTransportMeanType extends BaseType
          */
         #[SimpleText50NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $brand = null,
 
         /**
@@ -32,6 +34,7 @@ final readonly class NewTransportMeanType extends BaseType
          */
         #[SimpleText255NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $serialNum = null,
 
         /**
@@ -39,6 +42,7 @@ final readonly class NewTransportMeanType extends BaseType
          */
         #[SimpleText255NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $engineNum = null,
 
         /**

@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
@@ -22,6 +23,7 @@ final readonly class PaymentEvidenceDocumentDataType extends BaseType
          * @var string Számla sorszáma vagy egyéb okirat azonosító száma.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $evidenceDocumentNo,
 
         /**
@@ -35,6 +37,7 @@ final readonly class PaymentEvidenceDocumentDataType extends BaseType
          * @var string Kötelezett neve.
          */
         #[SimpleText255NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $obligatedName,
 
         /**

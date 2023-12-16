@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
 
@@ -29,6 +30,7 @@ final readonly class CustomerVatDataType extends BaseType
          */
         #[CommunityVatNumberTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $communityVatNumber = null,
 
         /**
@@ -36,6 +38,7 @@ final readonly class CustomerVatDataType extends BaseType
          */
         #[SimpleText50NotBlankTypeValidation]
         #[SkipWhenEmpty]
+        #[XmlElement(cdata: false)]
         public ?string $thirdStateTaxId = null,
     ) {
         $hasCustomerTaxNumber = ($this->customerTaxNumber instanceof CustomerTaxNumberType);

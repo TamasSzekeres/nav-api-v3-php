@@ -7,6 +7,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\PlateNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
@@ -35,6 +36,7 @@ final readonly class DieselOilPurchaseType extends BaseType
          * @var string Kereskedelmi jármű forgalmi rendszáma (csak betűk és számok).
          */
         #[PlateNumberTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $vehicleRegistrationNumber,
 
         /**

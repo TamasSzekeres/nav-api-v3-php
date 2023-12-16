@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
 
@@ -23,12 +24,14 @@ final readonly class AddressType extends BaseType
          * @var ?SimpleAddressType Egyszerű cím.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/base')]
         public ?SimpleAddressType $simpleAddress = null,
 
         /**
          * @var ?DetailedAddressType Részletes cím.
          */
         #[SkipWhenEmpty]
+        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/base')]
         public ?DetailedAddressType $detailedAddress = null,
     ) {
         if (

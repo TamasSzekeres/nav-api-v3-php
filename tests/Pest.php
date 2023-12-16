@@ -35,6 +35,15 @@ function loadTestFile(string $fileName): string
     return file_get_contents($filePath);
 }
 
+function loadTestInvoice(string $invoiceName): string
+{
+    $filePath = join(DIRECTORY_SEPARATOR, [
+        'Invoices',
+        "$invoiceName.xml",
+    ]);
+    return loadTestFile($filePath);
+}
+
 function loadTestRequest(string $requestName): string
 {
     $filePath = join(DIRECTORY_SEPARATOR, [

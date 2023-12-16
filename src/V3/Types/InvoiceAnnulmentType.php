@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation;
@@ -23,6 +24,7 @@ abstract readonly class InvoiceAnnulmentType extends BaseType
          * @var string A technikai érvénytelenítéssel érintett számla vagy módosító okirat sorszáma.
          */
         #[SimpleText50NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $annulmentReference,
 
         /**
@@ -41,6 +43,7 @@ abstract readonly class InvoiceAnnulmentType extends BaseType
          * @var string A technikai érvénytelenítés oka.
          */
         #[SimpleText1024NotBlankTypeValidation]
+        #[XmlElement(cdata: false)]
         public string $annulmentReason,
     ) {
         parent::__construct();

@@ -422,19 +422,14 @@ final readonly class InvoiceServiceClient implements InvoiceServiceClientInterfa
                 try {
                     $response = $resultClass::fromXml($xmlResponse);
 
-                    if (
-                        $response instanceof GeneralExceptionResponse
-                        && is_null($response->funcCode)
-                    ) {
-                        continue;
+                    if (!($response instanceof GeneralExceptionResponse && is_null($response->funcCode))) {
+                        $errorException = new $exceptionClass(
+                            $clientException->getMessage(),
+                            $response,
+                            $clientException->getCode(),
+                            $clientException,
+                        );
                     }
-
-                    $errorException = new $exceptionClass(
-                        $clientException->getMessage(),
-                        $response,
-                        $clientException->getCode(),
-                        $clientException,
-                    );
                 } catch (Throwable) {
                 }
             }
