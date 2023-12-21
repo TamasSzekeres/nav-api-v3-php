@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ResponsePageTypeValidation;
 
 /**
@@ -31,11 +34,13 @@ final readonly class InvoiceDigestResultType extends BaseType
         public int $availablePage,
 
         /**
-         * @var ?InvoiceDigestType Számla kivonat lekérdezési eredmény
+         * @var array<int, InvoiceDigestType> Számla kivonat lekérdezési eredmény.
          */
+        #[ArrayValidation(itemType: InvoiceDigestType::class)]
         #[SkipWhenEmpty]
-        #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
-        public ?InvoiceDigestType $invoiceDigest = null,
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\InvoiceDigestType>')]
+        #[XmlList(entry: 'invoiceDigest', inline: true, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        public array $invoiceDigests = [],
     ) {
         parent::__construct();
     }

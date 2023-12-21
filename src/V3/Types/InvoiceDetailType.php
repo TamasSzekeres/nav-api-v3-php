@@ -9,6 +9,8 @@ use JMS\Serializer\Annotation\AccessorOrder;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation;
@@ -154,10 +156,13 @@ final readonly class InvoiceDetailType extends BaseType
         public ?ConventionalInvoiceInfoType $conventionalInvoiceInfo = null,
 
         /**
-         * @var ?AdditionalDataType A számlára vonatkozó egyéb adat.
+         * @var array<int, AdditionalDataType> A számlára vonatkozó egyéb adat.
          */
+        #[ArrayValidation(itemType: AdditionalDataType::class)]
         #[SkipWhenEmpty]
-        public ?AdditionalDataType $additionalInvoiceData = null,
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\AdditionalDataType>')]
+        #[XmlList(entry: 'additionalInvoiceData', inline: true)]
+        public array $additionalInvoiceData = [],
     ) {
         parent::__construct();
     }

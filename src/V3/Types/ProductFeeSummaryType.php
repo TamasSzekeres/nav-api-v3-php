@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ProductFeeOperationType;
 
@@ -23,9 +26,12 @@ final readonly class ProductFeeSummaryType extends BaseType
         public ProductFeeOperationType $productFeeOperation,
 
         /**
-         * @var ProductFeeDataType Termékdíj adatok.
+         * @var array<int, ProductFeeDataType> Termékdíj adatok.
          */
-        public ProductFeeDataType $productFeeData,
+        #[ArrayValidation(minItems: 1, itemType: ProductFeeDataType::class)]
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\ProductFeeDataType>')]
+        #[XmlList(entry: 'productFeeData', inline: true)]
+        public array $productFeeData,
 
         /**
          * @var float Termékdíj összesen.

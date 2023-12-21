@@ -37,18 +37,20 @@ test('create query-transaction-status-response from xml', function () {
         ->and($response->software->softwareDevCountryCode)->toBe('HU')
         ->and($response->software->softwareDevTaxNumber)->toBe('66445533')
         ->and($response->processingResults)->toBeInstanceOf(ProcessingResultListType::class)
-        ->and($response->processingResults->processingResult)->toBeInstanceOf(ProcessingResultType::class)
-        ->and($response->processingResults->processingResult->index)->toBe(1)
-        ->and($response->processingResults->processingResult->invoiceStatus)->toBe(InvoiceStatusType::DONE)
-        ->and($response->processingResults->processingResult->compressedContentIndicator)->toBeFalse()
-        ->and($response->processingResults->processingResult->technicalValidationMessages)->toBeArray()
-        ->and($response->processingResults->processingResult->technicalValidationMessages)->toHaveCount(1)
-        ->and($response->processingResults->processingResult->technicalValidationMessages[0])->toBeInstanceOf(TechnicalValidationResultType::class)
-        ->and($response->processingResults->processingResult->technicalValidationMessages[0]->validationResultCode)->toBe(TechnicalResultCodeType::CRITICAL)
-        ->and($response->processingResults->processingResult->businessValidationMessages)->toBeArray()
-        ->and($response->processingResults->processingResult->businessValidationMessages)->toHaveCount(1)
-        ->and($response->processingResults->processingResult->businessValidationMessages[0])->toBeInstanceOf(BusinessValidationResultType::class)
-        ->and($response->processingResults->processingResult->businessValidationMessages[0]->validationResultCode)->toBe(BusinessResultCodeType::INFO)
+        ->and($response->processingResults->processingResults)->toBeArray()
+        ->and($response->processingResults->processingResults)->toHaveCount(1)
+        ->and($response->processingResults->processingResults[0])->toBeInstanceOf(ProcessingResultType::class)
+        ->and($response->processingResults->processingResults[0]->index)->toBe(1)
+        ->and($response->processingResults->processingResults[0]->invoiceStatus)->toBe(InvoiceStatusType::DONE)
+        ->and($response->processingResults->processingResults[0]->compressedContentIndicator)->toBeFalse()
+        ->and($response->processingResults->processingResults[0]->technicalValidationMessages)->toBeArray()
+        ->and($response->processingResults->processingResults[0]->technicalValidationMessages)->toHaveCount(1)
+        ->and($response->processingResults->processingResults[0]->technicalValidationMessages[0])->toBeInstanceOf(TechnicalValidationResultType::class)
+        ->and($response->processingResults->processingResults[0]->technicalValidationMessages[0]->validationResultCode)->toBe(TechnicalResultCodeType::CRITICAL)
+        ->and($response->processingResults->processingResults[0]->businessValidationMessages)->toBeArray()
+        ->and($response->processingResults->processingResults[0]->businessValidationMessages)->toHaveCount(1)
+        ->and($response->processingResults->processingResults[0]->businessValidationMessages[0])->toBeInstanceOf(BusinessValidationResultType::class)
+        ->and($response->processingResults->processingResults[0]->businessValidationMessages[0]->validationResultCode)->toBe(BusinessResultCodeType::INFO)
         ->and($response->processingResults->originalRequestVersion)->toBe(OriginalRequestVersionType::VERSION_3_0);
 });
 
@@ -60,21 +62,23 @@ it('throws no exceptions', function () {
         ),
         software: SOFTWARE_TYPE_EXAMPLE,
         processingResults: new ProcessingResultListType(
-            processingResult: new ProcessingResultType(
-                index: 1,
-                invoiceStatus: InvoiceStatusType::DONE,
-                compressedContentIndicator: false,
-                technicalValidationMessages: [
-                    new TechnicalValidationResultType(
-                        validationResultCode: TechnicalResultCodeType::CRITICAL,
-                    ),
-                ],
-                businessValidationMessages: [
-                    new BusinessValidationResultType(
-                        validationResultCode: BusinessResultCodeType::INFO,
-                    ),
-                ],
-            ),
+            processingResults: [
+                new ProcessingResultType(
+                    index: 1,
+                    invoiceStatus: InvoiceStatusType::DONE,
+                    compressedContentIndicator: false,
+                    technicalValidationMessages: [
+                        new TechnicalValidationResultType(
+                            validationResultCode: TechnicalResultCodeType::CRITICAL,
+                        ),
+                    ],
+                    businessValidationMessages: [
+                        new BusinessValidationResultType(
+                            validationResultCode: BusinessResultCodeType::INFO,
+                        ),
+                    ],
+                ),
+            ],
             originalRequestVersion: OriginalRequestVersionType::VERSION_3_0,
         ),
     );

@@ -90,19 +90,21 @@ it('throws no exceptions', function () {
             ),
             invoiceSummary: new SummaryType(
                 summaryNormal: new SummaryNormalType(
-                    summaryByVatRate: new SummaryByVatRateType(
-                        vatRate: new VatRateType(
-                            vatPercentage: 0.27,
+                    summariesByVatRate: [
+                        new SummaryByVatRateType(
+                            vatRate: new VatRateType(
+                                vatPercentage: 0.27,
+                            ),
+                            vatRateNetData: new VatRateNetDataType(
+                                vatRateNetAmount: 4000.0,
+                                vatRateNetAmountHUF: 1372000.0,
+                            ),
+                            vatRateVatData: new VatRateVatDataType(
+                                vatRateVatAmount: 1080.0,
+                                vatRateVatAmountHUF: 370440.0,
+                            ),
                         ),
-                        vatRateNetData: new VatRateNetDataType(
-                            vatRateNetAmount: 4000.0,
-                            vatRateNetAmountHUF: 1372000.0,
-                        ),
-                        vatRateVatData: new VatRateVatDataType(
-                            vatRateVatAmount: 1080.0,
-                            vatRateVatAmountHUF: 370440.0,
-                        ),
-                    ),
+                    ],
                     invoiceNetAmount: 4000.0,
                     invoiceNetAmountHUF: 1372000.0,
                     invoiceVatAmount: 1080.0,

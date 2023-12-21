@@ -39,34 +39,36 @@ test('create query-invoice-digest-response from xml', function () {
         ->and($response->invoiceDigestResult)->toBeInstanceOf(InvoiceDigestResultType::class)
         ->and($response->invoiceDigestResult->currentPage)->toBe(1)
         ->and($response->invoiceDigestResult->availablePage)->toBe(2)
-        ->and($response->invoiceDigestResult->invoiceDigest)->toBeInstanceOf(InvoiceDigestType::class)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceNumber)->toBe('SZ0001')
-        ->and($response->invoiceDigestResult->invoiceDigest->batchIndex)->toBe(1)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceOperation)->toBe(ManageInvoiceOperationType::CREATE)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceCategory)->toBe(InvoiceCategoryType::NORMAL)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceIssueDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-01 00:00:00'))
-        ->and($response->invoiceDigestResult->invoiceDigest->supplierTaxNumber)->toBe('12345678')
-        ->and($response->invoiceDigestResult->invoiceDigest->supplierGroupMemberTaxNumber)->toBe('12345679')
-        ->and($response->invoiceDigestResult->invoiceDigest->supplierName)->toBe('Supplier Name')
-        ->and($response->invoiceDigestResult->invoiceDigest->customerTaxNumber)->toBe('23456789')
-        ->and($response->invoiceDigestResult->invoiceDigest->customerGroupMemberTaxNumber)->toBe('34567890')
-        ->and($response->invoiceDigestResult->invoiceDigest->customerName)->toBe('Customer Name')
-        ->and($response->invoiceDigestResult->invoiceDigest->paymentMethod)->toBe(PaymentMethodType::TRANSFER)
-        ->and($response->invoiceDigestResult->invoiceDigest->paymentDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-02 00:00:00'))
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceAppearance)->toBe(InvoiceAppearanceType::ELECTRONIC)
-        ->and($response->invoiceDigestResult->invoiceDigest->source)->toBe(SourceType::XML)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceDeliveryDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-02 00:00:00'))
-        ->and($response->invoiceDigestResult->invoiceDigest->currency)->toBe('HUF')
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceNetAmount)->toBe(100.0)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceNetAmountHUF)->toBe(1000.0)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceVatAmount)->toBe(20.0)
-        ->and($response->invoiceDigestResult->invoiceDigest->invoiceVatAmountHUF)->toBe(200.0)
-        ->and($response->invoiceDigestResult->invoiceDigest->transactionId)->toBe('T0001')
-        ->and($response->invoiceDigestResult->invoiceDigest->index)->toBe(1)
-        ->and($response->invoiceDigestResult->invoiceDigest->originalInvoiceNumber)->toBe('SZ0001')
-        ->and($response->invoiceDigestResult->invoiceDigest->modificationIndex)->toBe(2)
-        ->and($response->invoiceDigestResult->invoiceDigest->insDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-01 12:00:00.333'))
-        ->and($response->invoiceDigestResult->invoiceDigest->completenessIndicator)->toBeTrue();
+        ->and($response->invoiceDigestResult->invoiceDigests)->toBeArray()
+        ->and($response->invoiceDigestResult->invoiceDigests)->toHaveCount(1)
+        ->and($response->invoiceDigestResult->invoiceDigests[0])->toBeInstanceOf(InvoiceDigestType::class)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceNumber)->toBe('SZ0001')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->batchIndex)->toBe(1)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceOperation)->toBe(ManageInvoiceOperationType::CREATE)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceCategory)->toBe(InvoiceCategoryType::NORMAL)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceIssueDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-01 00:00:00'))
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->supplierTaxNumber)->toBe('12345678')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->supplierGroupMemberTaxNumber)->toBe('12345679')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->supplierName)->toBe('Supplier Name')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->customerTaxNumber)->toBe('23456789')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->customerGroupMemberTaxNumber)->toBe('34567890')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->customerName)->toBe('Customer Name')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->paymentMethod)->toBe(PaymentMethodType::TRANSFER)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->paymentDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-02 00:00:00'))
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceAppearance)->toBe(InvoiceAppearanceType::ELECTRONIC)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->source)->toBe(SourceType::XML)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceDeliveryDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-02 00:00:00'))
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->currency)->toBe('HUF')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceNetAmount)->toBe(100.0)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceNetAmountHUF)->toBe(1000.0)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceVatAmount)->toBe(20.0)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->invoiceVatAmountHUF)->toBe(200.0)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->transactionId)->toBe('T0001')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->index)->toBe(1)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->originalInvoiceNumber)->toBe('SZ0001')
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->modificationIndex)->toBe(2)
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->insDate)->toEqualDateTimeImmutable(new DateTimeImmutable('2020-01-01 12:00:00.333'))
+        ->and($response->invoiceDigestResult->invoiceDigests[0]->completenessIndicator)->toBeTrue();
 });
 
 it('throws no exceptions', function () {
@@ -79,35 +81,37 @@ it('throws no exceptions', function () {
         invoiceDigestResult: new InvoiceDigestResultType(
             currentPage: 1,
             availablePage: 2,
-            invoiceDigest: new InvoiceDigestType(
-                invoiceNumber: 'SZ0001',
-                invoiceOperation: ManageInvoiceOperationType::CREATE,
-                invoiceCategory: InvoiceCategoryType::NORMAL,
-                invoiceIssueDate: new DateTimeImmutable('2020-01-01'),
-                supplierTaxNumber: '12345678',
-                supplierName: 'Supplier Name',
-                insDate: new DateTimeImmutable('2020-01-01 12:00:00.333'),
-                batchIndex: 1,
-                supplierGroupMemberTaxNumber: '12345679',
-                customerTaxNumber: '23456789',
-                customerGroupMemberTaxNumber: '34567890',
-                customerName: 'Customer Name',
-                paymentMethod: PaymentMethodType::TRANSFER,
-                paymentDate: new DateTimeImmutable('2020-01-02'),
-                invoiceAppearance: InvoiceAppearanceType::ELECTRONIC,
-                source: SourceType::XML,
-                invoiceDeliveryDate: new DateTimeImmutable('2020-01-02'),
-                currency: 'HUF',
-                invoiceNetAmount: 100.0,
-                invoiceNetAmountHUF: 1000.0,
-                invoiceVatAmount: 20.0,
-                invoiceVatAmountHUF: 200.0,
-                transactionId: 'T0001',
-                index: 1,
-                originalInvoiceNumber: 'SZ0001',
-                modificationIndex: 2,
-                completenessIndicator: true,
-            )
+            invoiceDigests: [
+                new InvoiceDigestType(
+                    invoiceNumber: 'SZ0001',
+                    invoiceOperation: ManageInvoiceOperationType::CREATE,
+                    invoiceCategory: InvoiceCategoryType::NORMAL,
+                    invoiceIssueDate: new DateTimeImmutable('2020-01-01'),
+                    supplierTaxNumber: '12345678',
+                    supplierName: 'Supplier Name',
+                    insDate: new DateTimeImmutable('2020-01-01 12:00:00.333'),
+                    batchIndex: 1,
+                    supplierGroupMemberTaxNumber: '12345679',
+                    customerTaxNumber: '23456789',
+                    customerGroupMemberTaxNumber: '34567890',
+                    customerName: 'Customer Name',
+                    paymentMethod: PaymentMethodType::TRANSFER,
+                    paymentDate: new DateTimeImmutable('2020-01-02'),
+                    invoiceAppearance: InvoiceAppearanceType::ELECTRONIC,
+                    source: SourceType::XML,
+                    invoiceDeliveryDate: new DateTimeImmutable('2020-01-02'),
+                    currency: 'HUF',
+                    invoiceNetAmount: 100.0,
+                    invoiceNetAmountHUF: 1000.0,
+                    invoiceVatAmount: 20.0,
+                    invoiceVatAmountHUF: 200.0,
+                    transactionId: 'T0001',
+                    index: 1,
+                    originalInvoiceNumber: 'SZ0001',
+                    modificationIndex: 2,
+                    completenessIndicator: true,
+                ),
+            ],
         ),
     );
 })->throwsNoExceptions();
@@ -122,35 +126,37 @@ it('throws InvalidValidationException', function () {
         invoiceDigestResult: new InvoiceDigestResultType(
             currentPage: 1,
             availablePage: 2,
-            invoiceDigest: new InvoiceDigestType(
-                invoiceNumber: 'SZ;0001',
-                invoiceOperation: ManageInvoiceOperationType::CREATE,
-                invoiceCategory: InvoiceCategoryType::NORMAL,
-                invoiceIssueDate: new DateTimeImmutable('2000-01-01'),
-                supplierTaxNumber: '123;45678',
-                supplierName: 'Supplier Name',
-                insDate: new DateTimeImmutable('2000-01-01 12:00:00.333'),
-                batchIndex: 1,
-                supplierGroupMemberTaxNumber: '123;45679',
-                customerTaxNumber: '23456;789',
-                customerGroupMemberTaxNumber: '3456;890',
-                customerName: 'Customer Name',
-                paymentMethod: PaymentMethodType::TRANSFER,
-                paymentDate: new DateTimeImmutable('2020-01-02'),
-                invoiceAppearance: InvoiceAppearanceType::ELECTRONIC,
-                source: SourceType::XML,
-                invoiceDeliveryDate: new DateTimeImmutable('2020-01-02'),
-                currency: 'HUF',
-                invoiceNetAmount: 100.0,
-                invoiceNetAmountHUF: 1000.0,
-                invoiceVatAmount: 20.0,
-                invoiceVatAmountHUF: 200.0,
-                transactionId: 'T0001',
-                index: 1,
-                originalInvoiceNumber: 'SZ0001',
-                modificationIndex: 2,
-                completenessIndicator: true,
-            )
+            invoiceDigests: [
+                new InvoiceDigestType(
+                    invoiceNumber: 'SZ;0001',
+                    invoiceOperation: ManageInvoiceOperationType::CREATE,
+                    invoiceCategory: InvoiceCategoryType::NORMAL,
+                    invoiceIssueDate: new DateTimeImmutable('2000-01-01'),
+                    supplierTaxNumber: '123;45678',
+                    supplierName: 'Supplier Name',
+                    insDate: new DateTimeImmutable('2000-01-01 12:00:00.333'),
+                    batchIndex: 1,
+                    supplierGroupMemberTaxNumber: '123;45679',
+                    customerTaxNumber: '23456;789',
+                    customerGroupMemberTaxNumber: '3456;890',
+                    customerName: 'Customer Name',
+                    paymentMethod: PaymentMethodType::TRANSFER,
+                    paymentDate: new DateTimeImmutable('2020-01-02'),
+                    invoiceAppearance: InvoiceAppearanceType::ELECTRONIC,
+                    source: SourceType::XML,
+                    invoiceDeliveryDate: new DateTimeImmutable('2020-01-02'),
+                    currency: 'HUF',
+                    invoiceNetAmount: 100.0,
+                    invoiceNetAmountHUF: 1000.0,
+                    invoiceVatAmount: 20.0,
+                    invoiceVatAmountHUF: 200.0,
+                    transactionId: 'T0001',
+                    index: 1,
+                    originalInvoiceNumber: 'SZ0001',
+                    modificationIndex: 2,
+                    completenessIndicator: true,
+                ),
+            ],
         ),
     );
 })->throws(ValidationException::class);

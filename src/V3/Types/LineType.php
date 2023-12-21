@@ -223,10 +223,13 @@ final readonly class LineType extends BaseType
         public ?ProductFeeClauseType $productFeeClause = null,
 
         /**
-         * @var ?ProductFeeDataType A tétel termékdíj tartalmára vonatkozó adatok.
+         * @var array<int, ProductFeeDataType> A tétel termékdíj tartalmára vonatkozó adatok.
          */
+        #[ArrayValidation(itemType: ProductFeeDataType::class)]
         #[SkipWhenEmpty]
-        public ?ProductFeeDataType $lineProductFeeContent = null,
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\ProductFeeDataType>')]
+        #[XmlList(entry: 'lineProductFeeContent', inline: true)]
+        public array $lineProductFeeContents = [],
 
         /**
          * @var ?ConventionalInvoiceInfoType A számlafeldolgozást segítő, egyezményesen nevesített egyéb adatok.
@@ -235,10 +238,13 @@ final readonly class LineType extends BaseType
         public ?ConventionalInvoiceInfoType $conventionalLineInfo = null,
 
         /**
-         * @var ?AdditionalDataType A termék/szolgáltatás tételhez kapcsolódó, további adat.
+         * @var array<int, AdditionalDataType> A termék/szolgáltatás tételhez kapcsolódó, további adat.
          */
+        #[ArrayValidation(itemType: AdditionalDataType::class)]
         #[SkipWhenEmpty]
-        public ?AdditionalDataType $additionalLineData = null,
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\AdditionalDataType>')]
+        #[XmlList(entry: 'additionalLineData', inline: true)]
+        public array $additionalLineData = [],
     ) {
         if (
             ($this->lineAmountsNormal instanceof LineAmountsNormalType)

@@ -124,15 +124,17 @@ test('create invoice-data from xml', function () {
     $invoiceSummary = $invoice->invoiceMain->invoice->invoiceSummary;
     expect($invoiceSummary)->toBeInstanceOf(SummaryType::class)
         ->and($invoiceSummary->summaryNormal)->toBeInstanceOf(SummaryNormalType::class)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate)->toBeInstanceOf(SummaryByVatRateType::class)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRate)->toBeInstanceOf(VatRateType::class)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRate->vatPercentage)->toBe(0.27)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRateNetData)->toBeInstanceOf(VatRateNetDataType::class)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRateNetData->vatRateNetAmount)->toBe(4000.0)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRateNetData->vatRateNetAmountHUF)->toBe(1372000.0)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRateVatData)->toBeInstanceOf(VatRateVatDataType::class)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRateVatData->vatRateVatAmount)->toBe(1080.0)
-        ->and($invoiceSummary->summaryNormal->summaryByVatRate->vatRateVatData->vatRateVatAmountHUF)->toBe(370440.0)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate)->toBeArray()
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate)->toHaveCount(1)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0])->toBeInstanceOf(SummaryByVatRateType::class)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRate)->toBeInstanceOf(VatRateType::class)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRate->vatPercentage)->toBe(0.27)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRateNetData)->toBeInstanceOf(VatRateNetDataType::class)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRateNetData->vatRateNetAmount)->toBe(4000.0)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRateNetData->vatRateNetAmountHUF)->toBe(1372000.0)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRateVatData)->toBeInstanceOf(VatRateVatDataType::class)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRateVatData->vatRateVatAmount)->toBe(1080.0)
+        ->and($invoiceSummary->summaryNormal->summariesByVatRate[0]->vatRateVatData->vatRateVatAmountHUF)->toBe(370440.0)
         ->and($invoiceSummary->summaryNormal->invoiceNetAmount)->toBe(4000.0)
         ->and($invoiceSummary->summaryNormal->invoiceNetAmountHUF)->toBe(1372000.0)
         ->and($invoiceSummary->summaryNormal->invoiceVatAmount)->toBe(1080.0)
@@ -202,19 +204,21 @@ it('throws no exception', function () {
                 ),
                 invoiceSummary: new SummaryType(
                     summaryNormal: new SummaryNormalType(
-                        summaryByVatRate: new SummaryByVatRateType(
-                            vatRate: new VatRateType(
-                                vatPercentage: 0.27,
+                        summariesByVatRate: [
+                            new SummaryByVatRateType(
+                                vatRate: new VatRateType(
+                                    vatPercentage: 0.27,
+                                ),
+                                vatRateNetData: new VatRateNetDataType(
+                                    vatRateNetAmount: 4000.0,
+                                    vatRateNetAmountHUF: 1372000.0,
+                                ),
+                                vatRateVatData: new VatRateVatDataType(
+                                    vatRateVatAmount: 1080.0,
+                                    vatRateVatAmountHUF: 370440.0,
+                                ),
                             ),
-                            vatRateNetData: new VatRateNetDataType(
-                                vatRateNetAmount: 4000.0,
-                                vatRateNetAmountHUF: 1372000.0,
-                            ),
-                            vatRateVatData: new VatRateVatDataType(
-                                vatRateVatAmount: 1080.0,
-							    vatRateVatAmountHUF: 370440.0,
-                            ),
-                        ),
+                        ],
                         invoiceNetAmount: 4000.0,
                         invoiceNetAmountHUF: 1372000.0,
                         invoiceVatAmount: 1080.0,

@@ -6,6 +6,9 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\XmlList;
+use LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation;
 
 /**
  * Számla összesítés adatai.
@@ -22,10 +25,13 @@ final readonly class SummaryType extends BaseType
         public ?SummaryNormalType $summaryNormal = null,
 
         /**
-         * @var ?SummarySimplifiedType Egyszerűsített számla összesítés.
+         * @var array<int, SummarySimplifiedType> Egyszerűsített számla összesítés.
          */
+        #[ArrayValidation(itemType: SummarySimplifiedType::class)]
         #[SkipWhenEmpty]
-        public ?SummarySimplifiedType $summarySimplified = null,
+        #[Type('array<LightSideSoftware\NavApi\V3\Types\SummarySimplifiedType>')]
+        #[XmlList(entry: 'summarySimplified', inline: true)]
+        public array $summariesSimplified = [],
 
         /**
          * @var ?SummaryGrossDataType A számla összesítő bruttó adatai.
@@ -36,13 +42,13 @@ final readonly class SummaryType extends BaseType
         if (
             (
                 is_null($this->summaryNormal)
-                && is_null($this->summarySimplified)
+                && empty($this->summariesSimplified)
             ) || (
                 ($this->summaryNormal instanceof SummaryNormalType)
-                && ($this->summarySimplified instanceof SummarySimplifiedType)
+                && !empty($this->summariesSimplified)
             )
         ) {
-            throw new InvalidArgumentException('A "summaryNormal" és "summarySimplified" paraméterek közül pontosan egyet meg kell adni.');
+            throw new InvalidArgumentException('A "summaryNormal" és "summariesSimplified" paraméterek közül pontosan egyet meg kell adni.');
         }
 
         parent::__construct();
