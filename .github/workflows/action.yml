@@ -77,8 +77,6 @@ jobs:
 # Documentation
     - name: Configure GitHub Pages
       uses: actions/configure-pages@v1
-    - name: Generate docs
-      run: phpDocumentor -d src -t docs
     - name: Cache phpDocumentor build files
       id: phpdocumentor-cache
       uses: actions/cache@v3
