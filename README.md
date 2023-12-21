@@ -2,7 +2,7 @@
 
 Api-kliens komponens Nav Api használatához.
 
-[![Pest Tests](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/tests.yml/badge.svg?branch=master&event=push)](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/tests.yml)
+[![Build](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/action.yml/badge.svg?branch=master&event=push)](https://github.com/TamasSzekeres/nav-api-v3-php/actions/workflows/action.yml)
 [![Test Coverage](https://raw.githubusercontent.com/Hi-Folks/array/main/badge-coverage.svg)](https://packagist.org/packages/hi-folks/array)
 
 ## Telepítés
@@ -37,11 +37,6 @@ A legutóbbi változások megtalálhatók [CHANGELOG](CHANGELOG.md) fájlban.
 ``` bash
 composer test
 ```
-
-## Kódolási stílus javítás
-
-A kódolási stílusbeli hibák javíthatók a `composer cs-fix` paranccsal, vagy ellenőrizhetők a kód módosítása nélkül
-a `composer cs-check` paranccsal.
 
 ## Közreműködtek
 
