@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1702804100">
-  <project timestamp="1702804100">
+<coverage generated="1702756694">
+  <project timestamp="1702756694">
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Base/BaseObject.php">
       <class name="LightSideSoftware\NavApi\V3\Base\BaseObject" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
@@ -776,17 +776,17 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\ArrayValidation" namespace="global">
         <metrics complexity="22" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="33" elements="35" coveredelements="35"/>
       </class>
-      <line num="32" type="method" name="__construct" visibility="public" complexity="8" crap="8" count="62"/>
-      <line num="38" type="stmt" count="62"/>
-      <line num="41" type="stmt" count="62"/>
-      <line num="42" type="stmt" count="62"/>
+      <line num="32" type="method" name="__construct" visibility="public" complexity="8" crap="8" count="73"/>
+      <line num="38" type="stmt" count="73"/>
+      <line num="41" type="stmt" count="73"/>
+      <line num="42" type="stmt" count="73"/>
       <line num="44" type="stmt" count="1"/>
-      <line num="48" type="stmt" count="61"/>
-      <line num="49" type="stmt" count="61"/>
+      <line num="48" type="stmt" count="72"/>
+      <line num="49" type="stmt" count="72"/>
       <line num="51" type="stmt" count="1"/>
-      <line num="55" type="stmt" count="60"/>
-      <line num="56" type="stmt" count="60"/>
-      <line num="57" type="stmt" count="60"/>
+      <line num="55" type="stmt" count="71"/>
+      <line num="56" type="stmt" count="71"/>
+      <line num="57" type="stmt" count="71"/>
       <line num="59" type="stmt" count="1"/>
       <line num="63" type="method" name="validateProperty" visibility="public" complexity="14" crap="14" count="67"/>
       <line num="65" type="stmt" count="67"/>
@@ -841,8 +841,8 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\AtomicStringType15Validation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
-      <line num="22" type="stmt" count="14"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="36"/>
+      <line num="22" type="stmt" count="36"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/AtomicStringType16Validation.php">
@@ -953,42 +953,6 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="22" type="stmt" count="11"/>
-      <line num="23" type="stmt" count="11"/>
-      <line num="24" type="stmt" count="11"/>
-      <line num="25" type="stmt" count="11"/>
-      <line num="26" type="stmt" count="11"/>
-      <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
-    </file>
-    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CommunityVatNumberTypeValidation.php">
-      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
-      </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="22" type="stmt" count="8"/>
-      <line num="23" type="stmt" count="8"/>
-      <line num="24" type="stmt" count="8"/>
-      <line num="25" type="stmt" count="8"/>
-      <line num="26" type="stmt" count="8"/>
-      <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
-    </file>
-    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CountryCodeTypeValidation.php">
-      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CountryCodeTypeValidation" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
-      </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="27"/>
-      <line num="22" type="stmt" count="27"/>
-      <line num="23" type="stmt" count="27"/>
-      <line num="24" type="stmt" count="27"/>
-      <line num="25" type="stmt" count="27"/>
-      <line num="26" type="stmt" count="27"/>
-      <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
-    </file>
-    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CountyCodeTypeValidation.php">
-      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CountyCodeTypeValidation" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
-      </class>
       <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
       <line num="22" type="stmt" count="12"/>
       <line num="23" type="stmt" count="12"/>
@@ -997,8 +961,8 @@
       <line num="26" type="stmt" count="12"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
-    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CurrencyTypeValidation.php">
-      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation" namespace="global">
+    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CommunityVatNumberTypeValidation.php">
+      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CommunityVatNumberTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
       <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
@@ -1007,6 +971,42 @@
       <line num="24" type="stmt" count="9"/>
       <line num="25" type="stmt" count="9"/>
       <line num="26" type="stmt" count="9"/>
+      <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CountryCodeTypeValidation.php">
+      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CountryCodeTypeValidation" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </class>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="52"/>
+      <line num="22" type="stmt" count="52"/>
+      <line num="23" type="stmt" count="52"/>
+      <line num="24" type="stmt" count="52"/>
+      <line num="25" type="stmt" count="52"/>
+      <line num="26" type="stmt" count="52"/>
+      <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CountyCodeTypeValidation.php">
+      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CountyCodeTypeValidation" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </class>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
+      <line num="22" type="stmt" count="15"/>
+      <line num="23" type="stmt" count="15"/>
+      <line num="24" type="stmt" count="15"/>
+      <line num="25" type="stmt" count="15"/>
+      <line num="26" type="stmt" count="15"/>
+      <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/CurrencyTypeValidation.php">
+      <class name="LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </class>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="22" type="stmt" count="12"/>
+      <line num="23" type="stmt" count="12"/>
+      <line num="24" type="stmt" count="12"/>
+      <line num="25" type="stmt" count="12"/>
+      <line num="26" type="stmt" count="12"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/DataNameTypeValidation.php">
@@ -1025,8 +1025,8 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\DateTimeValidation" namespace="global">
         <metrics complexity="12" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="23" coveredelements="23"/>
       </class>
-      <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="45"/>
-      <line num="33" type="stmt" count="45"/>
+      <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="49"/>
+      <line num="33" type="stmt" count="49"/>
       <line num="41" type="method" name="validateProperty" visibility="public" complexity="11" crap="11" count="53"/>
       <line num="43" type="stmt" count="53"/>
       <line num="45" type="stmt" count="53"/>
@@ -1066,39 +1066,39 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\EntityIdTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="31"/>
-      <line num="22" type="stmt" count="31"/>
-      <line num="23" type="stmt" count="31"/>
-      <line num="24" type="stmt" count="31"/>
-      <line num="25" type="stmt" count="31"/>
-      <line num="26" type="stmt" count="31"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="49"/>
+      <line num="22" type="stmt" count="49"/>
+      <line num="23" type="stmt" count="49"/>
+      <line num="24" type="stmt" count="49"/>
+      <line num="25" type="stmt" count="49"/>
+      <line num="26" type="stmt" count="49"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/ExchangeRateTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\ExchangeRateTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="22" type="stmt" count="8"/>
-      <line num="23" type="stmt" count="8"/>
-      <line num="24" type="stmt" count="8"/>
-      <line num="25" type="stmt" count="8"/>
-      <line num="26" type="stmt" count="8"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="22" type="stmt" count="9"/>
+      <line num="23" type="stmt" count="9"/>
+      <line num="24" type="stmt" count="9"/>
+      <line num="25" type="stmt" count="9"/>
+      <line num="26" type="stmt" count="9"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/FloatValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\FloatValidation" namespace="global">
         <metrics complexity="29" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="47" coveredstatements="47" elements="49" coveredelements="49"/>
       </class>
-      <line num="33" type="method" name="__construct" visibility="public" complexity="11" crap="11" count="47"/>
-      <line num="41" type="stmt" count="47"/>
-      <line num="43" type="stmt" count="47"/>
+      <line num="33" type="method" name="__construct" visibility="public" complexity="11" crap="11" count="50"/>
+      <line num="41" type="stmt" count="50"/>
+      <line num="43" type="stmt" count="50"/>
       <line num="44" type="stmt" count="1"/>
-      <line num="47" type="stmt" count="46"/>
+      <line num="47" type="stmt" count="49"/>
       <line num="48" type="stmt" count="1"/>
-      <line num="51" type="stmt" count="45"/>
+      <line num="51" type="stmt" count="48"/>
       <line num="52" type="stmt" count="1"/>
-      <line num="55" type="stmt" count="44"/>
+      <line num="55" type="stmt" count="47"/>
       <line num="56" type="stmt" count="1"/>
       <line num="60" type="method" name="validateProperty" visibility="public" complexity="18" crap="18" count="55"/>
       <line num="62" type="stmt" count="55"/>
@@ -1145,15 +1145,15 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\IntegerValidation" namespace="global">
         <metrics complexity="18" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="26" coveredelements="26"/>
       </class>
-      <line num="29" type="method" name="__construct" visibility="public" complexity="7" crap="7" count="48"/>
-      <line num="35" type="stmt" count="48"/>
-      <line num="38" type="stmt" count="48"/>
-      <line num="39" type="stmt" count="48"/>
-      <line num="40" type="stmt" count="48"/>
+      <line num="29" type="method" name="__construct" visibility="public" complexity="7" crap="7" count="55"/>
+      <line num="35" type="stmt" count="55"/>
+      <line num="38" type="stmt" count="55"/>
+      <line num="39" type="stmt" count="55"/>
+      <line num="40" type="stmt" count="55"/>
       <line num="42" type="stmt" count="1"/>
-      <line num="46" type="stmt" count="47"/>
-      <line num="47" type="stmt" count="47"/>
-      <line num="48" type="stmt" count="47"/>
+      <line num="46" type="stmt" count="54"/>
+      <line num="47" type="stmt" count="54"/>
+      <line num="48" type="stmt" count="54"/>
       <line num="50" type="stmt" count="1"/>
       <line num="54" type="method" name="validateProperty" visibility="public" complexity="11" crap="11" count="56"/>
       <line num="56" type="stmt" count="56"/>
@@ -1177,69 +1177,69 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceDateTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
-      <line num="23" type="stmt" count="13"/>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
+      <line num="23" type="stmt" count="15"/>
       <metrics loc="26" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/InvoiceIndexTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceIndexTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
-      <line num="22" type="stmt" count="16"/>
-      <line num="23" type="stmt" count="16"/>
-      <line num="24" type="stmt" count="16"/>
-      <line num="25" type="stmt" count="16"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="22" type="stmt" count="24"/>
+      <line num="23" type="stmt" count="24"/>
+      <line num="24" type="stmt" count="24"/>
+      <line num="25" type="stmt" count="24"/>
       <metrics loc="28" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/InvoiceTimestampTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceTimestampTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="33"/>
-      <line num="23" type="stmt" count="33"/>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="23" type="stmt" count="37"/>
       <metrics loc="26" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/InvoiceUnboundedIndexTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceUnboundedIndexTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
-      <line num="22" type="stmt" count="17"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="22" type="stmt" count="24"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/LineNumberTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
-      <line num="22" type="stmt" count="9"/>
-      <line num="23" type="stmt" count="9"/>
-      <line num="24" type="stmt" count="9"/>
-      <line num="25" type="stmt" count="9"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+      <line num="22" type="stmt" count="10"/>
+      <line num="23" type="stmt" count="10"/>
+      <line num="24" type="stmt" count="10"/>
+      <line num="25" type="stmt" count="10"/>
       <metrics loc="28" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/LoginTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\LoginTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="23"/>
-      <line num="22" type="stmt" count="23"/>
-      <line num="23" type="stmt" count="23"/>
-      <line num="24" type="stmt" count="23"/>
-      <line num="25" type="stmt" count="23"/>
-      <line num="26" type="stmt" count="23"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="35"/>
+      <line num="22" type="stmt" count="35"/>
+      <line num="23" type="stmt" count="35"/>
+      <line num="24" type="stmt" count="35"/>
+      <line num="25" type="stmt" count="35"/>
+      <line num="26" type="stmt" count="35"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/MonetaryTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="19"/>
-      <line num="23" type="stmt" count="19"/>
-      <line num="24" type="stmt" count="19"/>
-      <line num="25" type="stmt" count="19"/>
-      <line num="26" type="stmt" count="19"/>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="22"/>
+      <line num="23" type="stmt" count="22"/>
+      <line num="24" type="stmt" count="22"/>
+      <line num="25" type="stmt" count="22"/>
+      <line num="26" type="stmt" count="22"/>
       <metrics loc="29" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/PlateNumberTypeValidation.php">
@@ -1258,35 +1258,35 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\PostalCodeTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
-      <line num="22" type="stmt" count="16"/>
-      <line num="23" type="stmt" count="16"/>
-      <line num="24" type="stmt" count="16"/>
-      <line num="25" type="stmt" count="16"/>
-      <line num="26" type="stmt" count="16"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="21"/>
+      <line num="22" type="stmt" count="21"/>
+      <line num="23" type="stmt" count="21"/>
+      <line num="24" type="stmt" count="21"/>
+      <line num="25" type="stmt" count="21"/>
+      <line num="26" type="stmt" count="21"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/ProductCodeValueTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\ProductCodeValueTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="22" type="stmt" count="10"/>
-      <line num="23" type="stmt" count="10"/>
-      <line num="24" type="stmt" count="10"/>
-      <line num="25" type="stmt" count="10"/>
-      <line num="26" type="stmt" count="10"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="22" type="stmt" count="11"/>
+      <line num="23" type="stmt" count="11"/>
+      <line num="24" type="stmt" count="11"/>
+      <line num="25" type="stmt" count="11"/>
+      <line num="26" type="stmt" count="11"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/QuantityTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
-      <line num="23" type="stmt" count="16"/>
-      <line num="24" type="stmt" count="16"/>
-      <line num="25" type="stmt" count="16"/>
-      <line num="26" type="stmt" count="16"/>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
+      <line num="23" type="stmt" count="17"/>
+      <line num="24" type="stmt" count="17"/>
+      <line num="25" type="stmt" count="17"/>
+      <line num="26" type="stmt" count="17"/>
       <metrics loc="29" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/QueryNameTypeValidation.php">
@@ -1305,13 +1305,13 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\RateTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
-      <line num="23" type="stmt" count="13"/>
-      <line num="24" type="stmt" count="13"/>
-      <line num="25" type="stmt" count="13"/>
-      <line num="26" type="stmt" count="13"/>
-      <line num="27" type="stmt" count="13"/>
-      <line num="28" type="stmt" count="13"/>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="23" type="stmt" count="14"/>
+      <line num="24" type="stmt" count="14"/>
+      <line num="25" type="stmt" count="14"/>
+      <line num="26" type="stmt" count="14"/>
+      <line num="27" type="stmt" count="14"/>
+      <line num="28" type="stmt" count="14"/>
       <metrics loc="31" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/RequestPageTypeValidation.php">
@@ -1326,8 +1326,8 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\ResponsePageTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
-      <line num="22" type="stmt" count="5"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="22" type="stmt" count="11"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SHA256TypeValidation.php">
@@ -1350,81 +1350,81 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText100NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
-      <line num="22" type="stmt" count="6"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="22" type="stmt" count="14"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SimpleText1024NotBlankTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText1024NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="41"/>
-      <line num="22" type="stmt" count="41"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="56"/>
+      <line num="22" type="stmt" count="56"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SimpleText15NotBlankTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText15NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
-      <line num="22" type="stmt" count="15"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="22" type="stmt" count="37"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SimpleText200NotBlankTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText200NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="20"/>
-      <line num="22" type="stmt" count="20"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="47"/>
+      <line num="22" type="stmt" count="47"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SimpleText255NotBlankTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
-      <line num="22" type="stmt" count="17"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="22"/>
+      <line num="22" type="stmt" count="22"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SimpleText50NotBlankTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText50NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="67"/>
-      <line num="22" type="stmt" count="67"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="88"/>
+      <line num="22" type="stmt" count="88"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SimpleText512NotBlankTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="28"/>
-      <line num="22" type="stmt" count="28"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="50"/>
+      <line num="22" type="stmt" count="50"/>
       <metrics loc="25" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/SoftwareIdTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\SoftwareIdTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="18"/>
-      <line num="22" type="stmt" count="18"/>
-      <line num="23" type="stmt" count="18"/>
-      <line num="24" type="stmt" count="18"/>
-      <line num="25" type="stmt" count="18"/>
-      <line num="26" type="stmt" count="18"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="22" type="stmt" count="40"/>
+      <line num="23" type="stmt" count="40"/>
+      <line num="24" type="stmt" count="40"/>
+      <line num="25" type="stmt" count="40"/>
+      <line num="26" type="stmt" count="40"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/StringValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation" namespace="global">
         <metrics complexity="11" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="24" coveredelements="24"/>
       </class>
-      <line num="28" type="method" name="__construct" visibility="public" complexity="4" crap="4" count="194"/>
-      <line num="33" type="stmt" count="194"/>
-      <line num="35" type="stmt" count="194"/>
+      <line num="28" type="method" name="__construct" visibility="public" complexity="4" crap="4" count="213"/>
+      <line num="33" type="stmt" count="213"/>
+      <line num="35" type="stmt" count="213"/>
       <line num="36" type="stmt" count="1"/>
-      <line num="39" type="stmt" count="193"/>
+      <line num="39" type="stmt" count="212"/>
       <line num="40" type="stmt" count="1"/>
-      <line num="43" type="stmt" count="192"/>
+      <line num="43" type="stmt" count="211"/>
       <line num="44" type="stmt" count="1"/>
       <line num="48" type="method" name="validateProperty" visibility="public" complexity="7" crap="7" count="196"/>
       <line num="50" type="stmt" count="196"/>
@@ -1448,24 +1448,24 @@
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\TaxPayerIdTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="34"/>
-      <line num="22" type="stmt" count="34"/>
-      <line num="23" type="stmt" count="34"/>
-      <line num="24" type="stmt" count="34"/>
-      <line num="25" type="stmt" count="34"/>
-      <line num="26" type="stmt" count="34"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="43"/>
+      <line num="22" type="stmt" count="43"/>
+      <line num="23" type="stmt" count="43"/>
+      <line num="24" type="stmt" count="43"/>
+      <line num="25" type="stmt" count="43"/>
+      <line num="26" type="stmt" count="43"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/Annotations/VatCodeTypeValidation.php">
       <class name="LightSideSoftware\NavApi\V3\Types\Annotations\VatCodeTypeValidation" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
       </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="22" type="stmt" count="11"/>
-      <line num="23" type="stmt" count="11"/>
-      <line num="24" type="stmt" count="11"/>
-      <line num="25" type="stmt" count="11"/>
-      <line num="26" type="stmt" count="11"/>
+      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="22" type="stmt" count="14"/>
+      <line num="23" type="stmt" count="14"/>
+      <line num="24" type="stmt" count="14"/>
+      <line num="25" type="stmt" count="14"/>
+      <line num="26" type="stmt" count="14"/>
       <metrics loc="29" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/runner/work/nav-api-v3-php/nav-api-v3-php/src/V3/Types/AnnulmentDataType.php">
