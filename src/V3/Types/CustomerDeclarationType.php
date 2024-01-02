@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ProductStreamType;
 
@@ -19,6 +20,7 @@ final readonly class CustomerDeclarationType extends BaseType
         /**
          * @var ProductStreamType Termékáram.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ProductStreamType'>")]
         public ProductStreamType $productStream,
 
         /**

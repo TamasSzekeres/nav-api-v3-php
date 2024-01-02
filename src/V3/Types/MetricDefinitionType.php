@@ -29,6 +29,7 @@ final readonly class MetricDefinitionType extends BaseType
         /**
          * @var MetricTypeType Metrika típusa.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\MetricTypeType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/metrics')]
         public MetricTypeType $metricType,
 

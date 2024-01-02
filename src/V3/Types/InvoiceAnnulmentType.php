@@ -37,6 +37,7 @@ abstract readonly class InvoiceAnnulmentType extends BaseType
         /**
          * @var AnnulmentCodeType A technikai érvénytelenítés kódja.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentCodeType'>")]
         public AnnulmentCodeType $annulmentCode,
 
         /**

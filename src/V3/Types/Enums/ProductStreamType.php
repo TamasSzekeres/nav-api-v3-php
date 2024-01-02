@@ -4,55 +4,60 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
+use LightSideSoftware\NavApi\V3\Base\EnumConcern;
+use LightSideSoftware\NavApi\V3\Base\EnumContract;
+
 /**
  * Termékáram típus.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum ProductStreamType: string
+enum ProductStreamType implements EnumContract
 {
+    use EnumConcern;
+
     /**
      * Akkumulátor.
      */
-    case BATTERY = 'BATTERY';
+    case BATTERY;
 
     /**
      * Csomagolószer.
      */
-    case PACKAGING = 'PACKAGING';
+    case PACKAGING;
 
     /**
      * Egyéb kőolajtermék.
      */
-    case OTHER_PETROL = 'OTHER_PETROL';
+    case OTHER_PETROL;
 
     /**
      * Az elektromos, elektronikai berendezés.
      */
-    case ELECTRONIC = 'ELECTRONIC';
+    case ELECTRONIC;
 
     /**
      * Gumiabroncs.
      */
-    case TIRE = 'TIRE';
+    case TIRE;
 
     /**
      * Reklámhordozó papír.
      */
-    case COMMERCIAL = 'COMMERCIAL';
+    case COMMERCIAL;
 
     /**
      * Az egyéb műanyag termék.
      */
-    case PLASTIC = 'PLASTIC';
+    case PLASTIC;
 
     /**
      * Egyéb vegyipari termék.
      */
-    case OTHER_CHEMICAL = 'OTHER_CHEMICAL';
+    case OTHER_CHEMICAL;
 
     /**
      * Irodai papír.
      */
-    case PAPER = 'PAPER';
+    case PAPER;
 }

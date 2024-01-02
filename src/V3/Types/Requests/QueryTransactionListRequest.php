@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types\Requests;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
 use LightSideSoftware\NavApi\V3\Types\Annotations\RequestPageTypeValidation;
@@ -44,6 +45,7 @@ final readonly class QueryTransactionListRequest extends BasicOnlineInvoiceReque
          * @var ?RequestStatusType A kérés feldolgozási státusza.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\RequestStatusType'>")]
         public ?RequestStatusType $requestStatus = null,
     ) {
         parent::__construct($header, $user, $software);

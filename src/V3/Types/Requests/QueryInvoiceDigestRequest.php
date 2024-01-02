@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types\Requests;
 
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlNamespace;
 use JMS\Serializer\Annotation\XmlRoot;
 use LightSideSoftware\NavApi\V3\Types\Annotations\RequestPageTypeValidation;
@@ -37,6 +38,7 @@ final readonly class QueryInvoiceDigestRequest extends BasicOnlineInvoiceRequest
         /**
          * @var InvoiceDirectionType Kimenő vagy bejövő számla keresési paramétere.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceDirectionType'>")]
         public InvoiceDirectionType $invoiceDirection,
 
         /**

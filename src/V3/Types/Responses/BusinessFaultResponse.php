@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types\Responses;
 
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlRoot;
 use LightSideSoftware\NavApi\V3\Types\BaseType;
@@ -25,6 +26,7 @@ final readonly class BusinessFaultResponse extends BaseType
         /**
          * @var FunctionCodeType
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType'>")]
         public FunctionCodeType $funcCode,
 
         /**

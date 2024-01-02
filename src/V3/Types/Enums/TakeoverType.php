@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
+use LightSideSoftware\NavApi\V3\Base\EnumContract;
+
 /**
  * Az átvállalás adatait tartalmazó típus.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum TakeoverType: string
+enum TakeoverType: string implements EnumContract
 {
     /**
      * A 2011. évi LXXXV. tv. 14. § (4) bekezdés szerint az eladó (első belföldi forgalomba hozó)
@@ -33,4 +35,9 @@ enum TakeoverType: string
     case _02_fb = '02_fb';
     case _02_ga = '02_ga';
     case _02_gb = '02_gb';
+
+    static function fromValue(mixed $value): EnumContract
+    {
+        return self::from((string)$value);
+    }
 }

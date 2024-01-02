@@ -41,6 +41,7 @@ final readonly class TransactionType extends BaseType
         /**
          * @var SourceType Az adatszolgáltatás forrása.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\SourceType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public SourceType $source,
 
@@ -54,6 +55,7 @@ final readonly class TransactionType extends BaseType
         /**
          * @var RequestStatusType A kérés feldolgozási státusza.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\RequestStatusType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public RequestStatusType $requestStatus,
 
@@ -66,6 +68,7 @@ final readonly class TransactionType extends BaseType
         /**
          * @var OriginalRequestVersionType Az adatszolgáltatás requestVersion értéke.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\OriginalRequestVersionType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public OriginalRequestVersionType $originalRequestVersion,
 

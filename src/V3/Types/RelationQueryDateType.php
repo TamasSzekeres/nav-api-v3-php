@@ -20,6 +20,7 @@ final readonly class RelationQueryDateType extends BaseType
         /**
          * @var QueryOperatorType Kereső operátor.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\QueryOperatorType'>")]
         public QueryOperatorType $queryOperator,
 
         /**

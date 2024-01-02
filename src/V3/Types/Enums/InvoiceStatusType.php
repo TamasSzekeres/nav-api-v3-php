@@ -1,36 +1,43 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
+
+use LightSideSoftware\NavApi\V3\Base\EnumConcern;
+use LightSideSoftware\NavApi\V3\Base\EnumContract;
 
 /**
  * A számla feldolgozási státusza.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum InvoiceStatusType: string
+enum InvoiceStatusType implements EnumContract
 {
+    use EnumConcern;
+
     /**
      * Befogadva.
      */
-    case RECEIVED = 'RECEIVED';
+    case RECEIVED;
 
     /**
      * Feldolgozás alatt.
      */
-    case PROCESSING = 'PROCESSING';
+    case PROCESSING;
 
     /**
      * Elmentve.
      */
-    case SAVED = 'SAVED';
+    case SAVED;
 
     /**
      * Kész.
      */
-    case DONE = 'DONE';
+    case DONE;
 
     /**
      * Kihagyva.
      */
-    case ABORTED = 'ABORTED';
+    case ABORTED;
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\QuantityTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ProductFeeMeasuringUnitType;
@@ -30,6 +31,7 @@ final readonly class ProductFeeDataType extends BaseType
         /**
          * @var ProductFeeMeasuringUnitType A díjtétel egysége (kg vagy darab).
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ProductFeeMeasuringUnitType'>")]
         public ProductFeeMeasuringUnitType $productFeeMeasuringUnit,
 
         /**

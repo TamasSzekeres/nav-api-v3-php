@@ -70,7 +70,7 @@ class StringValidation implements PropertyValidatorInterface
 
         if ($this->pattern) {
             if (!mb_ereg_match("^{$this->pattern}$", $value)) {
-                $errors->addError($name, "{$name} tulajdondágnak értéke nem illeszkedik a megadott kifjezésre.");
+                $errors->addError($name, "{$name} tulajdonságnak értéke nem illeszkedik a megadott kifjezésre.");
             }
         }
 

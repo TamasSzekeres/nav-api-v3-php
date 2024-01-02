@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CurrencyTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\QueryNameTypeValidation;
@@ -50,24 +51,28 @@ final readonly class AdditionalQueryParamsType extends BaseType
          * @var ?InvoiceCategoryType A számla típusa.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType'>")]
         public ?InvoiceCategoryType $invoiceCategory = null,
 
         /**
          * @var ?string Fizetés módja.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\PaymentMethodType'>")]
         public ?PaymentMethodType $paymentMethod = null,
 
         /**
          * @var ?InvoiceAppearanceType A számla megjelenési formája.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType'>")]
         public ?InvoiceAppearanceType $invoiceAppearance = null,
 
         /**
          * @var ?SourceType Az adatszolgáltatás forrása.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\SourceType'>")]
         public ?SourceType $source = null,
 
         /**

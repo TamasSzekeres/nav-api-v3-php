@@ -24,6 +24,7 @@ readonly class BasicResultType extends BaseType
         /**
          * @var FunctionCodeType Feldolgozási eredmény.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\FunctionCodeType'>")]
         public FunctionCodeType $funcCode,
 
         /**

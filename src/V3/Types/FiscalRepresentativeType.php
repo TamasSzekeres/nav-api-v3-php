@@ -8,7 +8,6 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
-use LightSideSoftware\NavApi\V3\Types\Annotations\StringValidation;
 
 /**
  * A pénzügyi képviselő adatai.

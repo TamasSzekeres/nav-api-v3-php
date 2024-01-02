@@ -24,6 +24,7 @@ final readonly class AnnulmentDataType extends BaseType
          * @var AnnulmentVerificationStatusType Technikai érvénytelenítő kérések jóváhagyási státusza.
          */
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\AnnulmentVerificationStatusType'>")]
         public AnnulmentVerificationStatusType $annulmentVerificationStatus,
 
         /**

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\MonetaryTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\QueryOperatorType;
 
@@ -18,6 +19,7 @@ final readonly class RelationQueryMonetaryType extends BaseType
         /**
          * @var QueryOperatorType Kereső operátor.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\QueryOperatorType'>")]
         public QueryOperatorType $queryOperator,
 
         /**

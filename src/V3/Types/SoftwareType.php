@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\CountryCodeTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText15NotBlankTypeValidation;
@@ -41,6 +42,7 @@ final readonly class SoftwareType extends BaseType
         /**
          * @var string A számlázó program működési típusa. (kötelező)
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\SoftwareOperationType'>")]
         #[XMLElement(cdata: false, namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public SoftwareOperationType $softwareOperation,
 

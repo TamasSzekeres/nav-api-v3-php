@@ -4,90 +4,95 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
+use LightSideSoftware\NavApi\V3\Base\EnumConcern;
+use LightSideSoftware\NavApi\V3\Base\EnumContract;
+
 /**
  * Mennyiség egység típus.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum UnitOfMeasureType: string
+enum UnitOfMeasureType implements EnumContract
 {
+    use EnumConcern;
+
     /**
      * Darab.
      */
-    case PIECE = 'PIECE';
+    case PIECE;
 
     /**
      * Kilogramm.
      */
-    case KILOGRAM = 'KILOGRAM';
+    case KILOGRAM;
 
     /**
      * Metrikus tonna.
      */
-    case TON = 'TON';
+    case TON;
 
     /**
      * Kilowatt óra.
      */
-    case KWH = 'KWH';
+    case KWH;
 
     /**
      * Nap.
      */
-    case DAY = 'DAY';
+    case DAY;
 
     /**
      * Óra.
      */
-    case HOUR = 'HOUR';
+    case HOUR;
 
     /**
      * Perc.
      */
-    case MINUTE = 'MINUTE';
+    case MINUTE;
 
     /**
      * Hónap.
      */
-    case MONTH = 'MONTH';
+    case MONTH;
 
     /**
      * Liter.
      */
-    case LITER = 'LITER';
+    case LITER;
 
     /**
      * Kilométer.
      */
-    case KILOMETER = 'KILOMETER';
+    case KILOMETER;
 
     /**
      * Köbméter.
      */
-    case CUBIC_METER = 'CUBIC_METER';
+    case CUBIC_METER;
 
     /**
      * Méter.
      */
-    case METER = 'METER';
+    case METER;
 
     /**
      * Folyóméter.
      */
-    case LINEAR_METER = 'LINEAR_METER';
+    case LINEAR_METER;
 
     /**
      * Karton.
      */
-    case CARTON = 'CARTON';
+    case CARTON;
 
     /**
      * Csomag.
      */
-    case PACK = 'PACK';
+    case PACK;
 
     /**
      * Saját mennyiségi egység megnevezés.
      */
-    case OWN = 'OWN';
+    case OWN;
 }

@@ -6,6 +6,7 @@ namespace LightSideSoftware\NavApi\V3\Types;
 
 use InvalidArgumentException;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\ProductCodeValueTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText255NotBlankTypeValidation;
@@ -22,6 +23,7 @@ final readonly class ProductCodeType extends BaseType
         /**
          * @var ProductCodeCategoryType A termékkód fajtájának (pl. VTSZ, CsK, stb.) jelölése.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ProductCodeCategoryType'>")]
         public ProductCodeCategoryType $productCodeCategory,
 
         /**

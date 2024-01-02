@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\InvoiceIndexTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\ManageAnnulmentOperationType;
@@ -25,6 +26,7 @@ final readonly class AnnulmentOperationType extends BaseType
         /**
          * @var ManageAnnulmentOperationType A kért technikai érvénytelenítés művelet típusa.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ManageAnnulmentOperationType'>")]
         public ManageAnnulmentOperationType $annulmentOperation,
 
         /**

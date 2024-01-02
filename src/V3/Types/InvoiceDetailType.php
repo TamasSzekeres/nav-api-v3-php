@@ -51,6 +51,7 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var InvoiceCategoryType A számla típusa, módosító okirat esetén az eredeti számla típusa.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType'>")]
         public InvoiceCategoryType $invoiceCategory,
 
         /**
@@ -76,6 +77,7 @@ final readonly class InvoiceDetailType extends BaseType
         /**
          * @var InvoiceAppearanceType A számla vagy módosító okirat megjelenési formája.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType'>")]
         public InvoiceAppearanceType $invoiceAppearance,
 
         /**
@@ -132,6 +134,7 @@ final readonly class InvoiceDetailType extends BaseType
          * @var ?PaymentMethodType Fizetés módja.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\PaymentMethodType'>")]
         public ?PaymentMethodType $paymentMethod = null,
 
         /**

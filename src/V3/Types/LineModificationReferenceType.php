@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\LineNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\LineOperationType;
 
@@ -25,6 +26,7 @@ final readonly class LineModificationReferenceType extends BaseType
         /**
          * @var LineOperationType A számlatétel módosításának jellege.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\LineOperationType'>")]
         public LineOperationType $lineOperation,
     ) {
         parent::__construct();

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use InvalidArgumentException;
+use JMS\Serializer\Annotation\Type;
 use LightSideSoftware\NavApi\V3\Types\Annotations\RateTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Enums\MarginSchemeType;
 
@@ -46,6 +47,7 @@ final readonly class VatRateType extends BaseType
         /**
          * @var ?MarginSchemeType Különbözet szerinti szabályozás jelölése - ÁFA tv. 169. § p) q).
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\MarginSchemeType'>")]
         public ?MarginSchemeType $marginSchemeIndicator = null,
 
         /**

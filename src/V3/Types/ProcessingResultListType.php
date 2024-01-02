@@ -30,6 +30,7 @@ final readonly class ProcessingResultListType extends BaseType
         /**
          * @var OriginalRequestVersionType Az adatszolgáltatás requestVersion értéke.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\OriginalRequestVersionType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public OriginalRequestVersionType $originalRequestVersion,
 

@@ -4,35 +4,40 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types\Enums;
 
+use LightSideSoftware\NavApi\V3\Base\EnumConcern;
+use LightSideSoftware\NavApi\V3\Base\EnumContract;
+
 /**
  * Fizetés módja.
  *
  * @author Szekeres Tamás <szektam2@gmail.com>
  */
-enum PaymentMethodType: string
+enum PaymentMethodType implements EnumContract
 {
+    use EnumConcern;
+
     /**
      * Banki átutalás.
      */
-    case TRANSFER = 'TRANSFER';
+    case TRANSFER;
 
     /**
      * Készpénz.
      */
-    case CASH = 'CASH';
+    case CASH;
 
     /**
      * Bankkártya, hitelkártya, egyéb készpénz helyettesítő eszköz.
      */
-    case CARD = 'CARD';
+    case CARD;
 
     /**
      * Utalvány, váltó, egyéb pénzhelyettesítő eszköz.
      */
-    case VOUCHER = 'VOUCHER';
+    case VOUCHER;
 
     /**
      * Egyéb.
      */
-    case OTHER = 'OTHER';
+    case OTHER;
 }

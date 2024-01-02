@@ -104,6 +104,7 @@ final readonly class LineType extends BaseType
          * @var ?LineNatureIndicatorType Adott tételsor termékértékesítés vagy szolgáltatás nyújtás jellegének jelzése.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\LineNatureIndicatorType'>")]
         public ?LineNatureIndicatorType $lineNatureIndicator = null,
 
         /**
@@ -125,6 +126,7 @@ final readonly class LineType extends BaseType
          * @var ?UnitOfMeasureType A számlán szereplő mennyiségi egység kanonikus kifejezése az interfész specifikáció szerint.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\UnitOfMeasureType'>")]
         public ?UnitOfMeasureType $unitOfMeasure = null,
 
         /**

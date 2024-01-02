@@ -75,12 +75,14 @@ final readonly class InvoiceDigestType extends BaseType
         /**
          * @var ManageInvoiceOperationType Számlaművelet típus.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ManageInvoiceOperationType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ManageInvoiceOperationType $invoiceOperation,
 
         /**
          * @var InvoiceCategoryType A számla típusa.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceCategoryType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public InvoiceCategoryType $invoiceCategory,
 
@@ -158,6 +160,7 @@ final readonly class InvoiceDigestType extends BaseType
          * @var ?PaymentMethodType Fizetés módja.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\PaymentMethodType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?PaymentMethodType $paymentMethod = null,
 
@@ -174,6 +177,7 @@ final readonly class InvoiceDigestType extends BaseType
          * @var ?InvoiceAppearanceType A számla megjelenési formája.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceAppearanceType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?InvoiceAppearanceType $invoiceAppearance = null,
 
@@ -181,6 +185,7 @@ final readonly class InvoiceDigestType extends BaseType
          * @var ?SourceType Az adatszolgáltatás forrása.
          */
         #[SkipWhenEmpty]
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\SourceType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ?SourceType $source = null,
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LightSideSoftware\NavApi\V3\Types;
 
 use JMS\Serializer\Annotation\SkipWhenEmpty;
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Annotations\BankAccountNumberTypeValidation;
 use LightSideSoftware\NavApi\V3\Types\Annotations\SimpleText512NotBlankTypeValidation;
@@ -21,6 +22,7 @@ final readonly class CustomerInfoType extends BaseType
         /**
          * @var CustomerVatStatusType Vevő ÁFA szerinti státusza.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\CustomerVatStatusType'>")]
         public CustomerVatStatusType $customerVatStatus,
 
         /**

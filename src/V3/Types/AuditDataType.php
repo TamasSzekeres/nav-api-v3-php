@@ -55,12 +55,14 @@ final readonly class AuditDataType extends BaseType
         /**
          * @var string Az adatszolgáltatás forrása.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\SourceType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public SourceType $source,
 
         /**
          * @var OriginalRequestVersionType Az adatszolgáltatás requestVersion értéke.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\OriginalRequestVersionType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public OriginalRequestVersionType $originalRequestVersion,
 

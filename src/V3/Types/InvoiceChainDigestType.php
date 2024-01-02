@@ -46,6 +46,7 @@ final readonly class InvoiceChainDigestType extends BaseType
         /**
          * @var ManageInvoiceOperationType Számlaművelet típus.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ManageInvoiceOperationType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public ManageInvoiceOperationType $invoiceOperation,
 
@@ -67,6 +68,7 @@ final readonly class InvoiceChainDigestType extends BaseType
         /**
          * @var OriginalRequestVersionType Az adatszolgáltatás requestVersion értéke.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\OriginalRequestVersionType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public OriginalRequestVersionType $originalRequestVersion,
 

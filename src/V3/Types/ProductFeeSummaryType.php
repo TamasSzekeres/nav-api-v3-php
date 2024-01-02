@@ -23,6 +23,7 @@ final readonly class ProductFeeSummaryType extends BaseType
          * @var ProductFeeOperationType Annak jelzése, hogy a termékdíj összesítés visszaigénylésre (REFUND)
          * vagy raktárba történő beszállításra (DEPOSIT) vonatkozik.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\ProductFeeOperationType'>")]
         public ProductFeeOperationType $productFeeOperation,
 
         /**

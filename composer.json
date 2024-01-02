@@ -13,11 +13,13 @@
         "guzzlehttp/guzzle": "^7.3",
         "jms/serializer": "^3.14",
         "psr/clock": "^1",
+        "ext-dom": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*"
     },
     "require-dev": {
-        "pestphp/pest": "^2.0"
+        "pestphp/pest": "^2.0",
+        "phpstan/phpstan": "^1.10"
     },
     "license": "MIT",
     "autoload": {

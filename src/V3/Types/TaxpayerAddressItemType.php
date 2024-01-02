@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LightSideSoftware\NavApi\V3\Types;
 
+use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use LightSideSoftware\NavApi\V3\Types\Enums\TaxpayerAddressTypeType;
 
@@ -18,6 +19,7 @@ final readonly class TaxpayerAddressItemType extends BaseType
         /**
          * @var TaxpayerAddressTypeType Adózói cím típus.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\TaxpayerAddressTypeType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public TaxpayerAddressTypeType $taxpayerAddressType,
 

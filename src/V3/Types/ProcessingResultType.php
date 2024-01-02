@@ -44,6 +44,7 @@ final readonly class ProcessingResultType extends BaseType
         /**
          * @var InvoiceStatusType A számla feldolgozási státusza.
          */
+        #[Type("Enum<'LightSideSoftware\NavApi\V3\Types\Enums\InvoiceStatusType'>")]
         #[XmlElement(namespace: 'http://schemas.nav.gov.hu/OSA/3.0/api')]
         public InvoiceStatusType $invoiceStatus,
 
